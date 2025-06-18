@@ -20,6 +20,44 @@ from uqlm.scorers.baseclass.uncertainty import UncertaintyQuantifier, UQResult
 from uqlm.black_box import BertScorer, CosineScorer, MatchScorer
 
 
+class _LlamaIndexChatAdapter:
+    def __init__(self, llamaindex_llm):
+        self.llm = llamaindex_llm
+        self._temperature = getattr(llamaindex_llm, "temperature", 1.0)
+
+    @property
+    def temperature(self):
+        return getattr(self.llm, "temperature", self._temperature)
+
+    @temperature.setter
+    def temperature(self, value):
+        self._temperature = value
+        if hasattr(self.llm, "temperature"):
+            self.llm.temperature = value
+
+    async def agenerate(self, prompts, system_prompt=None, **kwargs):
+        results = []
+        for prompt in prompts:
+            # Try to pass system_prompt if supported, else ignore
+            try:
+                response = await self.llm.acomplete(prompt, temperature=self._temperature, system_prompt=system_prompt)
+            except TypeError:
+                # system_prompt not supported, try without it
+                response = await self.llm.acomplete(prompt, temperature=self._temperature)
+            results.append(response.text if hasattr(response, "text") else response)
+        return results
+
+    def generate(self, prompts, system_prompt=None, **kwargs):
+        results = []
+        for prompt in prompts:
+            try:
+                response = self.llm.complete(prompt, temperature=self._temperature, system_prompt=system_prompt)
+            except TypeError:
+                response = self.llm.complete(prompt, temperature=self._temperature)
+            results.append(response.text if hasattr(response, "text") else response)
+        return results
+
+
 class BlackBoxUQ(UncertaintyQuantifier):
     def __init__(
         self,
@@ -89,6 +127,17 @@ class BlackBoxUQ(UncertaintyQuantifier):
         verbose : bool, default=False
             Specifies whether to print the index of response currently being scored.
         """
+        if llm is not None:
+            # Import here to avoid hard dependency if not used
+            llamaindex_module_names = [
+                "llama_index.llms.openai.OpenAI",
+                "llama_index.llms.vertex.Vertex",
+                "llama_index.llms.google_genai.GoogleGenAIGemini",
+                # Add other LlamaIndex LLM class paths as needed
+            ]
+            if llm.__class__.__module__.startswith("llama_index.llms"):
+                llm = _LlamaIndexChatAdapter(llm)
+
         super().__init__(
             llm=llm,
             device=device,

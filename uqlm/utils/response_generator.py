@@ -93,9 +93,8 @@ class ResponseGenerator:
                 'system_prompt' : str
                     The system prompt used for generating responses
         """
-        assert isinstance(self.llm, BaseChatModel), """
-            llm must be an instance of langchain_core.language_models.chat_models.BaseChatModel
-        """
+        if not (hasattr(self.llm, "generate") or hasattr(self.llm, "agenerate")):
+            raise TypeError("llm must have a 'generate' or 'agenerate' method compatible with the expected interface.")
         assert all(isinstance(prompt, str) for prompt in prompts), (
             "If using custom prompts, please ensure `prompts` is of type list[str]"
         )
