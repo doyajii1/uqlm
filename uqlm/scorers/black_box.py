@@ -35,14 +35,22 @@ class _LlamaIndexChatAdapter:
         if hasattr(self.llm, "temperature"):
             self.llm.temperature = value
 
+    def _llm_supports_system_prompt(self):
+        # Add more LlamaIndex LLMs here if they support system_prompt
+        SUPPORTED = (
+            "llama_index.llms.openai.OpenAI",
+            # Add others as needed
+        )
+        return self.llm.__class__.__module__ + "." + self.llm.__class__.__name__ in SUPPORTED
+
     async def agenerate(self, prompts, system_prompt=None, **kwargs):
         results = []
         for prompt in prompts:
-            # Try to pass system_prompt if supported, else ignore
-            try:
-                response = await self.llm.acomplete(prompt, temperature=self._temperature, system_prompt=system_prompt)
-            except TypeError:
-                # system_prompt not supported, try without it
+            if system_prompt and not self._llm_supports_system_prompt():
+                prompt_to_use = f"{system_prompt}\n{prompt}"
+                response = await self.llm.acomplete(prompt_to_use, temperature=self._temperature)
+            else:
+                # Never pass system_prompt to LlamaIndex LLMs that don't support it
                 response = await self.llm.acomplete(prompt, temperature=self._temperature)
             results.append(response.text if hasattr(response, "text") else response)
         return results
@@ -50,9 +58,11 @@ class _LlamaIndexChatAdapter:
     def generate(self, prompts, system_prompt=None, **kwargs):
         results = []
         for prompt in prompts:
-            try:
-                response = self.llm.complete(prompt, temperature=self._temperature, system_prompt=system_prompt)
-            except TypeError:
+            if system_prompt and not self._llm_supports_system_prompt():
+                prompt_to_use = f"{system_prompt}\n{prompt}"
+                response = self.llm.complete(prompt_to_use, temperature=self._temperature)
+            else:
+                # Never pass system_prompt to LlamaIndex LLMs that don't support it
                 response = self.llm.complete(prompt, temperature=self._temperature)
             results.append(response.text if hasattr(response, "text") else response)
         return results

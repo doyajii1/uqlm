@@ -102,11 +102,20 @@ class ResponseGenerator:
         if self.llm.temperature == 0:
             assert count == 1, "temperature must be greater than 0 if count > 1"
         self._update_count(count)
-        self.system_message = SystemMessage(system_prompt)
 
-        generations, duplicated_prompts = await self._generate_in_batches(
-            prompts=prompts
-        )
+        # Patch: handle LlamaIndex adapter differently
+        from uqlm.scorers.black_box import _LlamaIndexChatAdapter
+        if isinstance(self.llm, _LlamaIndexChatAdapter):
+            # Prepend system prompt to each prompt
+            prompts_with_system = [f"{system_prompt}\n{prompt}" for prompt in prompts]
+            generations, duplicated_prompts = await self._generate_in_batches(
+                prompts=prompts_with_system
+            )
+        else:
+            self.system_message = SystemMessage(system_prompt)
+            generations, duplicated_prompts = await self._generate_in_batches(
+                prompts=prompts
+            )
 
         responses = generations["responses"]
         logprobs = generations["logprobs"]
@@ -192,25 +201,49 @@ class ResponseGenerator:
 
     async def _async_api_call(self, prompt: str, count: int = 1) -> List[Any]:
         """Generates responses asynchronously using an RunnableSequence object"""
-        messages = [self.system_message, HumanMessage(prompt)]
-        logprobs = [None] * count
-        result = await self.llm.agenerate([messages])
-        if hasattr(self.llm, "logprobs"):
-            if self.llm.logprobs:
-                if "logprobs_result" in result.generations[0][0].generation_info:
-                    logprobs = [
-                            result.generations[0][i].generation_info["logprobs_result"]
-                            for i in range(count)
-                        ]
-                elif "logprobs" in result.generations[0][0].generation_info:
-                    logprobs = [
-                            result.generations[0][i].generation_info["logprobs"]["content"]
-                            for i in range(count)
-                        ]    
-        return {
-            "logprobs": logprobs,
-            "responses": [result.generations[0][i].text for i in range(count)],
-        }
+        # Patch: handle LlamaIndex adapter differently
+        from uqlm.scorers.black_box import _LlamaIndexChatAdapter
+        if isinstance(self.llm, _LlamaIndexChatAdapter):
+            # For LlamaIndex adapter, pass prompt directly
+            logprobs = [None] * count
+            result = await self.llm.agenerate([prompt])
+            if hasattr(self.llm, "logprobs"):
+                if self.llm.logprobs:
+                    if "logprobs_result" in result.generations[0][0].generation_info:
+                        logprobs = [
+                                result.generations[0][i].generation_info["logprobs_result"]
+                                for i in range(count)
+                            ]
+                    elif "logprobs" in result.generations[0][0].generation_info:
+                        logprobs = [
+                                result.generations[0][i].generation_info["logprobs"]["content"]
+                                for i in range(count)
+                            ]    
+            return {
+                "logprobs": logprobs,
+                "responses": [result.generations[0][i].text for i in range(count)],
+            }
+        else:
+            # Original logic for LangChain LLMs
+            messages = [self.system_message, HumanMessage(prompt)]
+            logprobs = [None] * count
+            result = await self.llm.agenerate([messages])
+            if hasattr(self.llm, "logprobs"):
+                if self.llm.logprobs:
+                    if "logprobs_result" in result.generations[0][0].generation_info:
+                        logprobs = [
+                                result.generations[0][i].generation_info["logprobs_result"]
+                                for i in range(count)
+                            ]
+                    elif "logprobs" in result.generations[0][0].generation_info:
+                        logprobs = [
+                                result.generations[0][i].generation_info["logprobs"]["content"]
+                                for i in range(count)
+                            ]    
+            return {
+                "logprobs": logprobs,
+                "responses": [result.generations[0][i].text for i in range(count)],
+            }
 
     @staticmethod
     def _enforce_strings(texts: List[Any]) -> List[str]:
