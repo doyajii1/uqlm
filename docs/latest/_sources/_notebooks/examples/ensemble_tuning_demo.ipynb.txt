@@ -91,6 +91,7 @@
    },
    "outputs": [],
    "source": [
+    "import os\n",
     "import numpy as np\n",
     "from sklearn.metrics import precision_score, recall_score, f1_score\n",
     "\n",
@@ -225,9 +226,7 @@
    "outputs": [],
    "source": [
     "# Define prompts\n",
-    "MATH_INSTRUCTION = (\n",
-    "    \"When you solve this math problem only return the answer with no additional text.\\n\"\n",
-    ")\n",
+    "MATH_INSTRUCTION = \"When you solve this math problem only return the answer with no additional text.\\n\"\n",
     "tune_prompts = [MATH_INSTRUCTION + prompt for prompt in gsm8k_tune.question]\n",
     "test_prompts = [MATH_INSTRUCTION + prompt for prompt in gsm8k_test.question]"
    ]
@@ -278,7 +277,7 @@
     "# !{sys.executable} -m pip install langchain-google-vertexai\n",
     "from langchain_google_vertexai import ChatVertexAI\n",
     "\n",
-    "gemini = ChatVertexAI(model=\"gemini-pro\")"
+    "gemini = ChatVertexAI(model=\"gemini-1.5-flash\")"
    ]
   },
   {
@@ -502,7 +501,8 @@
     "        <li><code>ground_truth_answers</code> - (<strong>List[str]</strong>) A list of ideal (correct) responses.</li>\n",
     "        <li><code>grader_function</code> - (<strong>callable, default=None</strong>) A user-defined function that takes a response and a ground truth 'answer' and returns a boolean indicator of whether the response is correct. If not provided, vectara's HHEM is used: https://huggingface.co/vectara/hallucination_evaluation_model</li>\n",
     "        <li><code>num_responses</code> - (<strong>int, default=5</strong>) The number of sampled responses used to compute consistency.</li>\n",
-    "        <li><code>thresh_objective</code> - (<strong>str, default='fbeta_score'</strong>) Objective function for threshold optimization via grid search. One of {'fbeta_score', 'accuracy_score', 'balanced_accuracy_score', 'roc_auc', 'log_loss'}.</li>\n",
+    "        <li><code>weights_objective</code> - (<strong>str, default='roc_auc'</strong>) Objective function for weight optimization. One of {'fbeta_score', 'accuracy_score', 'balanced_accuracy_score', 'roc_auc', 'log_loss', 'average_precision', 'brier_score'}. Must match thresh_objective if one of {'fbeta_score', 'accuracy_score', 'balanced_accuracy_score'}. If same as thresh_objective, joint optimization will be done.</li>\n",
+    "        <li><code>thresh_objective</code> - (<strong>str, default='fbeta_score'</strong>) Objective function for threshold optimization via grid search. One of {'fbeta_score', 'accuracy_score', 'balanced_accuracy_score'}.</li>\n",
     "        <li><code>thresh_bounds</code> - (<strong>tuple of floats, default=(0,1)</strong>) Bounds to search for threshold.</li>\n",
     "        <li><code>n_trials</code> - (<strong>int, default=100</strong>) Indicates how many trials to search over with optuna optimizer</li>\n",
     "        <li><code>step_size</code> - (<strong>float, default=0.01</strong>) Indicates step size in grid search, if used.</li>\n",
@@ -533,7 +533,7 @@
    "outputs": [],
    "source": [
     "def grade_response(response: str, answer: str) -> bool:\n",
-    "    return (math_postprocessor(response) == answer)"
+    "    return math_postprocessor(response) == answer"
    ]
   },
   {
@@ -560,9 +560,9 @@
    ],
    "source": [
     "tune_results = await uqe.tune(\n",
-    "    prompts=tune_prompts, # prompts for tuning (responses will be generated from these prompts)\n",
-    "    ground_truth_answers=gsm8k_tune[\"answer\"], # correct answers to 'grade' LLM responses against\n",
-    "    grader_function=grade_response, # grader function to grade responses against provided answers\n",
+    "    prompts=tune_prompts,  # prompts for tuning (responses will be generated from these prompts)\n",
+    "    ground_truth_answers=gsm8k_tune[\"answer\"],  # correct answers to 'grade' LLM responses against\n",
+    "    grader_function=grade_response,  # grader function to grade responses against provided answers\n",
     ")"
    ]
   },
@@ -968,9 +968,7 @@
    ],
    "source": [
     "test_result_df = test_results.to_df()\n",
-    "test_result_df[\"response_correct\"] = [ \n",
-    "    grade_response(r, a) for r, a in zip(test_result_df[\"response\"], gsm8k_test[\"answer\"])\n",
-    "]\n",
+    "test_result_df[\"response_correct\"] = [grade_response(r, a) for r, a in zip(test_result_df[\"response\"], gsm8k_test[\"answer\"])]\n",
     "test_result_df.head(5)"
    ]
   },
@@ -1028,10 +1026,7 @@
     }
    ],
    "source": [
-    "plot_model_accuracies(\n",
-    "    scores=test_result_df.ensemble_score,\n",
-    "    correct_indicators=test_result_df.response_correct,\n",
-    ")"
+    "plot_model_accuracies(scores=test_result_df.ensemble_score, correct_indicators=test_result_df.response_correct)"
    ]
   },
   {
@@ -1069,12 +1064,8 @@
     "\n",
     "# Define score vector and corresponding correct indicators (i.e. ground truth)\n",
     "y_scores = test_result_df[\"ensemble_score\"]  # confidence score\n",
-    "correct_indicators = (\n",
-    "    test_result_df.response_correct\n",
-    ") * 1  # Whether responses is actually correct\n",
-    "y_pred = [\n",
-    "    (s > best_threshold) * 1 for s in y_scores\n",
-    "]  # predicts whether response is correct based on confidence score\n",
+    "correct_indicators = (test_result_df.response_correct) * 1  # Whether responses is actually correct\n",
+    "y_pred = [(s > best_threshold) * 1 for s in y_scores]  # predicts whether response is correct based on confidence score\n",
     "print(f\"Ensemble F1-optimal threshold: {best_threshold}\")"
    ]
   },
@@ -1097,9 +1088,7 @@
    ],
    "source": [
     "# evaluate precision, recall, and f1-score of semantic entropy predictions of correctness\n",
-    "print(\n",
-    "    f\"Ensemble precision: {precision_score(y_true=correct_indicators, y_pred=y_pred)}\"\n",
-    ")\n",
+    "print(f\"Ensemble precision: {precision_score(y_true=correct_indicators, y_pred=y_pred)}\")\n",
     "print(f\"Ensemble recall: {recall_score(y_true=correct_indicators, y_pred=y_pred)}\")\n",
     "print(f\"Ensemble f1-score: {f1_score(y_true=correct_indicators, y_pred=y_pred)}\")"
    ]
@@ -1240,15 +1229,15 @@
  ],
  "metadata": {
   "environment": {
-   "kernel": "uqlm",
+   "kernel": "uqlm_my_test",
    "name": "workbench-notebooks.m126",
    "type": "gcloud",
    "uri": "us-docker.pkg.dev/deeplearning-platform-release/gcr.io/workbench-notebooks:m126"
   },
   "kernelspec": {
-   "display_name": "uqlm",
+   "display_name": "uqlm_my_test",
    "language": "python",
-   "name": "uqlm"
+   "name": "uqlm_my_test"
   },
   "language_info": {
    "codemirror_mode": {
@@ -1260,7 +1249,7 @@
    "name": "python",
    "nbconvert_exporter": "python",
    "pygments_lexer": "ipython3",
-   "version": "3.9.21"
+   "version": "3.11.12"
   }
  },
  "nbformat": 4,

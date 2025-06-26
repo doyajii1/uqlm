@@ -492,7 +492,8 @@
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">precision_score</span><span class="p">,</span> <span class="n">recall_score</span><span class="p">,</span> <span class="n">f1_score</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">uqlm</span><span class="w"> </span><span class="kn">import</span> <span class="n">UQEnsemble</span>
@@ -593,9 +594,7 @@ Dataset ready!
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define prompts</span>
-<span class="n">MATH_INSTRUCTION</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="s2">&quot;When you solve this math problem only return the answer with no additional text.</span><span class="se">\n</span><span class="s2">&quot;</span>
-<span class="p">)</span>
+<span class="n">MATH_INSTRUCTION</span> <span class="o">=</span> <span class="s2">&quot;When you solve this math problem only return the answer with no additional text.</span><span class="se">\n</span><span class="s2">&quot;</span>
 <span class="n">tune_prompts</span> <span class="o">=</span> <span class="p">[</span><span class="n">MATH_INSTRUCTION</span> <span class="o">+</span> <span class="n">prompt</span> <span class="k">for</span> <span class="n">prompt</span> <span class="ow">in</span> <span class="n">gsm8k_tune</span><span class="o">.</span><span class="n">question</span><span class="p">]</span>
 <span class="n">test_prompts</span> <span class="o">=</span> <span class="p">[</span><span class="n">MATH_INSTRUCTION</span> <span class="o">+</span> <span class="n">prompt</span> <span class="k">for</span> <span class="n">prompt</span> <span class="ow">in</span> <span class="n">gsm8k_test</span><span class="o">.</span><span class="n">question</span><span class="p">]</span>
 </pre></div>
@@ -634,7 +633,7 @@ Dataset ready!
 <span class="c1"># !{sys.executable} -m pip install langchain-google-vertexai</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">langchain_google_vertexai</span><span class="w"> </span><span class="kn">import</span> <span class="n">ChatVertexAI</span>
 
-<span class="n">gemini</span> <span class="o">=</span> <span class="n">ChatVertexAI</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;gemini-pro&quot;</span><span class="p">)</span>
+<span class="n">gemini</span> <span class="o">=</span> <span class="n">ChatVertexAI</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;gemini-1.5-flash&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -785,7 +784,8 @@ Some weights of the model checkpoint at microsoft/deberta-large-mnli were not us
 </li><li><p>ground_truth_answers - (List[str]) A list of ideal (correct) responses.</p>
 </li><li><p>grader_function - (callable, default=None) A user-defined function that takes a response and a ground truth ‘answer’ and returns a boolean indicator of whether the response is correct. If not provided, vectara’s HHEM is used: <a class="reference external" href="https://huggingface.co/vectara/hallucination_evaluation_model">https://huggingface.co/vectara/hallucination_evaluation_model</a></p>
 </li><li><p>num_responses - (int, default=5) The number of sampled responses used to compute consistency.</p>
-</li><li><p>thresh_objective - (str, default=’fbeta_score’) Objective function for threshold optimization via grid search. One of {‘fbeta_score’, ‘accuracy_score’, ‘balanced_accuracy_score’, ‘roc_auc’, ‘log_loss’}.</p>
+</li><li><p>weights_objective - (str, default=’roc_auc’) Objective function for weight optimization. One of {‘fbeta_score’, ‘accuracy_score’, ‘balanced_accuracy_score’, ‘roc_auc’, ‘log_loss’, ‘average_precision’, ‘brier_score’}. Must match thresh_objective if one of {‘fbeta_score’, ‘accuracy_score’, ‘balanced_accuracy_score’}. If same as thresh_objective, joint optimization will be done.</p>
+</li><li><p>thresh_objective - (str, default=’fbeta_score’) Objective function for threshold optimization via grid search. One of {‘fbeta_score’, ‘accuracy_score’, ‘balanced_accuracy_score’}.</p>
 </li><li><p>thresh_bounds - (tuple of floats, default=(0,1)) Bounds to search for threshold.</p>
 </li><li><p>n_trials - (int, default=100) Indicates how many trials to search over with optuna optimizer</p>
 </li><li><p>step_size - (float, default=0.01) Indicates step size in grid search, if used.</p>
@@ -798,7 +798,7 @@ Some weights of the model checkpoint at microsoft/deberta-large-mnli were not us
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">grade_response</span><span class="p">(</span><span class="n">response</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">answer</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-    <span class="k">return</span> <span class="p">(</span><span class="n">math_postprocessor</span><span class="p">(</span><span class="n">response</span><span class="p">)</span> <span class="o">==</span> <span class="n">answer</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">math_postprocessor</span><span class="p">(</span><span class="n">response</span><span class="p">)</span> <span class="o">==</span> <span class="n">answer</span>
 </pre></div>
 </div>
 </div>
@@ -807,9 +807,9 @@ Some weights of the model checkpoint at microsoft/deberta-large-mnli were not us
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tune_results</span> <span class="o">=</span> <span class="k">await</span> <span class="n">uqe</span><span class="o">.</span><span class="n">tune</span><span class="p">(</span>
-    <span class="n">prompts</span><span class="o">=</span><span class="n">tune_prompts</span><span class="p">,</span> <span class="c1"># prompts for tuning (responses will be generated from these prompts)</span>
-    <span class="n">ground_truth_answers</span><span class="o">=</span><span class="n">gsm8k_tune</span><span class="p">[</span><span class="s2">&quot;answer&quot;</span><span class="p">],</span> <span class="c1"># correct answers to &#39;grade&#39; LLM responses against</span>
-    <span class="n">grader_function</span><span class="o">=</span><span class="n">grade_response</span><span class="p">,</span> <span class="c1"># grader function to grade responses against provided answers</span>
+    <span class="n">prompts</span><span class="o">=</span><span class="n">tune_prompts</span><span class="p">,</span>  <span class="c1"># prompts for tuning (responses will be generated from these prompts)</span>
+    <span class="n">ground_truth_answers</span><span class="o">=</span><span class="n">gsm8k_tune</span><span class="p">[</span><span class="s2">&quot;answer&quot;</span><span class="p">],</span>  <span class="c1"># correct answers to &#39;grade&#39; LLM responses against</span>
+    <span class="n">grader_function</span><span class="o">=</span><span class="n">grade_response</span><span class="p">,</span>  <span class="c1"># grader function to grade responses against provided answers</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -1006,9 +1006,7 @@ Generating LLMJudge scores...
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_result_df</span> <span class="o">=</span> <span class="n">test_results</span><span class="o">.</span><span class="n">to_df</span><span class="p">()</span>
-<span class="n">test_result_df</span><span class="p">[</span><span class="s2">&quot;response_correct&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="n">grade_response</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span> <span class="k">for</span> <span class="n">r</span><span class="p">,</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">test_result_df</span><span class="p">[</span><span class="s2">&quot;response&quot;</span><span class="p">],</span> <span class="n">gsm8k_test</span><span class="p">[</span><span class="s2">&quot;answer&quot;</span><span class="p">])</span>
-<span class="p">]</span>
+<span class="n">test_result_df</span><span class="p">[</span><span class="s2">&quot;response_correct&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">grade_response</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span> <span class="k">for</span> <span class="n">r</span><span class="p">,</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">test_result_df</span><span class="p">[</span><span class="s2">&quot;response&quot;</span><span class="p">],</span> <span class="n">gsm8k_test</span><span class="p">[</span><span class="s2">&quot;answer&quot;</span><span class="p">])]</span>
 <span class="n">test_result_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1143,10 +1141,7 @@ Baseline LLM accuracy: 0.5714285714285714
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_model_accuracies</span><span class="p">(</span>
-    <span class="n">scores</span><span class="o">=</span><span class="n">test_result_df</span><span class="o">.</span><span class="n">ensemble_score</span><span class="p">,</span>
-    <span class="n">correct_indicators</span><span class="o">=</span><span class="n">test_result_df</span><span class="o">.</span><span class="n">response_correct</span><span class="p">,</span>
-<span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_model_accuracies</span><span class="p">(</span><span class="n">scores</span><span class="o">=</span><span class="n">test_result_df</span><span class="o">.</span><span class="n">ensemble_score</span><span class="p">,</span> <span class="n">correct_indicators</span><span class="o">=</span><span class="n">test_result_df</span><span class="o">.</span><span class="n">response_correct</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1170,12 +1165,8 @@ Baseline LLM accuracy: 0.5714285714285714
 
 <span class="c1"># Define score vector and corresponding correct indicators (i.e. ground truth)</span>
 <span class="n">y_scores</span> <span class="o">=</span> <span class="n">test_result_df</span><span class="p">[</span><span class="s2">&quot;ensemble_score&quot;</span><span class="p">]</span>  <span class="c1"># confidence score</span>
-<span class="n">correct_indicators</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">test_result_df</span><span class="o">.</span><span class="n">response_correct</span>
-<span class="p">)</span> <span class="o">*</span> <span class="mi">1</span>  <span class="c1"># Whether responses is actually correct</span>
-<span class="n">y_pred</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="p">(</span><span class="n">s</span> <span class="o">&gt;</span> <span class="n">best_threshold</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">y_scores</span>
-<span class="p">]</span>  <span class="c1"># predicts whether response is correct based on confidence score</span>
+<span class="n">correct_indicators</span> <span class="o">=</span> <span class="p">(</span><span class="n">test_result_df</span><span class="o">.</span><span class="n">response_correct</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1</span>  <span class="c1"># Whether responses is actually correct</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="p">[(</span><span class="n">s</span> <span class="o">&gt;</span> <span class="n">best_threshold</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">y_scores</span><span class="p">]</span>  <span class="c1"># predicts whether response is correct based on confidence score</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Ensemble F1-optimal threshold: </span><span class="si">{</span><span class="n">best_threshold</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1193,9 +1184,7 @@ Ensemble F1-optimal threshold: 0.36
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># evaluate precision, recall, and f1-score of semantic entropy predictions of correctness</span>
-<span class="nb">print</span><span class="p">(</span>
-    <span class="sa">f</span><span class="s2">&quot;Ensemble precision: </span><span class="si">{</span><span class="n">precision_score</span><span class="p">(</span><span class="n">y_true</span><span class="o">=</span><span class="n">correct_indicators</span><span class="p">,</span><span class="w"> </span><span class="n">y_pred</span><span class="o">=</span><span class="n">y_pred</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
-<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Ensemble precision: </span><span class="si">{</span><span class="n">precision_score</span><span class="p">(</span><span class="n">y_true</span><span class="o">=</span><span class="n">correct_indicators</span><span class="p">,</span><span class="w"> </span><span class="n">y_pred</span><span class="o">=</span><span class="n">y_pred</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Ensemble recall: </span><span class="si">{</span><span class="n">recall_score</span><span class="p">(</span><span class="n">y_true</span><span class="o">=</span><span class="n">correct_indicators</span><span class="p">,</span><span class="w"> </span><span class="n">y_pred</span><span class="o">=</span><span class="n">y_pred</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Ensemble f1-score: </span><span class="si">{</span><span class="n">f1_score</span><span class="p">(</span><span class="n">y_true</span><span class="o">=</span><span class="n">correct_indicators</span><span class="p">,</span><span class="w"> </span><span class="n">y_pred</span><span class="o">=</span><span class="n">y_pred</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>

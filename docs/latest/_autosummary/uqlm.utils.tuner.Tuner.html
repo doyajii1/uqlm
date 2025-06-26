@@ -532,20 +532,20 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="uqlm.utils.tuner.Tuner.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uqlm.utils.tuner.Tuner.__init__" title="Link to this definition">#</a></dt>
-<dd><p>Class for tuning weights and threshold for BSDetector and UQEnsemble</p>
+<dd><p>Class for tuning weights and threshold for UQEnsemble</p>
 </dd></dl>
 
 <p class="rubric">Methods</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#uqlm.utils.tuner.Tuner.__init__" title="uqlm.utils.tuner.Tuner.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>()</p></td>
-<td><p>Class for tuning weights and threshold for BSDetector and UQEnsemble</p></td>
+<td><p>Class for tuning weights and threshold for UQEnsemble</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#uqlm.utils.tuner.Tuner.tune_params" title="uqlm.utils.tuner.Tuner.tune_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tune_params</span></code></a>(score_lists, correct_indicators)</p></td>
 <td><p>Tunes weights and threshold parameters on a set of user-provided graded responses.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#uqlm.utils.tuner.Tuner.tune_threshold" title="uqlm.utils.tuner.Tuner.tune_threshold"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tune_threshold</span></code></a>(y_scores, correct_indicators)</p></td>
-<td><p>Conducts 1-dimensional grid search for threshold</p></td>
+<td><p>Conducts 1-dimensional grid search for threshold.</p></td>
 </tr>
 </tbody>
 </table>
@@ -560,19 +560,19 @@
 </dd>
 <dt class="field-even">Parameters<span class="colon">:</span></dt>
 <dd class="field-even"><ul class="simple">
-<li><p><strong>score_lists</strong> (<em>list</em><em> of </em><em>lists</em><em> of </em><em>floats</em>) – A list of lists of floats. Each interior list is a list of component-specific scores</p></li>
+<li><p><strong>score_lists</strong> (<em>list</em><em> of </em><em>lists</em><em> of </em><em>floats</em>) – A list of lists of floats. Each interior list is a list of component-specific scores.</p></li>
 <li><p><strong>correct_indicators</strong> (<em>list</em><em> of </em><em>bool</em>) – A list of boolean indicators of whether self.original_responses are correct.</p></li>
-<li><p><strong>weights_objective</strong> (<em>{'fbeta_score'</em><em>, </em><em>'accuracy_score'</em><em>, </em><em>'balanced_accuracy_score'</em><em>, </em><em>'roc_auc'</em><em>, </em><em>'log_loss'}</em><em>, </em><em>default='roc_auc'</em>) – Objective function for optimization of weights. Must match thresh_objective if one of ‘fbeta_score’,
+<li><p><strong>weights_objective</strong> (<em>{'fbeta_score'</em><em>, </em><em>'accuracy_score'</em><em>, </em><em>'balanced_accuracy_score'</em><em>, </em><em>'roc_auc'</em><em>, </em><em>'log_loss'</em><em>, </em><em>'average_precision'</em><em>, </em><em>'brier_score'}</em><em>, </em><em>default='roc_auc'</em>) – Objective function for optimization of weights. Must match thresh_objective if one of ‘fbeta_score’,
 ‘accuracy_score’, ‘balanced_accuracy_score’. If same as thresh_objective, joint optimization will be done.</p></li>
-<li><p><strong>thresh_objective</strong> (<em>{'fbeta_score'</em><em>, </em><em>'accuracy_score'</em><em>, </em><em>'balanced_accuracy_score'</em><em>, </em><em>'roc_auc'</em><em>, </em><em>'log_loss'}</em><em>, </em><em>default='fbeta_score'</em>) – Objective function for threshold optimization via grid search.</p></li>
-<li><p><strong>thresh_bounds</strong> (<em>tuple</em><em> of </em><em>floats</em><em>, </em><em>default=</em><em>(</em><em>0</em><em>,</em><em>1</em><em>)</em>) – Bounds to search for threshold</p></li>
-<li><p><strong>n_trials</strong> (<em>int</em><em>, </em><em>default=100</em>) – Indicates how many candidates to search over with optuna optimizer</p></li>
-<li><p><strong>step_size</strong> (<em>float</em><em>, </em><em>default=0.01</em>) – Indicates step size in grid search, if used</p></li>
-<li><p><strong>fscore_beta</strong> (<em>float</em><em>, </em><em>default=1</em>) – Value of beta in fbeta_score</p></li>
+<li><p><strong>thresh_objective</strong> (<em>{'fbeta_score'</em><em>, </em><em>'accuracy_score'</em><em>, </em><em>'balanced_accuracy_score'}</em><em>, </em><em>default='fbeta_score'</em>) – Objective function for threshold optimization via grid search.</p></li>
+<li><p><strong>thresh_bounds</strong> (<em>tuple</em><em> of </em><em>floats</em><em>, </em><em>default=</em><em>(</em><em>0</em><em>,</em><em>1</em><em>)</em>) – Bounds to search for threshold.</p></li>
+<li><p><strong>n_trials</strong> (<em>int</em><em>, </em><em>default=100</em>) – Indicates how many candidates to search over with optuna optimizer.</p></li>
+<li><p><strong>step_size</strong> (<em>float</em><em>, </em><em>default=0.01</em>) – Indicates step size in grid search, if used.</p></li>
+<li><p><strong>fscore_beta</strong> (<em>float</em><em>, </em><em>default=1</em>) – Value of beta in fbeta_score.</p></li>
 </ul>
 </dd>
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Dictionary containing optimized weights and threshold</p>
+<dd class="field-odd"><p>Dictionary containing optimized weights and threshold.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>Dict</p>
@@ -583,23 +583,23 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="uqlm.utils.tuner.Tuner.tune_threshold">
 <span class="sig-name descname"><span class="pre">tune_threshold</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_scores</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">correct_indicators</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thresh_objective</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'fbeta_score'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fscore_beta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bounds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.01</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqlm.utils.tuner.Tuner.tune_threshold" title="Link to this definition">#</a></dt>
-<dd><p>Conducts 1-dimensional grid search for threshold</p>
+<dd><p>Conducts 1-dimensional grid search for threshold.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></span></p>
 </dd>
 <dt class="field-even">Parameters<span class="colon">:</span></dt>
 <dd class="field-even"><ul class="simple">
-<li><p><strong>y_scores</strong> (<em>list</em><em> of </em><em>floats</em>) – List of confidence scores</p></li>
+<li><p><strong>y_scores</strong> (<em>list</em><em> of </em><em>floats</em>) – List of confidence scores.</p></li>
 <li><p><strong>correct_indicators</strong> (<em>list</em><em> of </em><em>bool</em>) – A list of boolean indicators of whether self.original_responses are correct.</p></li>
-<li><p><strong>thresh_objective</strong> (<em>{'fbeta_score'</em><em>, </em><em>'accuracy_score'</em><em>, </em><em>'balanced_accuracy_score'</em><em>, </em><em>'roc_auc'</em><em>, </em><em>'log_loss'}</em><em>, </em><em>default='fbeta_score'</em>) – Objective function for threshold optimization via grid search.</p></li>
-<li><p><strong>fscore_beta</strong> (<em>float</em><em>, </em><em>default=1</em>) – Value of beta in fbeta_score</p></li>
-<li><p><strong>bounds</strong> (<em>tuple</em><em> of </em><em>floats</em><em>, </em><em>default=</em><em>(</em><em>0</em><em>,</em><em>1</em><em>)</em>) – Bounds to search for threshold</p></li>
-<li><p><strong>step_size</strong> (<em>float</em><em>, </em><em>default=0.01</em>) – Indicates step size in grid search, if used</p></li>
+<li><p><strong>thresh_objective</strong> (<em>{'fbeta_score'</em><em>, </em><em>'accuracy_score'</em><em>, </em><em>'balanced_accuracy_score'}</em><em>, </em><em>default='fbeta_score'</em>) – Objective function for threshold optimization via grid search.</p></li>
+<li><p><strong>fscore_beta</strong> (<em>float</em><em>, </em><em>default=1</em>) – Value of beta in fbeta_score.</p></li>
+<li><p><strong>bounds</strong> (<em>tuple</em><em> of </em><em>floats</em><em>, </em><em>default=</em><em>(</em><em>0</em><em>,</em><em>1</em><em>)</em>) – Bounds to search for threshold.</p></li>
+<li><p><strong>step_size</strong> (<em>float</em><em>, </em><em>default=0.01</em>) – Indicates step size in grid search, if used.</p></li>
 </ul>
 </dd>
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Optimized threshold</p>
+<dd class="field-odd"><p>Optimized threshold.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>float</p>

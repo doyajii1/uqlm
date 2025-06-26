@@ -65,7 +65,7 @@ UQLM provides a suite of response-level scorers for quantifying the uncertainty 
 
 These scorers assess uncertainty by measuring the consistency of multiple responses generated from the same prompt. They are compatible with any LLM, intuitive to use, and don't require access to internal model states or token probabilities.
 
-  * Contradiction Probability (`Chen & Mueller, 2023 <https://arxiv.org/abs/2308.16175>`_; `Lin et al., 2025 <https://arxiv.org/abs/2305.19187>`_; `Manakul et al., 2023 <https://arxiv.org/abs/2303.08896>`_)
+  * Non-Contradiction Probability (`Chen & Mueller, 2023 <https://arxiv.org/abs/2308.16175>`_; `Lin et al., 2025 <https://arxiv.org/abs/2305.19187>`_; `Manakul et al., 2023 <https://arxiv.org/abs/2303.08896>`_)
 
   * Semantic Entropy (`Farquhar et al., 2024 <https://www.nature.com/articles/s41586-024-07421-0>`_; `Kuh et al., 2023 <https://arxiv.org/pdf/2302.09664>`_)
 
@@ -118,6 +118,8 @@ These scorers use one or more LLMs to evaluate the reliability of the original L
   * Continuous LLM-as-a-Judge (`Xiong et al., 2024 <https://arxiv.org/pdf/2306.13063>`_)
 
   * Panel of LLM Judges (`Verga et al., 2024 <https://arxiv.org/abs/2404.18796>`_)
+
+  * Likert Scale Scoring (`Bai et al., 2023 <https://arxiv.org/pdf/2306.04181>`_)
 
 
 .. _ensemble-scorers:

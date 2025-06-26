@@ -527,11 +527,11 @@
 <h1>uqlm.scorers.panel.LLMPanel<a class="headerlink" href="#uqlm-scorers-panel-llmpanel" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="uqlm.scorers.panel.LLMPanel">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">uqlm.scorers.panel.</span></span><span class="sig-name descname"><span class="pre">LLMPanel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">judges</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">llm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">system_prompt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'You</span> <span class="pre">are</span> <span class="pre">a</span> <span class="pre">helpful</span> <span class="pre">assistant.'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_calls_per_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqlm.scorers.panel.LLMPanel" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">uqlm.scorers.panel.</span></span><span class="sig-name descname"><span class="pre">LLMPanel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">judges</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">llm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">system_prompt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'You</span> <span class="pre">are</span> <span class="pre">a</span> <span class="pre">helpful</span> <span class="pre">assistant.'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_calls_per_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scoring_templates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqlm.scorers.panel.LLMPanel" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="uqlm.scorers.baseclass.uncertainty.UncertaintyQuantifier.html#uqlm.scorers.baseclass.uncertainty.UncertaintyQuantifier" title="uqlm.scorers.baseclass.uncertainty.UncertaintyQuantifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">UncertaintyQuantifier</span></code></a></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="uqlm.scorers.panel.LLMPanel.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">judges</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">llm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">system_prompt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'You</span> <span class="pre">are</span> <span class="pre">a</span> <span class="pre">helpful</span> <span class="pre">assistant.'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_calls_per_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqlm.scorers.panel.LLMPanel.__init__" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">judges</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">llm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">system_prompt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'You</span> <span class="pre">are</span> <span class="pre">a</span> <span class="pre">helpful</span> <span class="pre">assistant.'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_calls_per_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scoring_templates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqlm.scorers.panel.LLMPanel.__init__" title="Link to this definition">#</a></dt>
 <dd><p>Class for aggregating multiple instances of LLMJudge using min, max, or majority voting</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -542,6 +542,11 @@ temperature and other relevant parameters to the constructor of their <cite>llm<
 <li><p><strong>max_calls_per_min</strong> (<em>int</em><em>, </em><em>default=None</em>) – Used to control rate limiting. Will be used for original llm and any judges constructed
 from instances of BaseChatModel in judges</p></li>
 <li><p><strong>system_prompt</strong> (<em>str</em><em> or </em><em>None</em><em>, </em><em>default=&quot;You are a helpful assistant.&quot;</em>) – Optional argument for user to provide custom system prompt</p></li>
+<li><p><strong>scoring_templates</strong> (<em>List</em><em>[</em><em>str</em><em>]</em><em>, </em><em>default=None</em>) – Specifies which off-the-shelf template to use for each judge. Four off-the-shelf templates offered:
+incorrect/uncertain/correct (0/0.5/1), incorrect/correct (0/1), continuous score (0 to 1), and likert scale score ( 1-5 scale, normalized to 0/0.25/0.5/0.75/1).
+These templates are respectively specified as ‘true_false_uncertain’, ‘true_false’, ‘continuous’, and ‘likert’
+If specified, must be of equal length to <cite>judges</cite> list. Defaults to ‘true_false_uncertain’ template
+used by Chen and Mueller (2023) <a class="footnote-reference brackets" href="#footcite-chen2023quantifyinguncertaintyanswerslanguage" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> for each judge.</p></li>
 </ul>
 </dd>
 </dl>
@@ -641,6 +646,14 @@ use generate_and_score.</p>
 </dd></dl>
 
 <p class="rubric">References</p>
+<div class="docutils container" id="id2">
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="footcite-chen2023quantifyinguncertaintyanswerslanguage" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Jiuhai Chen and Jonas Mueller. Quantifying uncertainty in answers from any language model and enhancing their trustworthiness. 2023. URL: <a class="reference external" href="https://arxiv.org/abs/2308.16175">https://arxiv.org/abs/2308.16175</a>, <a class="reference external" href="https://arxiv.org/abs/2308.16175">arXiv:2308.16175</a>.</p>
+</aside>
+</aside>
+</div>
 </section>
 
 

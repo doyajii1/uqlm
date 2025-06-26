@@ -562,9 +562,7 @@ Dataset ready!
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define prompts</span>
-<span class="n">MATH_INSTRUCTION</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="s2">&quot;When you solve this math problem only return the answer with no additional text.</span><span class="se">\n</span><span class="s2">&quot;</span>
-<span class="p">)</span>
+<span class="n">MATH_INSTRUCTION</span> <span class="o">=</span> <span class="s2">&quot;When you solve this math problem only return the answer with no additional text.</span><span class="se">\n</span><span class="s2">&quot;</span>
 <span class="n">prompts</span> <span class="o">=</span> <span class="p">[</span><span class="n">MATH_INSTRUCTION</span> <span class="o">+</span> <span class="n">prompt</span> <span class="k">for</span> <span class="n">prompt</span> <span class="ow">in</span> <span class="n">gsm8k</span><span class="o">.</span><span class="n">question</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -755,9 +753,7 @@ Generating responses...
 <span class="n">result_df</span><span class="p">[</span><span class="s2">&quot;answer&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gsm8k</span><span class="o">.</span><span class="n">answer</span>
 
 <span class="c1"># Grade responses against correct answers</span>
-<span class="n">result_df</span><span class="p">[</span><span class="s2">&quot;response_correct&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="n">math_postprocessor</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="o">==</span> <span class="n">a</span> <span class="k">for</span> <span class="n">r</span><span class="p">,</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">result_df</span><span class="p">[</span><span class="s2">&quot;response&quot;</span><span class="p">],</span> <span class="n">gsm8k</span><span class="p">[</span><span class="s2">&quot;answer&quot;</span><span class="p">])</span>
-<span class="p">]</span>
+<span class="n">result_df</span><span class="p">[</span><span class="s2">&quot;response_correct&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">math_postprocessor</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="o">==</span> <span class="n">a</span> <span class="k">for</span> <span class="n">r</span><span class="p">,</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">result_df</span><span class="p">[</span><span class="s2">&quot;response&quot;</span><span class="p">],</span> <span class="n">gsm8k</span><span class="p">[</span><span class="s2">&quot;answer&quot;</span><span class="p">])]</span>
 <span class="n">result_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -874,11 +870,7 @@ Baseline LLM accuracy: 0.51
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">scorer</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;normalized_probability&quot;</span><span class="p">,</span> <span class="s2">&quot;min_probability&quot;</span><span class="p">]:</span>
-    <span class="n">plot_model_accuracies</span><span class="p">(</span>
-        <span class="n">scores</span><span class="o">=</span><span class="n">result_df</span><span class="p">[</span><span class="n">scorer</span><span class="p">],</span>
-        <span class="n">correct_indicators</span><span class="o">=</span><span class="n">result_df</span><span class="o">.</span><span class="n">response_correct</span><span class="p">,</span>
-        <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;LLM Accuracy by </span><span class="si">{</span><span class="n">scorer</span><span class="si">}</span><span class="s2"> Score Threshold&quot;</span><span class="p">,</span>
-    <span class="p">)</span>
+    <span class="n">plot_model_accuracies</span><span class="p">(</span><span class="n">scores</span><span class="o">=</span><span class="n">result_df</span><span class="p">[</span><span class="n">scorer</span><span class="p">],</span> <span class="n">correct_indicators</span><span class="o">=</span><span class="n">result_df</span><span class="o">.</span><span class="n">response_correct</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;LLM Accuracy by </span><span class="si">{</span><span class="n">scorer</span><span class="si">}</span><span class="s2"> Score Threshold&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -907,28 +899,18 @@ Baseline LLM accuracy: 0.51
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># instantiate UQLM tuner object for threshold selection</span>
 <span class="n">t</span> <span class="o">=</span> <span class="n">Tuner</span><span class="p">()</span>
 
-<span class="n">correct_indicators</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">result_df</span><span class="o">.</span><span class="n">response_correct</span>
-<span class="p">)</span> <span class="o">*</span> <span class="mi">1</span>  <span class="c1"># Whether responses is actually correct</span>
+<span class="n">correct_indicators</span> <span class="o">=</span> <span class="p">(</span><span class="n">result_df</span><span class="o">.</span><span class="n">response_correct</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1</span>  <span class="c1"># Whether responses is actually correct</span>
 <span class="k">for</span> <span class="n">scorer</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;normalized_probability&quot;</span><span class="p">,</span> <span class="s2">&quot;min_probability&quot;</span><span class="p">]:</span>
     <span class="n">y_scores</span> <span class="o">=</span> <span class="n">result_df</span><span class="p">[</span><span class="n">scorer</span><span class="p">]</span>  <span class="c1"># confidence score</span>
 
     <span class="c1"># Solve for threshold that maximizes F1-score</span>
-    <span class="n">best_threshold</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">tune_threshold</span><span class="p">(</span>
-        <span class="n">y_scores</span><span class="o">=</span><span class="n">y_scores</span><span class="p">,</span>
-        <span class="n">correct_indicators</span><span class="o">=</span><span class="n">correct_indicators</span><span class="p">,</span>
-        <span class="n">thresh_objective</span><span class="o">=</span><span class="s2">&quot;fbeta_score&quot;</span><span class="p">,</span>
-    <span class="p">)</span>
-    <span class="n">y_pred</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="p">(</span><span class="n">s</span> <span class="o">&gt;</span> <span class="n">best_threshold</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">y_scores</span>
-    <span class="p">]</span>  <span class="c1"># predicts whether response is correct based on confidence score</span>
+    <span class="n">best_threshold</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">tune_threshold</span><span class="p">(</span><span class="n">y_scores</span><span class="o">=</span><span class="n">y_scores</span><span class="p">,</span> <span class="n">correct_indicators</span><span class="o">=</span><span class="n">correct_indicators</span><span class="p">,</span> <span class="n">thresh_objective</span><span class="o">=</span><span class="s2">&quot;fbeta_score&quot;</span><span class="p">)</span>
+    <span class="n">y_pred</span> <span class="o">=</span> <span class="p">[(</span><span class="n">s</span> <span class="o">&gt;</span> <span class="n">best_threshold</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">y_scores</span><span class="p">]</span>  <span class="c1"># predicts whether response is correct based on confidence score</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">scorer</span><span class="si">}</span><span class="s2"> score F1-optimal threshold: </span><span class="si">{</span><span class="n">best_threshold</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
 
     <span class="c1"># evaluate precision, recall, and f1-score of predictions of correctness</span>
-    <span class="nb">print</span><span class="p">(</span>
-        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">scorer</span><span class="si">}</span><span class="s2"> precision: </span><span class="si">{</span><span class="n">precision_score</span><span class="p">(</span><span class="n">y_true</span><span class="o">=</span><span class="n">correct_indicators</span><span class="p">,</span><span class="w"> </span><span class="n">y_pred</span><span class="o">=</span><span class="n">y_pred</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
-    <span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">scorer</span><span class="si">}</span><span class="s2"> precision: </span><span class="si">{</span><span class="n">precision_score</span><span class="p">(</span><span class="n">y_true</span><span class="o">=</span><span class="n">correct_indicators</span><span class="p">,</span><span class="w"> </span><span class="n">y_pred</span><span class="o">=</span><span class="n">y_pred</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">scorer</span><span class="si">}</span><span class="s2"> recall: </span><span class="si">{</span><span class="n">recall_score</span><span class="p">(</span><span class="n">y_true</span><span class="o">=</span><span class="n">correct_indicators</span><span class="p">,</span><span class="w"> </span><span class="n">y_pred</span><span class="o">=</span><span class="n">y_pred</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">scorer</span><span class="si">}</span><span class="s2"> f1-score: </span><span class="si">{</span><span class="n">f1_score</span><span class="p">(</span><span class="n">y_true</span><span class="o">=</span><span class="n">correct_indicators</span><span class="p">,</span><span class="w"> </span><span class="n">y_pred</span><span class="o">=</span><span class="n">y_pred</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
