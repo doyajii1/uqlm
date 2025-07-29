@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "uqlm"
-version = "0.1.0rc0"
+version = "0.2.1"
 description = "UQLM (Uncertainty Quantification for Language Models) is a Python package for UQ-based LLM hallucination detection."
 authors = ["Dylan Bouchard <dylan.bouchard@cvshealth.com>", "Mohit Singh Chauhan <mohitsingh.chauhan@cvshealth.com>"]
 maintainers = [
@@ -11,7 +11,7 @@ maintainers = [
     "Viren Bajaj <virenbajaj4@gmail.com>",
     "Zeya Ahmad <zeyahmd@gmail.com>"
 ]
-readme = "README.md"
+readme = "assets/README_PYPI.md"
 packages = [
     { include = "uqlm" },
     { include = "uqlm/scorers" },
@@ -22,25 +22,32 @@ packages = [
 ]
 
 [tool.poetry.dependencies]
-python = ">=3.9,<3.13"
+python = ">=3.9, <4.0"
 langchain = "^0.3.7"
 transformers = "^4.45.2"
-scikit-learn = "^1.5.2"
-numpy = "^1.26.4"
+scikit-learn = [
+    { version = "^1.5.2", markers = "python_version < '3.13'" },
+    { version = ">=1.7.0", markers = "python_version >= '3.13'" }
+]
+numpy = [
+    { version = "^1.26.4", markers = "python_version < '3.13'" },
+    { version = ">=2.3.1", markers = "python_version >= '3.13'" }
+]
+scipy = {version = "^1.15.0", markers = "python_version >= '3.13'"}
 matplotlib = "^3.9.2"
 optuna = "^4.0.0"
 bert-score = "^0.3.0"
 pandas = "^2.2.3"
-sentence-transformers = "^3.4.0"
-datasets = "^3.3.2"
-
+sentence-transformers = ">=3.4,<6.0"
+datasets = ">=3.3.2,<5.0.0"
+rich = "^13.8.0"
+ipywidgets = "^8.1.7"
 
 [tool.poetry.group.dev]
 optional = true
 
 [tool.poetry.group.dev.dependencies]
 python-dotenv = "^1.0.1"
-ipywidgets = "^8.1.5"
 ruff = "0.9.7"
 pre-commit = "^4.1.0"
 ipykernel = "^6.29.5"
@@ -53,10 +60,8 @@ ipykernel = "^6.29.5"
 langchain-openai = "^0.3.6"
 pytest = "^8.3.5"
 langchain-google-vertexai = "^2.0.14"
-datasets = "^3.3.2"
-pytest-asyncio = "^0.25.3"
+pytest-asyncio = ">=0.25.3,<1.2.0"
 pytest-cov = "^6.0.0"
-bleurt = { git = "https://github.com/google-research/bleurt.git", branch = "master" }
 
 [tool.pytest.ini_options]
 markers = [
@@ -66,3 +71,59 @@ markers = [
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+
+[tool.ruff]
+# Exclude a variety of commonly ignored directories.
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".hg",
+    ".ipynb_checkpoints",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pyenv",
+    ".pytest_cache",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    ".vscode",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "site-packages",
+    "venv",
+]
+# Core settings
+line-length = 400
+
+[tool.ruff.lint]
+#What rules to enable
+select = ["E", "F"]
+# E = pycodestyle errors
+# F = pyflakes
+# I = isort (import sorting)
+# B = bugbear (best practices)
+# UP = pyupgrade (modernization)
+# D = pydocstyle (docstring rules)
+# S = bandit (security)
+
+#What rules to ignore
+ignore = []
+
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = true
+line-ending = "lf"
+docstring-code-format = true

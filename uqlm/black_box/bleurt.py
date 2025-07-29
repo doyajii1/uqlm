@@ -13,122 +13,126 @@
 # limitations under the License.
 
 
-import importlib.resources as resources
-import numpy as np
-import os
-import requests
-import zipfile
-from requests.exceptions import RequestException
-from zipfile import BadZipFile
+class BLEURTScorer:
+    """
+    Deprecated placeholder class for bleurt scorer.
 
-from typing import List
+    """
 
-from uqlm.black_box.baseclass.similarity_scorer import SimilarityScorer
+    def __init__(self):
+        raise ImportError("BLEURTScorer is deprecated as of v0.2.0 and will be removed in a future version. ")
+
+    def evaluate(self, *args, **kwargs):
+        raise NotImplementedError("BLEURTScorer is deprecated as of v0.2.0 and will be removed in a future version. ")
 
 
-class BLEURTScorer(SimilarityScorer):
-    def __init__(self) -> None:
-        """
-        Class for computing BLEURT Scores between original responses and candidates. For more on
-        BLEURT, refer to Sellam et al.(2020) :footcite:`sellam2020bleurtlearningrobustmetrics`. Requires
-        installation of `bleurt` package. Install using:
-        `pip install pip install --user git+https://github.com/google-research/bleurt.git`
+# import importlib.resources as resources
+# import numpy as np
+# import os
+# import requests
+# import zipfile
+# from requests.exceptions import RequestException
+# from zipfile import BadZipFile
 
-        Raises
-        ------
-        RuntimeError
-            If there's an error downloading or initializing the BLEURT checkpoint
-        """
-        try:
-            from bleurt.score import BleurtScorer
-        except ImportError:    
-            raise ImportError(
-            """
-            The bleurt package is required to use BLEURTScorer but is not installed. Please install it using:\n
-            `pip install pip install --user git+https://github.com/google-research/bleurt.git`
-            """
-            )
-        try:
-            checkpoint = self._set_bleurt_checkpoint()
-            self.bleurt_scorer = BleurtScorer(checkpoint)
-        except Exception as e:
-            raise RuntimeError(
-                f"Failed to initialize BLEURT scorer. Error: {str(e)}"
-            ) from e
+# from typing import List
 
-    def evaluate(
-        self, responses: List[str], sampled_responses: List[List[str]]
-    ) -> List[float]:
-        """
-        This method computes model-based text similarity metrics values for the provided pairs of texts.
+# from uqlm.black_box.baseclass.similarity_scorer import SimilarityScorer
 
-        Parameters
-        ----------
-        responses : list of strings
-            Original LLM response
 
-        sampled_responses : list of list of strings
-            Candidate responses to be compared to the original response
+# class BLEURTScorer(SimilarityScorer):
+#     def __init__(self) -> None:
+#         """
+#         Class for computing BLEURT Scores between original responses and candidates. For more on
+#         BLEURT, refer to Sellam et al.(2020) :footcite:`sellam2020bleurtlearningrobustmetrics`. Requires
+#         installation of `bleurt` package. Install using:
+#         `pip install pip install --user git+https://github.com/google-research/bleurt.git`
 
-        Returns
-        -------
-        List of float
-            Mean BLEURT scores
-        """
-        return [
-            self._compute_score(response=responses[i], candidates=sampled_responses[i])
-            for i in range(len(responses))
-        ]
+#         Raises
+#         ------
+#         RuntimeError
+#             If there's an error downloading or initializing the BLEURT checkpoint
+#         """
+#         try:
+#             from bleurt.score import BleurtScorer
+#         except ImportError:
+#             raise ImportError(
+#                 """
+#             The bleurt package is required to use BLEURTScorer but is not installed. Please install it using:\n
+#             `pip install git+https://github.com/google-research/bleurt.git`
+#             """
+#             )
+#         try:
+#             checkpoint = self._set_bleurt_checkpoint()
+#             self.bleurt_scorer = BleurtScorer(checkpoint)
+#         except Exception as e:
+#             raise RuntimeError(f"Failed to initialize BLEURT scorer. Error: {str(e)}") from e
 
-    def _compute_score(self, response: str, candidates: List[str]) -> float:
-        """Compute BLEURT scores between a response and candidate responses"""
-        duplicated_response = [response] * len(candidates)
-        return np.mean(
-            self.bleurt_scorer.score(
-                references=duplicated_response, candidates=candidates
-            )
-        )
+#     def evaluate(self, responses: List[str], sampled_responses: List[List[str]]) -> List[float]:
+#         """
+#         This method computes model-based text similarity metrics values for the provided pairs of texts.
 
-    def _set_bleurt_checkpoint(self):
-        """Sets up checkpoint"""        
-        resource_path = resources.files("uqlm.resources").joinpath("BLEURT-20")
-        if not resource_path.is_dir():
-            self._download_and_unzip(
-                url="https://storage.googleapis.com/bleurt-oss-21/BLEURT-20.zip",
-                my_file_path=resources.files("uqlm.resources"),
-            )
-        return resource_path
+#         Parameters
+#         ----------
+#         responses : list of strings
+#             Original LLM response
 
-    @staticmethod
-    def _download_and_unzip(url, my_file_path):
-        """Download BLEURT checkpoint, unzip, and delete zip file"""
-        zip_file_path = os.path.join(my_file_path, "BLEURT-20.zip")
-        print(f"BLEURT checkpoint not found. Downloading to: {zip_file_path}")
+#         sampled_responses : list of list of strings
+#             Candidate responses to be compared to the original response
 
-        try:
-            response = requests.get(url)
-            if response.status_code == 200:
-                with open(zip_file_path, "wb") as f:
-                    f.write(response.content)
-                print(f"Downloaded zip file to: {zip_file_path}")
-            else:
-                print(f"Failed to download file. Status code: {response.status_code}")
-                return
-        except RequestException as e:
-            print(f"Network error occurred while downloading BLEURT checkpoint: {str(e)}")
-            return
+#         Returns
+#         -------
+#         List of float
+#             Mean BLEURT scores
+#         """
+#         return [self._compute_score(response=responses[i], candidates=sampled_responses[i]) for i in range(len(responses))]
 
-        try:
-            print(f"Unzipping: {zip_file_path}")
-            with zipfile.ZipFile(zip_file_path, "r") as zip_ref:
-                zip_ref.extractall(my_file_path)
-                print(f"Unzipped files to: {my_file_path}")
-        except BadZipFile as e:
-            print(f"Error: The downloaded BLEURT zip file is corrupted: {str(e)}")
-        except Exception as e:
-            print(f"Unexpected error while extracting BLEURT zip file: {str(e)}")
-        finally:
-            if os.path.exists(zip_file_path):
-                os.remove(zip_file_path)
-                print(f"Deleted zip file: {zip_file_path}")
-            return
+#     def _compute_score(self, response: str, candidates: List[str]) -> float:
+#         """Compute BLEURT scores between a response and candidate responses"""
+#         duplicated_response = [response] * len(candidates)
+#         return np.mean(self.bleurt_scorer.score(references=duplicated_response, candidates=candidates))
+
+#     def _set_bleurt_checkpoint(self):
+#         """Sets up checkpoint"""
+#         resource_path = resources.files("uqlm.resources").joinpath("BLEURT-20")
+#         if not resource_path.is_dir():
+#             my_file_path = resources.files("uqlm.resources")
+#             zip_file_path = self._download(url="https://storage.googleapis.com/bleurt-oss-21/BLEURT-20.zip", my_file_path=my_file_path)
+#             self._unzip(zip_file_path=zip_file_path, my_file_path=my_file_path)
+#         return resource_path
+
+#     @staticmethod
+#     def _download(url, my_file_path):
+#         """Download BLEURT checkpoint, unzip, and delete zip file"""
+#         zip_file_path = os.path.join(my_file_path, "BLEURT-20.zip")
+#         print(f"BLEURT checkpoint not found. Downloading to: {zip_file_path}")
+
+#         try:
+#             response = requests.get(url)
+#             if response.status_code == 200:
+#                 with open(zip_file_path, "wb") as f:
+#                     f.write(response.content)
+#                 print(f"Downloaded zip file to: {zip_file_path}")
+#             else:
+#                 print(f"Failed to download file. Status code: {response.status_code}")
+#                 return
+#         except RequestException as e:
+#             print(f"Network error occurred while downloading BLEURT checkpoint: {str(e)}")
+#             return
+#         return zip_file_path
+
+#     @staticmethod
+#     def _unzip(zip_file_path, my_file_path):
+#         try:
+#             print(f"Unzipping: {zip_file_path}")
+#             with zipfile.ZipFile(zip_file_path, "r") as zip_ref:
+#                 zip_ref.extractall(my_file_path)
+#                 print(f"Unzipped files to: {my_file_path}")
+#         except BadZipFile as e:
+#             print(f"Error: The downloaded BLEURT zip file is corrupted: {str(e)}")
+#         except Exception as e:
+#             print(f"Unexpected error while extracting BLEURT zip file: {str(e)}")
+#         finally:
+#             if os.path.exists(zip_file_path):
+#                 os.remove(zip_file_path)
+#                 print(f"Deleted zip file: {zip_file_path}")
+#             return

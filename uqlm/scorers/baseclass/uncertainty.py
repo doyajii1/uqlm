@@ -17,38 +17,22 @@ import io
 import contextlib
 import pandas as pd
 from typing import Any, Dict, List, Optional
+from rich.progress import Progress, TextColumn
+
 from uqlm.utils.response_generator import ResponseGenerator
 from uqlm.black_box.nli import NLIScorer
 from uqlm.judges.judge import LLMJudge
+from uqlm.utils.display import ConditionalBarColumn, ConditionalTimeElapsedColumn, ConditionalTextColumn, ConditionalSpinnerColumn
 
-DEFAULT_BLACK_BOX_SCORERS = [
-    "semantic_negentropy",
-    "noncontradiction",
-    "exact_match",
-    "cosine_sim",
-]
+DEFAULT_BLACK_BOX_SCORERS = ["semantic_negentropy", "noncontradiction", "exact_match", "cosine_sim"]
 
-BLACK_BOX_SCORERS = DEFAULT_BLACK_BOX_SCORERS + [
-    "bert_score",
-    "bleurt",
-]
+BLACK_BOX_SCORERS = DEFAULT_BLACK_BOX_SCORERS + ["bert_score"]
 
-WHITE_BOX_SCORERS = [
-    "normalized_probability",
-    "min_probability",
-]
+WHITE_BOX_SCORERS = ["normalized_probability", "min_probability"]
 
 
 class UncertaintyQuantifier:
-    def __init__(
-        self,
-        llm: Any = None,
-        device: Any = None,
-        system_prompt: str = "You are a helpful assistant",
-        max_calls_per_min: Optional[int] = None,
-        use_n_param: bool = False,
-        postprocessor: Optional[Any] = None,
-    ) -> None:
+    def __init__(self, llm: Any = None, device: Any = None, system_prompt: str = "You are a helpful assistant", max_calls_per_min: Optional[int] = None, use_n_param: bool = False, postprocessor: Optional[Any] = None) -> None:
         """
         Parent class for uncertainty quantification of LLM responses
 
@@ -59,7 +43,7 @@ class UncertaintyQuantifier:
             temperature and other relevant parameters to the constructor of their `llm` object.
 
         device: str or torch.device input or torch.device object, default="cpu"
-            Specifies the device that NLI model use for prediction. Only applies to 'semantic_negentropy', 'noncontradiction' 
+            Specifies the device that NLI model use for prediction. Only applies to 'semantic_negentropy', 'noncontradiction'
             scorers. Pass a torch.device to leverage GPU.
 
         system_prompt : str or None, default="You are a helpful assistant."
@@ -86,74 +70,57 @@ class UncertaintyQuantifier:
         self.black_box_names = BLACK_BOX_SCORERS
         self.white_box_names = WHITE_BOX_SCORERS
         self.default_black_box_names = DEFAULT_BLACK_BOX_SCORERS
+        self.progress_bar = None
 
-    async def generate_original_responses(self, prompts: List[str]) -> List[str]:
+    async def generate_original_responses(self, prompts: List[str], progress_bar: Optional[Progress] = None) -> List[str]:
         """
         This method generates original responses for uncertainty
         estimation. If specified in the child class, all responses are postprocessed
         using the callable function defined by the user.
         """
-        print("Generating responses...")
-        generations = await self._generate_responses(prompts, count=1)
+        generations = await self._generate_responses(prompts, count=1, progress_bar=progress_bar)
         responses = generations["responses"]
         self.logprobs = generations["logprobs"]
         if self.postprocessor:
             responses = [self.postprocessor(r) for r in responses]
         return responses
-            
-    async def generate_candidate_responses(self, prompts: List[str]) -> List[List[str]]:
+
+    async def generate_candidate_responses(self, prompts: List[str], progress_bar: Optional[Progress] = None) -> List[List[str]]:
         """
         This method generates multiple responses for uncertainty
         estimation. If specified in the child class, all responses are postprocessed
         using the callable function defined by the user.
         """
         llm_temperature = self.llm.temperature
-        print("Generating candidate responses...")
-        generations = await self._generate_responses(
-            prompts=prompts, count=self.num_responses, temperature=self.sampling_temperature
-        )
+        generations = await self._generate_responses(prompts=prompts, count=self.num_responses, temperature=self.sampling_temperature, progress_bar=progress_bar)
         tmp_mr, tmp_lp = generations["responses"], generations["logprobs"]
         sampled_responses, self.multiple_logprobs = [], []
         for i in range(len(prompts)):
-            sampled_responses.append(
-                tmp_mr[i * self.num_responses : (i + 1) * self.num_responses]
-            )
+            sampled_responses.append(tmp_mr[i * self.num_responses : (i + 1) * self.num_responses])
             if len(tmp_lp) == len(tmp_mr):
-                self.multiple_logprobs.append(
-                    tmp_lp[i * self.num_responses : (i + 1) * self.num_responses]
-                )
+                self.multiple_logprobs.append(tmp_lp[i * self.num_responses : (i + 1) * self.num_responses])
         if self.postprocessor:
-            sampled_responses = [
-                [self.postprocessor(r) for r in m] for m in sampled_responses
-            ]
+            sampled_responses = [[self.postprocessor(r) for r in m] for m in sampled_responses]
         self.llm.temperature = llm_temperature
         return sampled_responses
 
-    async def _generate_responses(
-        self, prompts: List[str], count: int, temperature: float = None
-    ) -> List[str]:
+    async def _generate_responses(self, prompts: List[str], count: int, temperature: float = None, progress_bar: Optional[Progress] = None) -> List[str]:
         """Helper function to generate responses with LLM"""
-        if self.llm is None:
-            raise ValueError(
-                """llm must be provided to generate responses."""
-            )
-        llm_temperature = self.llm.temperature
-        if temperature:
-            self.llm.temperature = temperature
-        generator_object = ResponseGenerator(
-            llm=self.llm,
-            max_calls_per_min=self.max_calls_per_min,
-            use_n_param=self.use_n_param,
-        )
-        with contextlib.redirect_stdout(io.StringIO()):
-            generations = await generator_object.generate_responses(
-                prompts=prompts, count=count, system_prompt=self.system_prompt
-            )
-        self.llm.temperature = llm_temperature
-        return {
-            "responses": generations["data"]["response"],
-            "logprobs": generations["metadata"]["logprobs"],
-        }
+        try:
+            if self.llm is None:
+                raise ValueError("""llm must be provided to generate responses.""")
+            llm_temperature = self.llm.temperature
+            if temperature:
+                self.llm.temperature = temperature
+            generator_object = ResponseGenerator(llm=self.llm, max_calls_per_min=self.max_calls_per_min, use_n_param=self.use_n_param)
+            with contextlib.redirect_stdout(io.StringIO()):
+                generations = await generator_object.generate_responses(prompts=prompts, count=count, system_prompt=self.system_prompt, progress_bar=progress_bar)
+            self.llm.temperature = llm_temperature
+        except Exception:
+            if progress_bar:
+                progress_bar.stop()
+            raise
+        return {"responses": generations["data"]["response"], "logprobs": generations["metadata"]["logprobs"]}
 
     def _construct_judge(self, llm: Any = None) -> LLMJudge:
         """
@@ -162,10 +129,7 @@ class UncertaintyQuantifier:
         if llm is None:
             llm_temperature = self.llm.temperature
             self.llm.temperature = 0
-            self_judge = LLMJudge(
-                llm=self.llm,
-                max_calls_per_min=self.max_calls_per_min,
-            )
+            self_judge = LLMJudge(llm=self.llm, max_calls_per_min=self.max_calls_per_min)
             self.llm.temperature = llm_temperature
             return self_judge
         else:
@@ -173,12 +137,7 @@ class UncertaintyQuantifier:
 
     def _setup_nli(self, nli_model_name: Any) -> None:
         """Set up NLI scorer"""
-        self.nli_scorer = NLIScorer(
-            nli_model_name=self.nli_model_name, 
-            device=self.device,
-            max_length=self.max_length,
-            verbose=self.verbose
-        )
+        self.nli_scorer = NLIScorer(nli_model_name=self.nli_model_name, device=self.device, max_length=self.max_length, verbose=self.verbose)
 
     def _update_best(self, best_responses: List[str]) -> None:
         """Updates best"""
@@ -196,6 +155,50 @@ class UncertaintyQuantifier:
             self.logprobs[i] = best_logprobs
             self.multiple_logprobs[i] = all_logprobs
 
+    def _construct_progress_bar(self, show_progress_bars: bool, _existing_progress_bar: Any = None) -> None:
+        """Constructs and starts progress bar"""
+        if _existing_progress_bar:
+            self.progress_bar = _existing_progress_bar
+            self.progress_bar.start()
+
+        elif show_progress_bars and not self.progress_bar:
+            completion_text = "[progress.percentage]{task.completed}/{task.total}"
+            self.progress_bar = Progress(ConditionalSpinnerColumn(), TextColumn("[progress.description]{task.description}"), ConditionalBarColumn(), ConditionalTextColumn(completion_text), ConditionalTimeElapsedColumn())
+            self.progress_bar.start()
+
+    def _display_generation_header(self, show_progress_bars: bool, white_box: bool = False) -> None:
+        """Displays generation header"""
+        if show_progress_bars:
+            self.progress_bar.start()
+            display_text = "🤖 Generation" if not white_box else "🤖📈 Generation & Scoring"
+            self.progress_bar.add_task(display_text)
+
+    def _display_scoring_header(self, show_progress_bars: bool) -> None:
+        """Displays scoring header"""
+        if show_progress_bars:
+            self.progress_bar.start()
+            self.progress_bar.add_task("")
+            self.progress_bar.add_task("📈 Scoring")
+
+    def _display_optimization_header(self, show_progress_bars: bool) -> None:
+        """Displays optimization header"""
+        if show_progress_bars:
+            self.progress_bar.start()
+            self.progress_bar.add_task("")
+            self.progress_bar.add_task("⚙️ Optimization")
+
+    def _stop_progress_bar(self, _existing_progress_bar: Any = None) -> None:
+        """Stop progress bar"""
+        if self.progress_bar:
+            self.progress_bar.stop()
+        if not _existing_progress_bar:
+            self.progress_bar = None
+
+    def _start_progress_bar(self) -> None:
+        """Start progress bar"""
+        if self.progress_bar:
+            self.progress_bar.start()
+
 
 class UQResult:
     def __init__(self, result: Dict[str, Any]) -> None:
@@ -212,9 +215,7 @@ class UQResult:
         self.parameters = result.get("parameters")
         self.confidence_scores = self.data.get("confidence_scores")
         self.responses = self.data.get("responses")
-        self.sampled_responses = (
-            None if not self.data.get("responses") else self.data.get("responses")
-        )
+        self.sampled_responses = None if not self.data.get("responses") else self.data.get("responses")
         self.result_dict = result
 
     def to_dict(self) -> Dict[str, Any]:
@@ -227,10 +228,6 @@ class UQResult:
         """
         Returns result in pd.DataFrame
         """
-        rename_dict = {
-            col: col[:-1]
-            for col in self.result_dict["data"].keys()
-            if col.endswith("s") and col != "sampled_responses"
-        }
+        rename_dict = {col: col[:-1] for col in self.result_dict["data"].keys() if col.endswith("s") and col != "sampled_responses"}
 
         return pd.DataFrame(self.result_dict["data"]).rename(columns=rename_dict)

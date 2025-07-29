@@ -14,22 +14,23 @@
 
 
 import numpy as np
-from typing import List
+from typing import List, Optional
+from rich.progress import Progress
 
 from uqlm.black_box.baseclass.similarity_scorer import SimilarityScorer
+
+import time
 
 
 class MatchScorer(SimilarityScorer):
     def __init__(self) -> None:
         """
-        Class for computing exact match rates between original responses and candidates. This 
+        Class for computing exact match rates between original responses and candidates. This
         method is based on Cole et al.(2023) :footcite:`cole2023selectivelyansweringambiguousquestions`.
         """
         pass
 
-    def evaluate(
-        self, responses: List[str], sampled_responses: List[List[str]]
-    ) -> List[float]:
+    def evaluate(self, responses: List[str], sampled_responses: List[List[str]], progress_bar: Optional[Progress] = None) -> List[float]:
         """
         This method computes exact match rates for the provided pairs of texts.
 
@@ -41,15 +42,24 @@ class MatchScorer(SimilarityScorer):
         sampled_responses : list of list of strings
             Candidate responses to be compared to the original response
 
+        progress_bar : rich.progress.Progress, default=None
+            If provided, displays a progress bar while scoring responses
+
         Returns
         -------
         List of float
             Exact match rates
         """
-        return [
-            self._compute_score(response=o, candidates=mr)
-            for o, mr in zip(responses, sampled_responses)
-        ]
+        if progress_bar:
+            progress_task = progress_bar.add_task("  - [black]Scoring responses with Exact Match...", total=len(responses))
+        results = []
+        for i, (response, candidates) in enumerate(zip(responses, sampled_responses)):
+            score = self._compute_score(response=response, candidates=candidates)
+            results.append(score)
+            if progress_bar:
+                progress_bar.update(progress_task, advance=1)
+        time.sleep(0.1)
+        return results
 
     @staticmethod
     def _compute_score(response: str, candidates: List[str]) -> List[float]:

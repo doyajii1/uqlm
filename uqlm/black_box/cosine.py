@@ -13,18 +13,19 @@
 # limitations under the License.
 
 
-from typing import Any, List, Tuple
+from typing import Any, List, Tuple, Optional
 
 import numpy as np
 from numpy.linalg import norm
-from sentence_transformers import SentenceTransformer
+import time
+from rich.progress import Progress
 
 from uqlm.black_box.baseclass.similarity_scorer import SimilarityScorer
 
 
 class CosineScorer(SimilarityScorer):
     def __init__(self, transformer: str = "all-MiniLM-L6-v2") -> None:
-        """Compute cosine similarity betwee original and candidate responses. 
+        """Compute cosine similarity betwee original and candidate responses.
 
         Parameters
         ----------
@@ -33,12 +34,12 @@ class CosineScorer(SimilarityScorer):
             https://huggingface.co/sentence-transformers?sort_models=likes#models
             for more information. The recommended sentence transformer is 'all-MiniLM-L6-v2'.
         """
+        from sentence_transformers import SentenceTransformer
+
         self.transformer = transformer
         self.model = SentenceTransformer(f"sentence-transformers/{transformer}")
 
-    def evaluate(
-        self, responses: List[str], sampled_responses: List[List[str]]
-    ) -> List[float]:
+    def evaluate(self, responses: List[str], sampled_responses: List[List[str]], progress_bar: Optional[Progress] = None) -> List[float]:
         """
         This method computes model-based text similarity metrics values for the provided pairs of texts.
 
@@ -50,15 +51,24 @@ class CosineScorer(SimilarityScorer):
         sampled_responses : list of list of strings
             Candidate responses to be compared to the original response
 
+        progress_bar : rich.progress.Progress, default=None
+            If provided, displays a progress bar while scoring responses
+
         Returns
         -------
         List of float
             Mean cosine similarity values
         """
-        return [
-            self._compute_score(response=responses[i], candidates=sampled_responses[i])
-            for i in range(len(responses))
-        ]
+        if progress_bar:
+            progress_task = progress_bar.add_task("  - [black]Scoring responses with Cosine Similarity...", total=len(responses))
+        results = []
+        for i in range(len(responses)):
+            score = self._compute_score(response=responses[i], candidates=sampled_responses[i])
+            results.append(score)
+            if progress_bar:
+                progress_bar.update(progress_task, advance=1)
+        time.sleep(0.1)
+        return results
 
     def _get_embeddings(self, texts1: List[str], texts2: List[str]) -> Tuple[Any, Any]:
         """
@@ -76,9 +86,7 @@ class CosineScorer(SimilarityScorer):
         embeddings1, embeddings2 = self._get_embeddings(duplicate_responses, candidates)
         cosine_list = []
         for i in range(0, len(embeddings1)):
-            cosine_i = np.dot(embeddings1[i], embeddings2[i]) / (
-                norm(embeddings1[i]) * norm(embeddings2[i])
-            )
+            cosine_i = np.dot(embeddings1[i], embeddings2[i]) / (norm(embeddings1[i]) * norm(embeddings2[i]))
             norm_cosine_i = 0.5 + cosine_i / 2
             cosine_list.append(norm_cosine_i)
         return np.mean(cosine_list)
