@@ -10,7 +10,7 @@
     <link rel="icon" sizes="16x16" href="../_static/images/favicon/favicon-16x16.png" type="image/png">
     <link rel="icon" sizes="32x32" href="../_static/images/favicon/favicon-32x32.png" type="image/png">
     <link rel="apple-touch-icon" sizes="180x180" href="../_static/images/favicon/apple-touch-icon.png" type="image/png">
-    <title>uqlm.scorers &#8212; uqlm 0.1 documentation</title>
+    <title>uqlm.scorers &#8212; uqlm 0.2 documentation</title>
   
   
   
@@ -41,15 +41,15 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=2709fde1"></script>
-    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/documentation_options.js?v=10f1778b"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_autosummary/uqlm.scorers';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://github.com/pages/cvs-health/uqlm/versions.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.2';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
@@ -126,8 +126,8 @@
       
     
     
-    <img src="../_static/horizontal_logo.png" class="logo__image only-light" alt="uqlm 0.1 documentation - Home"/>
-    <img src="../_static/horizontal_logo_no_bg.png" class="logo__image only-dark pst-js-only" alt="uqlm 0.1 documentation - Home"/>
+    <img src="../_static/horizontal_logo.png" class="logo__image only-light" alt="uqlm 0.2 documentation - Home"/>
+    <img src="../_static/horizontal_logo_no_bg.png" class="logo__image only-dark pst-js-only" alt="uqlm 0.2 documentation - Home"/>
   
   
 </a></div>
@@ -166,6 +166,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../contribute.html">
     Contributor Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../faqs.html">
+    FAQs
   </a>
 </li>
 
@@ -305,6 +312,13 @@
   </a>
 </li>
 
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../faqs.html">
+    FAQs
+  </a>
+</li>
+
   </ul>
 </nav></div>
           
@@ -438,6 +452,18 @@
 <li class="toctree-l3"><a class="reference internal" href="uqlm.utils.dataloader.load_example_dataset.html">uqlm.utils.dataloader.load_example_dataset</a></li>
 </ul>
 </details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="uqlm.utils.display.html">uqlm.utils.display</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="uqlm.utils.display.ConditionalBarColumn.html">uqlm.utils.display.ConditionalBarColumn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="uqlm.utils.display.ConditionalSpinnerColumn.html">uqlm.utils.display.ConditionalSpinnerColumn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="uqlm.utils.display.ConditionalTextColumn.html">uqlm.utils.display.ConditionalTextColumn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="uqlm.utils.display.ConditionalTimeElapsedColumn.html">uqlm.utils.display.ConditionalTimeElapsedColumn</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="uqlm.utils.llm_config.html">uqlm.utils.llm_config</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="uqlm.utils.llm_config.load_llm_config.html">uqlm.utils.llm_config.load_llm_config</a></li>
+<li class="toctree-l3"><a class="reference internal" href="uqlm.utils.llm_config.save_llm_config.html">uqlm.utils.llm_config.save_llm_config</a></li>
+</ul>
+</details></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="uqlm.utils.plots.html">uqlm.utils.plots</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="uqlm.utils.plots.plot_model_accuracies.html">uqlm.utils.plots.plot_model_accuracies</a></li>
 <li class="toctree-l3"><a class="reference internal" href="uqlm.utils.plots.scale.html">uqlm.utils.plots.scale</a></li>
@@ -522,22 +548,22 @@
 <p class="rubric">Modules</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="uqlm.scorers.baseclass.html#module-uqlm.scorers.baseclass" title="uqlm.scorers.baseclass"><code class="xref py py-obj docutils literal notranslate"><span class="pre">baseclass</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="uqlm.scorers.baseclass.html#module-uqlm.scorers.baseclass" title="uqlm.scorers.baseclass"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uqlm.scorers.baseclass</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="uqlm.scorers.black_box.html#module-uqlm.scorers.black_box" title="uqlm.scorers.black_box"><code class="xref py py-obj docutils literal notranslate"><span class="pre">black_box</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="uqlm.scorers.black_box.html#module-uqlm.scorers.black_box" title="uqlm.scorers.black_box"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uqlm.scorers.black_box</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="uqlm.scorers.ensemble.html#module-uqlm.scorers.ensemble" title="uqlm.scorers.ensemble"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ensemble</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="uqlm.scorers.ensemble.html#module-uqlm.scorers.ensemble" title="uqlm.scorers.ensemble"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uqlm.scorers.ensemble</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="uqlm.scorers.entropy.html#module-uqlm.scorers.entropy" title="uqlm.scorers.entropy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">entropy</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="uqlm.scorers.entropy.html#module-uqlm.scorers.entropy" title="uqlm.scorers.entropy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uqlm.scorers.entropy</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="uqlm.scorers.panel.html#module-uqlm.scorers.panel" title="uqlm.scorers.panel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">panel</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="uqlm.scorers.panel.html#module-uqlm.scorers.panel" title="uqlm.scorers.panel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uqlm.scorers.panel</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="uqlm.scorers.white_box.html#module-uqlm.scorers.white_box" title="uqlm.scorers.white_box"><code class="xref py py-obj docutils literal notranslate"><span class="pre">white_box</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="uqlm.scorers.white_box.html#module-uqlm.scorers.white_box" title="uqlm.scorers.white_box"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uqlm.scorers.white_box</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -627,7 +653,7 @@
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
     <br/>
   </p>
 </div>

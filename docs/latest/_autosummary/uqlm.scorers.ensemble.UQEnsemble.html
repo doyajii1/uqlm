@@ -10,7 +10,7 @@
     <link rel="icon" sizes="16x16" href="../_static/images/favicon/favicon-16x16.png" type="image/png">
     <link rel="icon" sizes="32x32" href="../_static/images/favicon/favicon-32x32.png" type="image/png">
     <link rel="apple-touch-icon" sizes="180x180" href="../_static/images/favicon/apple-touch-icon.png" type="image/png">
-    <title>uqlm.scorers.ensemble.UQEnsemble &#8212; uqlm 0.1 documentation</title>
+    <title>uqlm.scorers.ensemble.UQEnsemble &#8212; uqlm 0.2 documentation</title>
   
   
   
@@ -41,15 +41,15 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=2709fde1"></script>
-    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/documentation_options.js?v=10f1778b"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_autosummary/uqlm.scorers.ensemble.UQEnsemble';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://github.com/pages/cvs-health/uqlm/versions.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.2';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
@@ -126,8 +126,8 @@
       
     
     
-    <img src="../_static/horizontal_logo.png" class="logo__image only-light" alt="uqlm 0.1 documentation - Home"/>
-    <img src="../_static/horizontal_logo_no_bg.png" class="logo__image only-dark pst-js-only" alt="uqlm 0.1 documentation - Home"/>
+    <img src="../_static/horizontal_logo.png" class="logo__image only-light" alt="uqlm 0.2 documentation - Home"/>
+    <img src="../_static/horizontal_logo_no_bg.png" class="logo__image only-dark pst-js-only" alt="uqlm 0.2 documentation - Home"/>
   
   
 </a></div>
@@ -166,6 +166,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../contribute.html">
     Contributor Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../faqs.html">
+    FAQs
   </a>
 </li>
 
@@ -305,6 +312,13 @@
   </a>
 </li>
 
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../faqs.html">
+    FAQs
+  </a>
+</li>
+
   </ul>
 </nav></div>
           
@@ -438,6 +452,18 @@
 <li class="toctree-l3"><a class="reference internal" href="uqlm.utils.dataloader.load_example_dataset.html">uqlm.utils.dataloader.load_example_dataset</a></li>
 </ul>
 </details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="uqlm.utils.display.html">uqlm.utils.display</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="uqlm.utils.display.ConditionalBarColumn.html">uqlm.utils.display.ConditionalBarColumn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="uqlm.utils.display.ConditionalSpinnerColumn.html">uqlm.utils.display.ConditionalSpinnerColumn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="uqlm.utils.display.ConditionalTextColumn.html">uqlm.utils.display.ConditionalTextColumn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="uqlm.utils.display.ConditionalTimeElapsedColumn.html">uqlm.utils.display.ConditionalTimeElapsedColumn</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="uqlm.utils.llm_config.html">uqlm.utils.llm_config</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="uqlm.utils.llm_config.load_llm_config.html">uqlm.utils.llm_config.load_llm_config</a></li>
+<li class="toctree-l3"><a class="reference internal" href="uqlm.utils.llm_config.save_llm_config.html">uqlm.utils.llm_config.save_llm_config</a></li>
+</ul>
+</details></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="uqlm.utils.plots.html">uqlm.utils.plots</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="uqlm.utils.plots.plot_model_accuracies.html">uqlm.utils.plots.plot_model_accuracies</a></li>
 <li class="toctree-l3"><a class="reference internal" href="uqlm.utils.plots.scale.html">uqlm.utils.plots.scale</a></li>
@@ -538,7 +564,7 @@
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>llm</strong> (langchain <cite>BaseChatModel</cite>, default=None) – A langchain llm <cite>BaseChatModel</cite>. User is responsible for specifying temperature and other
 relevant parameters to the constructor of their <cite>llm</cite> object.</p></li>
-<li><p><strong>scorers</strong> (<em>List containing instances</em><em> of </em><em>BaseChatModel</em><em>, </em><a class="reference internal" href="uqlm.judges.judge.LLMJudge.html#uqlm.judges.judge.LLMJudge" title="uqlm.judges.judge.LLMJudge"><em>LLMJudge</em></a><em>, </em><em>black-box scorer names from</em><em> [</em><em>'semantic_negentropy'</em><em>, </em><em>'noncontradiction'</em><em>,</em><em>'exact_match'</em><em>, </em><em>'bert_score'</em><em>, </em><em>'bleurt'</em><em>, </em><em>'cosine_sim'</em><em>]</em><em>, or </em><em>white-box scorer names from</em><em> [</em><em>&quot;normalized_probability&quot;</em><em>, </em><em>&quot;min_probability&quot;</em><em>] </em><em>default=None</em>) – Specifies which UQ components to include. If None, defaults to the off-the-shelf BS Detector ensemble by
+<li><p><strong>scorers</strong> (<em>List containing instances</em><em> of </em><em>BaseChatModel</em><em>, </em><a class="reference internal" href="uqlm.judges.judge.LLMJudge.html#uqlm.judges.judge.LLMJudge" title="uqlm.judges.judge.LLMJudge"><em>LLMJudge</em></a><em>, </em><em>black-box scorer names from</em><em> [</em><em>'semantic_negentropy'</em><em>, </em><em>'noncontradiction'</em><em>,</em><em>'exact_match'</em><em>, </em><em>'bert_score'</em><em>, </em><em>'cosine_sim'</em><em>]</em><em>, or </em><em>white-box scorer names from</em><em> [</em><em>&quot;normalized_probability&quot;</em><em>, </em><em>&quot;min_probability&quot;</em><em>] </em><em>default=None</em>) – Specifies which UQ components to include. If None, defaults to the off-the-shelf BS Detector ensemble by
 Chen and Mueller (2023) <a class="footnote-reference brackets" href="#footcite-chen2023quantifyinguncertaintyanswerslanguage" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> which uses components
 [“noncontradiction”, “exact_match”,”self_reflection”] with respective weights of [0.56, 0.14, 0.3]</p></li>
 <li><p><strong>device</strong> (<em>str</em><em> or </em><em>torch.device input</em><em> or </em><em>torch.device object</em><em>, </em><em>default=&quot;cpu&quot;</em>) – Specifies the device that NLI model use for prediction. Only applies to ‘semantic_negentropy’, ‘noncontradiction’
@@ -573,22 +599,31 @@ avoid OutOfMemoryError</p></li>
 <tr class="row-odd"><td><p><a class="reference internal" href="#uqlm.scorers.ensemble.UQEnsemble.__init__" title="uqlm.scorers.ensemble.UQEnsemble.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>([llm, scorers, device, ...])</p></td>
 <td><p>Class for detecting bad and speculative answer from a pretrained Large Language Model (LLM Hallucination).</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#uqlm.scorers.ensemble.UQEnsemble.generate_and_score" title="uqlm.scorers.ensemble.UQEnsemble.generate_and_score"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_and_score</span></code></a>(prompts[, num_responses])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#uqlm.scorers.ensemble.UQEnsemble.generate_and_score" title="uqlm.scorers.ensemble.UQEnsemble.generate_and_score"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_and_score</span></code></a>(prompts[, num_responses, ...])</p></td>
 <td><p>Generate LLM responses from provided prompts and compute confidence scores.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#uqlm.scorers.ensemble.UQEnsemble.generate_candidate_responses" title="uqlm.scorers.ensemble.UQEnsemble.generate_candidate_responses"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_candidate_responses</span></code></a>(prompts)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#uqlm.scorers.ensemble.UQEnsemble.generate_candidate_responses" title="uqlm.scorers.ensemble.UQEnsemble.generate_candidate_responses"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_candidate_responses</span></code></a>(prompts[, ...])</p></td>
 <td><p>This method generates multiple responses for uncertainty estimation.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#uqlm.scorers.ensemble.UQEnsemble.generate_original_responses" title="uqlm.scorers.ensemble.UQEnsemble.generate_original_responses"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_original_responses</span></code></a>(prompts)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#uqlm.scorers.ensemble.UQEnsemble.generate_original_responses" title="uqlm.scorers.ensemble.UQEnsemble.generate_original_responses"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_original_responses</span></code></a>(prompts[, ...])</p></td>
 <td><p>This method generates original responses for uncertainty estimation.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#uqlm.scorers.ensemble.UQEnsemble.score" title="uqlm.scorers.ensemble.UQEnsemble.score"><code class="xref py py-obj docutils literal notranslate"><span class="pre">score</span></code></a>(prompts, responses[, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#uqlm.scorers.ensemble.UQEnsemble.load_config" title="uqlm.scorers.ensemble.UQEnsemble.load_config"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_config</span></code></a>(path[, llm])</p></td>
+<td><p>Load configuration and create UQEnsemble instance.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#uqlm.scorers.ensemble.UQEnsemble.print_ensemble_weights" title="uqlm.scorers.ensemble.UQEnsemble.print_ensemble_weights"><code class="xref py py-obj docutils literal notranslate"><span class="pre">print_ensemble_weights</span></code></a>()</p></td>
+<td><p>Prints ensemble weights in a pretty table format, sorted by weight in descending order</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#uqlm.scorers.ensemble.UQEnsemble.save_config" title="uqlm.scorers.ensemble.UQEnsemble.save_config"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save_config</span></code></a>(path)</p></td>
+<td><p>Save minimal configuration: weights, threshold, components, and LLM configs.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#uqlm.scorers.ensemble.UQEnsemble.score" title="uqlm.scorers.ensemble.UQEnsemble.score"><code class="xref py py-obj docutils literal notranslate"><span class="pre">score</span></code></a>(prompts, responses[, ...])</p></td>
 <td><p>Generate LLM responses from provided prompts and compute confidence scores.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#uqlm.scorers.ensemble.UQEnsemble.tune" title="uqlm.scorers.ensemble.UQEnsemble.tune"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tune</span></code></a>(prompts, ground_truth_answers[, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#uqlm.scorers.ensemble.UQEnsemble.tune" title="uqlm.scorers.ensemble.UQEnsemble.tune"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tune</span></code></a>(prompts, ground_truth_answers[, ...])</p></td>
 <td><p>Generate responses from provided prompts, grade responses with provided grader function, and tune ensemble weights.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#uqlm.scorers.ensemble.UQEnsemble.tune_from_graded" title="uqlm.scorers.ensemble.UQEnsemble.tune_from_graded"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tune_from_graded</span></code></a>(correct_indicators[, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#uqlm.scorers.ensemble.UQEnsemble.tune_from_graded" title="uqlm.scorers.ensemble.UQEnsemble.tune_from_graded"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tune_from_graded</span></code></a>(correct_indicators[, ...])</p></td>
 <td><p>Tunes weights and threshold parameters on a set of user-provided graded responses.</p></td>
 </tr>
 </tbody>
@@ -596,28 +631,32 @@ avoid OutOfMemoryError</p></li>
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="uqlm.scorers.ensemble.UQEnsemble.generate_and_score">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">generate_and_score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prompts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_responses</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqlm.scorers.ensemble.UQEnsemble.generate_and_score" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">generate_and_score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prompts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_responses</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_progress_bars</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_existing_progress_bar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqlm.scorers.ensemble.UQEnsemble.generate_and_score" title="Link to this definition">#</a></dt>
 <dd><p>Generate LLM responses from provided prompts and compute confidence scores.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="uqlm.scorers.baseclass.uncertainty.UQResult.html#uqlm.scorers.baseclass.uncertainty.UQResult" title="uqlm.scorers.baseclass.uncertainty.UQResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">UQResult</span></code></a></span></p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
 <li><p><strong>prompts</strong> (<em>list</em><em> of </em><em>str</em>) – A list of input prompts for the model.</p></li>
 <li><p><strong>num_responses</strong> (<em>int</em><em>, </em><em>default=5</em>) – The number of sampled responses used to compute consistency.</p></li>
+<li><p><strong>show_progress_bars</strong> (<em>bool</em><em>, </em><em>default=True</em>) – If True, displays progress bars while generating and scoring responses.
+Not displayed for white box scorers due to low latency.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Instance of UQResult, containing data (prompts, responses, and semantic entropy scores) and
-metadata</p>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Instance of UQResult, containing data (prompts, responses, and scores) and metadata</p>
 </dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference internal" href="uqlm.scorers.baseclass.uncertainty.UQResult.html#uqlm.scorers.baseclass.uncertainty.UQResult" title="uqlm.scorers.baseclass.uncertainty.UQResult">UQResult</a></p>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="uqlm.scorers.baseclass.uncertainty.UQResult.html#uqlm.scorers.baseclass.uncertainty.UQResult" title="uqlm.scorers.baseclass.uncertainty.UQResult">UQResult</a></p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="uqlm.scorers.ensemble.UQEnsemble.generate_candidate_responses">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">generate_candidate_responses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prompts</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqlm.scorers.ensemble.UQEnsemble.generate_candidate_responses" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">generate_candidate_responses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prompts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">progress_bar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqlm.scorers.ensemble.UQEnsemble.generate_candidate_responses" title="Link to this definition">#</a></dt>
 <dd><p>This method generates multiple responses for uncertainty
 estimation. If specified in the child class, all responses are postprocessed
 using the callable function defined by the user.</p>
@@ -630,7 +669,7 @@ using the callable function defined by the user.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="uqlm.scorers.ensemble.UQEnsemble.generate_original_responses">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">generate_original_responses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prompts</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqlm.scorers.ensemble.UQEnsemble.generate_original_responses" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">generate_original_responses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prompts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">progress_bar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqlm.scorers.ensemble.UQEnsemble.generate_original_responses" title="Link to this definition">#</a></dt>
 <dd><p>This method generates original responses for uncertainty
 estimation. If specified in the child class, all responses are postprocessed
 using the callable function defined by the user.</p>
@@ -642,32 +681,80 @@ using the callable function defined by the user.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="uqlm.scorers.ensemble.UQEnsemble.load_config">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">llm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqlm.scorers.ensemble.UQEnsemble.load_config" title="Link to this definition">#</a></dt>
+<dd><p>Load configuration and create UQEnsemble instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="#uqlm.scorers.ensemble.UQEnsemble" title="uqlm.scorers.ensemble.UQEnsemble"><code class="xref py py-class docutils literal notranslate"><span class="pre">UQEnsemble</span></code></a></span></p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>path</strong> (<em>str</em>) – Path to the saved configuration file</p></li>
+<li><p><strong>llm</strong> (<em>BaseChatModel</em><em>, </em><em>optional</em>) – LLM instance to use as main LLM. If None, uses saved config.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>New UQEnsemble instance with loaded configuration</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#uqlm.scorers.ensemble.UQEnsemble" title="uqlm.scorers.ensemble.UQEnsemble">UQEnsemble</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="uqlm.scorers.ensemble.UQEnsemble.print_ensemble_weights">
+<span class="sig-name descname"><span class="pre">print_ensemble_weights</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uqlm.scorers.ensemble.UQEnsemble.print_ensemble_weights" title="Link to this definition">#</a></dt>
+<dd><p>Prints ensemble weights in a pretty table format, sorted by weight in descending order</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="uqlm.scorers.ensemble.UQEnsemble.save_config">
+<span class="sig-name descname"><span class="pre">save_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqlm.scorers.ensemble.UQEnsemble.save_config" title="Link to this definition">#</a></dt>
+<dd><p>Save minimal configuration: weights, threshold, components, and LLM configs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>path</strong> (<em>str</em>) – Path where to save the configuration file (should end with .json)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="uqlm.scorers.ensemble.UQEnsemble.score">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prompts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">responses</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampled_responses</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logprobs_results</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqlm.scorers.ensemble.UQEnsemble.score" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prompts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">responses</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampled_responses</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logprobs_results</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_responses</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_progress_bars</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_existing_progress_bar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqlm.scorers.ensemble.UQEnsemble.score" title="Link to this definition">#</a></dt>
 <dd><p>Generate LLM responses from provided prompts and compute confidence scores.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="uqlm.scorers.baseclass.uncertainty.UQResult.html#uqlm.scorers.baseclass.uncertainty.UQResult" title="uqlm.scorers.baseclass.uncertainty.UQResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">UQResult</span></code></a></span></p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
 <li><p><strong>prompts</strong> (<em>list</em><em> of </em><em>str</em>) – A list of input prompts for the model.</p></li>
 <li><p><strong>responses</strong> (<em>list</em><em> of </em><em>str</em>) – A list of model responses for the prompts.</p></li>
 <li><p><strong>sampled_responses</strong> (<em>list</em><em> of </em><em>list</em><em> of </em><em>str</em><em>, </em><em>default=None</em>) – A list of lists of sampled LLM responses for each prompt. These will be used to compute consistency scores by comparing to
 the corresponding response from <cite>responses</cite>. Must be provided if using black box scorers.</p></li>
 <li><p><strong>logprobs_results</strong> (<em>list</em><em> of </em><em>logprobs_result</em><em>, </em><em>default=None</em>) – List of lists of dictionaries, each returned by BaseChatModel.agenerate. Must be provided if using white box scorers.</p></li>
+<li><p><strong>num_responses</strong> (<em>int</em><em>, </em><em>default=5</em>) – The number of sampled responses used to compute consistency. Not value will not be used if sampled_responses is provided</p></li>
+<li><p><strong>show_progress_bars</strong> (<em>bool</em><em>, </em><em>default=True</em>) – If True, displays a progress bar while scoring responses</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Instance of UQResult, containing data (prompts, responses, and semantic entropy scores) and
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Instance of UQResult, containing data (prompts, responses, and semantic entropy scores) and
 metadata</p>
 </dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference internal" href="uqlm.scorers.baseclass.uncertainty.UQResult.html#uqlm.scorers.baseclass.uncertainty.UQResult" title="uqlm.scorers.baseclass.uncertainty.UQResult">UQResult</a></p>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="uqlm.scorers.baseclass.uncertainty.UQResult.html#uqlm.scorers.baseclass.uncertainty.UQResult" title="uqlm.scorers.baseclass.uncertainty.UQResult">UQResult</a></p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="uqlm.scorers.ensemble.UQEnsemble.tune">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">tune</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prompts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ground_truth_answers</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grader_function</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_responses</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights_objective</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'roc_auc'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thresh_bounds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_trials</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.01</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fscore_beta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqlm.scorers.ensemble.UQEnsemble.tune" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">tune</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prompts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ground_truth_answers</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grader_function</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_responses</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights_objective</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'roc_auc'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thresh_bounds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thresh_objective</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'fbeta_score'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_trials</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.01</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fscore_beta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_progress_bars</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqlm.scorers.ensemble.UQEnsemble.tune" title="Link to this definition">#</a></dt>
 <dd><p>Generate responses from provided prompts, grade responses with provided grader function, and tune ensemble weights.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -680,13 +767,14 @@ metadata</p>
 <li><p><strong>grader_function</strong> (<em>function</em><em>(</em><em>response: str</em><em>, </em><em>answer: str</em><em>) </em><em>-&gt; bool</em><em>, </em><em>default=None</em>) – A user-defined function that takes a response and a ground truth ‘answer’ and returns a boolean indicator of whether
 the response is correct. If not provided, vectara’s HHEM is used: <a class="reference external" href="https://huggingface.co/vectara/hallucination_evaluation_model">https://huggingface.co/vectara/hallucination_evaluation_model</a></p></li>
 <li><p><strong>num_responses</strong> (<em>int</em><em>, </em><em>default=5</em>) – The number of sampled responses used to compute consistency.</p></li>
-<li><p><strong>weights_objective</strong> (<em>{'fbeta_score'</em><em>, </em><em>'accuracy_score'</em><em>, </em><em>'balanced_accuracy_score'</em><em>, </em><em>'roc_auc'</em><em>, </em><em>'log_loss'}</em><em>, </em><em>default='roc_auc'</em>) – Objective function for optimization of alpha and beta. Must match thresh_objective if one of ‘fbeta_score’,
+<li><p><strong>weights_objective</strong> (<em>{'fbeta_score'</em><em>, </em><em>'accuracy_score'</em><em>, </em><em>'balanced_accuracy_score'</em><em>, </em><em>'roc_auc'</em><em>, </em><em>'log_loss'</em><em>, </em><em>'average_precision'</em><em>, </em><em>'brier_score'}</em><em>, </em><em>default='roc_auc'</em>) – Objective function for weight optimization. Must match thresh_objective if one of ‘fbeta_score’,
 ‘accuracy_score’, ‘balanced_accuracy_score’. If same as thresh_objective, joint optimization will be done.</p></li>
 <li><p><strong>thresh_bounds</strong> (<em>tuple</em><em> of </em><em>floats</em><em>, </em><em>default=</em><em>(</em><em>0</em><em>,</em><em>1</em><em>)</em>) – Bounds to search for threshold</p></li>
-<li><p><strong>thresh_objective</strong> (<em>{'fbeta_score'</em><em>, </em><em>'accuracy_score'</em><em>, </em><em>'balanced_accuracy_score'</em><em>, </em><em>'roc_auc'</em><em>, </em><em>'log_loss'}</em><em>, </em><em>default='fbeta_score'</em>) – Objective function for threshold optimization via grid search.</p></li>
+<li><p><strong>thresh_objective</strong> (<em>{'fbeta_score'</em><em>, </em><em>'accuracy_score'</em><em>, </em><em>'balanced_accuracy_score'}</em><em>, </em><em>default='fbeta_score'</em>) – Objective function for threshold optimization via grid search.</p></li>
 <li><p><strong>n_trials</strong> (<em>int</em><em>, </em><em>default=100</em>) – Indicates how many trials to search over with optuna optimizer</p></li>
 <li><p><strong>step_size</strong> (<em>float</em><em>, </em><em>default=0.01</em>) – Indicates step size in grid search, if used</p></li>
 <li><p><strong>fscore_beta</strong> (<em>float</em><em>, </em><em>default=1</em>) – Value of beta in fbeta_score</p></li>
+<li><p><strong>show_progress_bars</strong> (<em>bool</em><em>, </em><em>default=True</em>) – If True, displays a progress bar while while generating responses, scoring responses, and tuning weights/threshold</p></li>
 </ul>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -697,7 +785,7 @@ the response is correct. If not provided, vectara’s HHEM is used: <a class="re
 
 <dl class="py method">
 <dt class="sig sig-object py" id="uqlm.scorers.ensemble.UQEnsemble.tune_from_graded">
-<span class="sig-name descname"><span class="pre">tune_from_graded</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">correct_indicators</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights_objective</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'roc_auc'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thresh_bounds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_trials</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.01</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fscore_beta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqlm.scorers.ensemble.UQEnsemble.tune_from_graded" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">tune_from_graded</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">correct_indicators</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights_objective</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'roc_auc'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thresh_bounds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thresh_objective</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'fbeta_score'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_trials</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.01</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fscore_beta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_progress_bars</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqlm.scorers.ensemble.UQEnsemble.tune_from_graded" title="Link to this definition">#</a></dt>
 <dd><p>Tunes weights and threshold parameters on a set of user-provided graded responses.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -706,13 +794,14 @@ the response is correct. If not provided, vectara’s HHEM is used: <a class="re
 <dt class="field-even">Parameters<span class="colon">:</span></dt>
 <dd class="field-even"><ul class="simple">
 <li><p><strong>correct_indicators</strong> (<em>list</em><em> of </em><em>bool</em>) – A list of boolean indicators of whether self.responses are correct.</p></li>
-<li><p><strong>weights_objective</strong> (<em>{'fbeta_score'</em><em>, </em><em>'accuracy_score'</em><em>, </em><em>'balanced_accuracy_score'</em><em>, </em><em>'roc_auc'</em><em>, </em><em>'log_loss'}</em><em>, </em><em>default='roc_auc'</em>) – Objective function for optimization of alpha and beta. Must match thresh_objective if one of ‘fbeta_score’,
+<li><p><strong>weights_objective</strong> (<em>{'fbeta_score'</em><em>, </em><em>'accuracy_score'</em><em>, </em><em>'balanced_accuracy_score'</em><em>, </em><em>'roc_auc'</em><em>, </em><em>'log_loss'</em><em>, </em><em>'average_precision'</em><em>, </em><em>'brier_score'}</em><em>, </em><em>default='roc_auc'</em>) – Objective function for weight optimization. Must match thresh_objective if one of ‘fbeta_score’,
 ‘accuracy_score’, ‘balanced_accuracy_score’. If same as thresh_objective, joint optimization will be done.</p></li>
 <li><p><strong>thresh_bounds</strong> (<em>tuple</em><em> of </em><em>floats</em><em>, </em><em>default=</em><em>(</em><em>0</em><em>,</em><em>1</em><em>)</em>) – Bounds to search for threshold</p></li>
-<li><p><strong>thresh_objective</strong> (<em>{'fbeta_score'</em><em>, </em><em>'accuracy_score'</em><em>, </em><em>'balanced_accuracy_score'</em><em>, </em><em>'roc_auc'</em><em>, </em><em>'log_loss'}</em><em>, </em><em>default='fbeta_score'</em>) – Objective function for threshold optimization via grid search.</p></li>
+<li><p><strong>thresh_objective</strong> (<em>{'fbeta_score'</em><em>, </em><em>'accuracy_score'</em><em>, </em><em>'balanced_accuracy_score'}</em><em>, </em><em>default='fbeta_score'</em>) – Objective function for threshold optimization via grid search.</p></li>
 <li><p><strong>n_trials</strong> (<em>int</em><em>, </em><em>default=100</em>) – Indicates how many candidates to search over with optuna optimizer</p></li>
 <li><p><strong>step_size</strong> (<em>float</em><em>, </em><em>default=0.01</em>) – Indicates step size in grid search, if used</p></li>
 <li><p><strong>fscore_beta</strong> (<em>float</em><em>, </em><em>default=1</em>) – Value of beta in fbeta_score</p></li>
+<li><p><strong>show_progress_bars</strong> (<em>bool</em><em>, </em><em>default=True</em>) – If True, displays a progress bar while optimizing weights and threshold</p></li>
 </ul>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -787,6 +876,9 @@ the response is correct. If not provided, vectara’s HHEM is used: <a class="re
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uqlm.scorers.ensemble.UQEnsemble.generate_and_score"><code class="docutils literal notranslate"><span class="pre">UQEnsemble.generate_and_score()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uqlm.scorers.ensemble.UQEnsemble.generate_candidate_responses"><code class="docutils literal notranslate"><span class="pre">UQEnsemble.generate_candidate_responses()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uqlm.scorers.ensemble.UQEnsemble.generate_original_responses"><code class="docutils literal notranslate"><span class="pre">UQEnsemble.generate_original_responses()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uqlm.scorers.ensemble.UQEnsemble.load_config"><code class="docutils literal notranslate"><span class="pre">UQEnsemble.load_config()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uqlm.scorers.ensemble.UQEnsemble.print_ensemble_weights"><code class="docutils literal notranslate"><span class="pre">UQEnsemble.print_ensemble_weights()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uqlm.scorers.ensemble.UQEnsemble.save_config"><code class="docutils literal notranslate"><span class="pre">UQEnsemble.save_config()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uqlm.scorers.ensemble.UQEnsemble.score"><code class="docutils literal notranslate"><span class="pre">UQEnsemble.score()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uqlm.scorers.ensemble.UQEnsemble.tune"><code class="docutils literal notranslate"><span class="pre">UQEnsemble.tune()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uqlm.scorers.ensemble.UQEnsemble.tune_from_graded"><code class="docutils literal notranslate"><span class="pre">UQEnsemble.tune_from_graded()</span></code></a></li>
@@ -838,7 +930,7 @@ the response is correct. If not provided, vectara’s HHEM is used: <a class="re
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
     <br/>
   </p>
 </div>

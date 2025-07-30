@@ -28,10 +28,10 @@
    :template: module.rst
    :recursive:
 
-   baseclass
-   black_box
-   ensemble
-   entropy
-   panel
-   white_box
+   uqlm.scorers.baseclass
+   uqlm.scorers.black_box
+   uqlm.scorers.ensemble
+   uqlm.scorers.entropy
+   uqlm.scorers.panel
+   uqlm.scorers.white_box
 

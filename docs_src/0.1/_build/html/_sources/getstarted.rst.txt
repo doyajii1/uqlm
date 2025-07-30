@@ -1,0 +1,135 @@
+Quickstart Guide
+================
+
+
+Create a virtual environment for using uqlm
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+We recommend creating a new virtual environment using venv before installing the package. To do so, please follow instructions `here <https://docs.python.org/3/library/venv.html>`_.
+
+Installation
+^^^^^^^^^^^^
+
+Install using pip directly from the GitHub repository.
+
+.. code-block:: bash
+
+   pip install --user git+https://github.aetna.com/analytics-org/uqlm.git
+
+Usage
+-----
+
+Below are minimal examples for hallucination detection.
+
+
+Example 1: ``Black-Box Scorers`` for hallucination detection
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Below is a sample of code illustrating how to use the `BlackBoxUQ` class to conduct hallucination detection.
+
+.. code-block:: python
+
+   from langchain_google_vertexai import VertexAI
+   llm = ChatVertexAI(model='gemini-pro')
+
+   from uqlm.quantifiers import BlackBoxUQ
+   bbuq = BlackBoxUQ(llm=llm, scorers=["entropy_score"])
+
+   results = await bbuq.evaluate(prompts=prompts, num_responses=10)
+   results.to_df()
+
+.. raw:: html
+
+   <p align="center">
+     <img src="./_static/images/black_box_output2.png" />
+   </p>
+
+Note that although we use `ChatVertexAI` in this example, any `LangChain Chat Model <https://js.langchain.com/docs/integrations/chat/>`_ may be used. For a more detailed demo, refer to our `Black-Box UQ Demo <_notebooks/examples/black_box_demo.ipynb>`_.
+
+
+Example 2: ``White-Box Scorers`` for hallucination detection
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+These scorers leverage token probabilities to estimate uncertainty.  They are significantly faster and cheaper than black-box methods, but require access to the LLM's internal probabilities, meaning they are not necessarily compatible with all LLMs/APIs.
+
+.. code-block:: python
+
+   from langchain_google_vertexai import VertexAI
+   llm = ChatVertexAI(model='gemini-pro')
+
+   from uqlm.quantifiers import WhiteBoxUQ
+   wbuq = WhiteBoxUQ(llm=llm, scorers=["min_probability"])
+
+   results = await wbuq.evaluate(prompts=prompts)
+   results.to_df()
+
+.. raw:: html
+
+   <p align="center">
+     <img src="./_static/images/white_box_output.png" />
+   </p>
+
+Again, any `LangChain Chat Model <https://js.langchain.com/docs/integrations/chat/>`_ may be used in place of `ChatVertexAI`. For a more detailed demo, refer to our `White-Box UQ Demo <_notebooks/examples/white_box_demo.ipynb>`_.
+
+
+Example 3: ``LLM-as-a-Judge Scorers`` for hallucination detection
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+These scorers use one or more LLMs to evaluate the reliability of the original LLM's response.  They offer high customizability through prompt engineering and the choice of judge LLM(s).
+
+.. code-block:: python
+
+   from langchain_google_vertexai import VertexAI
+   llm1 = ChatVertexAI(model='gemini-1.0-pro')
+   llm2 = ChatVertexAI(model='gemini-1.5-flash-001')
+   llm3 = ChatVertexAI(model='gemini-1.5-pro-001')
+
+   from uqlm.quantifiers import LLMPanel
+   panel = LLMPanel(llm=llm1, judges=[llm1, llm2, llm3])
+
+   results = await panel.evaluate(prompts=prompts)
+   results.to_df()
+
+.. raw:: html
+
+   <p align="center">
+     <img src="./_static/images/panel_output.png" />
+   </p>
+
+Note that although we use `ChatVertexAI` in this example, we can use any `LangChain Chat Model <https://js.langchain.com/docs/integrations/chat/>`_ as judges. For a more detailed demo, refer to our `LLM-as-a-Judge Demo <_notebooks/examples/judges_demo.ipynb>`_.
+
+
+Example 4: ``Ensemble Scorers`` for hallucination detection
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+These scorers combine multiple individual scorers to provide a more robust and accurate uncertainty estimate. They offer high flexibility and customizability, allowing you to tailor the ensemble to specific use cases.
+
+.. code-block:: python
+
+   from langchain_google_vertexai import VertexAI
+   llm = ChatVertexAI(model='gemini-pro')
+
+   from uqlm.quantifiers import UQEnsemble
+   components = [
+      "match_score", "noncontradiction_score", # black-box scorers
+      "min_probability", # white-box scorer
+      llm # use same LLM as a judge
+   ]
+   uqe = UQEnsemble(llm=llm, components=components, num_responses=5)
+
+   results = await uqe.evaluate(prompts=prompts)
+   # results = uqe.tune_params(correct_indicators=correct_indicators) # optional step
+   results.to_df()
+
+.. raw:: html
+
+   <p align="center">
+     <img src="./_static/images/uqensemble_output.png" />
+   </p>
+
+As with the other examples, any `LangChain Chat Model <https://js.langchain.com/docs/integrations/chat/>`_ may be used in place of `ChatVertexAI`. For a more detailed demo, refer to our `UQ Ensemble Demo <_notebooks/examples/ensemble_demo.ipynb>`_.
+
+
+Example notebooks
+-----------------
+Refer to our :doc:`example notebooks <_notebooks/index>` for examples illustrating how to use `uqlm`.

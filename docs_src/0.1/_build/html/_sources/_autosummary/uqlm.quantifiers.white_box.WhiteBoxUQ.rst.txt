@@ -1,0 +1,28 @@
+uqlm.quantifiers.white\_box.WhiteBoxUQ
+======================================
+
+.. currentmodule:: uqlm.quantifiers.white_box
+
+.. autoclass:: WhiteBoxUQ
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~WhiteBoxUQ.__init__
+      ~WhiteBoxUQ.evaluate
+      ~WhiteBoxUQ.generate_candidate_responses
+      ~WhiteBoxUQ.generate_original_responses
+   
+   
+
+   
+   
+   

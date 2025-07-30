@@ -10,7 +10,7 @@
     <link rel="icon" sizes="16x16" href="../../_static/images/favicon/favicon-16x16.png" type="image/png">
     <link rel="icon" sizes="32x32" href="../../_static/images/favicon/favicon-32x32.png" type="image/png">
     <link rel="apple-touch-icon" sizes="180x180" href="../../_static/images/favicon/apple-touch-icon.png" type="image/png">
-    <title>🎯 Tunable Ensemble for LLM Uncertainty (Advanced) &#8212; uqlm 0.1 documentation</title>
+    <title>🎯 Tunable Ensemble for LLM Uncertainty (Advanced) &#8212; uqlm 0.2 documentation</title>
   
   
   
@@ -42,8 +42,8 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=2709fde1"></script>
-    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/documentation_options.js?v=10f1778b"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
@@ -52,7 +52,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://github.com/pages/cvs-health/uqlm/versions.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.2';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
@@ -129,8 +129,8 @@
       
     
     
-    <img src="../../_static/horizontal_logo.png" class="logo__image only-light" alt="uqlm 0.1 documentation - Home"/>
-    <img src="../../_static/horizontal_logo_no_bg.png" class="logo__image only-dark pst-js-only" alt="uqlm 0.1 documentation - Home"/>
+    <img src="../../_static/horizontal_logo.png" class="logo__image only-light" alt="uqlm 0.2 documentation - Home"/>
+    <img src="../../_static/horizontal_logo_no_bg.png" class="logo__image only-dark pst-js-only" alt="uqlm 0.2 documentation - Home"/>
   
   
 </a></div>
@@ -169,6 +169,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../contribute.html">
     Contributor Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../faqs.html">
+    FAQs
   </a>
 </li>
 
@@ -305,6 +312,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../contribute.html">
     Contributor Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../faqs.html">
+    FAQs
   </a>
 </li>
 
@@ -489,7 +503,7 @@
 </h3><ul style="margin-bottom: 0"><li><p>Requires More Setup: Not quite “off-the-shelf”; requires some effort to configure and tune the ensemble.</p>
 </li><li><p>Best for Advanced Users: Optimizing the ensemble requires a deeper understanding of the individual scorers.</p>
 </li></ul></div></div><div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -503,11 +517,11 @@
 <p>## 1. Set up LLM and Prompts</p>
 <p>In this demo, we will illustrate this approach using a set of math questions from the <a class="reference external" href="https://github.com/openai/grade-school-math">GSM8K benchmark</a>. To implement with your use case, simply <strong>replace the example prompts with your data</strong>.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load example dataset (GSM8K)</span>
-<span class="n">gsm8k</span> <span class="o">=</span> <span class="n">load_example_dataset</span><span class="p">(</span><span class="s2">&quot;gsm8k&quot;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">gsm8k</span> <span class="o">=</span> <span class="n">load_example_dataset</span><span class="p">(</span><span class="s2">&quot;gsm8k&quot;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
 <span class="n">gsm8k</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -523,7 +537,7 @@ Dataset ready!
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -580,22 +594,20 @@ Dataset ready!
 </div></div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gsm8k_tune</span> <span class="o">=</span> <span class="n">gsm8k</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">50</span><span class="p">]</span>
-<span class="n">gsm8k_test</span> <span class="o">=</span> <span class="n">gsm8k</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">51</span><span class="p">:</span><span class="mi">100</span><span class="p">]</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gsm8k_tune</span> <span class="o">=</span> <span class="n">gsm8k</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">100</span><span class="p">]</span>
+<span class="n">gsm8k_test</span> <span class="o">=</span> <span class="n">gsm8k</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">100</span><span class="p">:</span><span class="mi">200</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define prompts</span>
-<span class="n">MATH_INSTRUCTION</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="s2">&quot;When you solve this math problem only return the answer with no additional text.</span><span class="se">\n</span><span class="s2">&quot;</span>
-<span class="p">)</span>
+<span class="n">MATH_INSTRUCTION</span> <span class="o">=</span> <span class="s2">&quot;When you solve this math problem only return the answer with no additional text.</span><span class="se">\n</span><span class="s2">&quot;</span>
 <span class="n">tune_prompts</span> <span class="o">=</span> <span class="p">[</span><span class="n">MATH_INSTRUCTION</span> <span class="o">+</span> <span class="n">prompt</span> <span class="k">for</span> <span class="n">prompt</span> <span class="ow">in</span> <span class="n">gsm8k_tune</span><span class="o">.</span><span class="n">question</span><span class="p">]</span>
 <span class="n">test_prompts</span> <span class="o">=</span> <span class="p">[</span><span class="n">MATH_INSTRUCTION</span> <span class="o">+</span> <span class="n">prompt</span> <span class="k">for</span> <span class="n">prompt</span> <span class="ow">in</span> <span class="n">gsm8k_test</span><span class="o">.</span><span class="n">question</span><span class="p">]</span>
 </pre></div>
@@ -603,10 +615,11 @@ Dataset ready!
 </div>
 <p>In this example, we use <code class="docutils literal notranslate"><span class="pre">ChatVertexAI</span></code> and <code class="docutils literal notranslate"><span class="pre">AzureChatOpenAI</span></code> to instantiate our LLMs, but any <a class="reference external" href="https://js.langchain.com/docs/integrations/chat/">LangChain Chat Model</a> may be used. Be sure to <strong>replace with your LLM of choice.</strong></p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import sys</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import os</span>
+<span class="c1"># import sys</span>
 <span class="c1"># !{sys.executable} -m pip install python-dotenv</span>
 <span class="c1"># !{sys.executable} -m pip install langchain-openai</span>
 
@@ -615,26 +628,19 @@ Dataset ready!
 <span class="kn">from</span><span class="w"> </span><span class="nn">langchain_openai</span><span class="w"> </span><span class="kn">import</span> <span class="n">AzureChatOpenAI</span>
 
 <span class="n">load_dotenv</span><span class="p">(</span><span class="n">find_dotenv</span><span class="p">())</span>
-<span class="n">gpt</span> <span class="o">=</span> <span class="n">AzureChatOpenAI</span><span class="p">(</span>
-    <span class="n">deployment_name</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;DEPLOYMENT_NAME&quot;</span><span class="p">),</span>
-    <span class="n">openai_api_key</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;API_KEY&quot;</span><span class="p">),</span>
-    <span class="n">azure_endpoint</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;API_BASE&quot;</span><span class="p">),</span>
-    <span class="n">openai_api_type</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;API_TYPE&quot;</span><span class="p">),</span>
-    <span class="n">openai_api_version</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;API_VERSION&quot;</span><span class="p">),</span>
-    <span class="n">temperature</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>  <span class="c1"># User to set temperature</span>
-<span class="p">)</span>
+<span class="n">gpt</span> <span class="o">=</span> <span class="n">AzureChatOpenAI</span><span class="p">(</span><span class="n">deployment_name</span><span class="o">=</span><span class="s2">&quot;gpt-4o&quot;</span><span class="p">,</span> <span class="n">openai_api_type</span><span class="o">=</span><span class="s2">&quot;azure&quot;</span><span class="p">,</span> <span class="n">openai_api_version</span><span class="o">=</span><span class="s2">&quot;2024-02-15-preview&quot;</span><span class="p">,</span> <span class="n">temperature</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import sys</span>
 <span class="c1"># !{sys.executable} -m pip install langchain-google-vertexai</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">langchain_google_vertexai</span><span class="w"> </span><span class="kn">import</span> <span class="n">ChatVertexAI</span>
 
-<span class="n">gemini</span> <span class="o">=</span> <span class="n">ChatVertexAI</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;gemini-pro&quot;</span><span class="p">)</span>
+<span class="n">gemini</span> <span class="o">=</span> <span class="n">ChatVertexAI</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;gemini-1.5-flash&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -654,8 +660,8 @@ Dataset ready!
 </td><td style="padding: 8px; border: 1px solid rgba(127, 127, 127, 0.2);"><p>A langchain llm <code class="docutils literal notranslate"><span class="pre">BaseChatModel</span></code>. User is responsible for specifying temperature and other relevant parameters to the constructor of the provided <code class="docutils literal notranslate"><span class="pre">llm</span></code> object.</p>
 </td></tr><tr><td style="font-weight: bold; padding: 8px; border: 1px solid rgba(127, 127, 127, 0.2);"><p>scorers</p>
 </td><td style="padding: 8px; border: 1px solid rgba(127, 127, 127, 0.2);"><p>Listdefault=None</p>
-</td><td style="padding: 8px; border: 1px solid rgba(127, 127, 127, 0.2);"><p>Specifies which black-box, white-box, or LLM-as-a-Judge scorers to include in the ensemble. List containing instances of BaseChatModel, LLMJudge, black-box scorer names from [‘semantic_negentropy’, ‘noncontradiction’,’exact_match’, ‘bert_score’, ‘bleurt’, ‘cosine_sim’], or white-box scorer names from [“normalized_probability”, “min_probability”]. If None, defaults to the off-the-shelf BS Detector ensemble by Chen &amp; Mueller, 2023 which uses components [“noncontradiction”,
-“exact_match”,”self_reflection”] with respective weights of [0.56, 0.14, 0.3].</p>
+</td><td style="padding: 8px; border: 1px solid rgba(127, 127, 127, 0.2);"><p>Specifies which black-box, white-box, or LLM-as-a-Judge scorers to include in the ensemble. List containing instances of BaseChatModel, LLMJudge, black-box scorer names from [‘semantic_negentropy’, ‘noncontradiction’,’exact_match’, ‘bert_score’, ‘cosine_sim’], or white-box scorer names from [“normalized_probability”, “min_probability”]. If None, defaults to the off-the-shelf BS Detector ensemble by Chen &amp; Mueller, 2023 which uses components [“noncontradiction”, “exact_match”,”self_reflection”]
+with respective weights of [0.56, 0.14, 0.3].</p>
 </td></tr><tr><td style="font-weight: bold; padding: 8px; border: 1px solid rgba(127, 127, 127, 0.2);"><p>device</p>
 </td><td style="padding: 8px; border: 1px solid rgba(127, 127, 127, 0.2);"><p>str or torch.devicedefault=”cpu”</p>
 </td><td style="padding: 8px; border: 1px solid rgba(127, 127, 127, 0.2);"><p>Specifies the device that NLI model use for prediction. Only applies to ‘semantic_negentropy’, ‘noncontradiction’ scorers. Pass a torch.device to leverage GPU.</p>
@@ -718,7 +724,7 @@ Dataset ready!
 </pre></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
@@ -743,7 +749,7 @@ Using cuda device
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scorers</span> <span class="o">=</span> <span class="p">[</span>
@@ -757,9 +763,8 @@ Using cuda device
 <span class="n">uqe</span> <span class="o">=</span> <span class="n">UQEnsemble</span><span class="p">(</span>
     <span class="n">llm</span><span class="o">=</span><span class="n">gpt</span><span class="p">,</span>
     <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span>
-    <span class="n">max_calls_per_min</span><span class="o">=</span><span class="mi">175</span><span class="p">,</span>
-    <span class="c1"># postprocessor=math_postprocessor,</span>
-    <span class="n">use_n_param</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>  <span class="c1"># Set True if using AzureChatOpenAI for faster generation</span>
+    <span class="n">max_calls_per_min</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span>
+    <span class="n">use_n_param</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>  <span class="c1"># Set True if using AzureChatOpenAI or ChatOpenAI for faster generation</span>
     <span class="n">scorers</span><span class="o">=</span><span class="n">scorers</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
@@ -785,61 +790,149 @@ Some weights of the model checkpoint at microsoft/deberta-large-mnli were not us
 </li><li><p>ground_truth_answers - (List[str]) A list of ideal (correct) responses.</p>
 </li><li><p>grader_function - (callable, default=None) A user-defined function that takes a response and a ground truth ‘answer’ and returns a boolean indicator of whether the response is correct. If not provided, vectara’s HHEM is used: <a class="reference external" href="https://huggingface.co/vectara/hallucination_evaluation_model">https://huggingface.co/vectara/hallucination_evaluation_model</a></p>
 </li><li><p>num_responses - (int, default=5) The number of sampled responses used to compute consistency.</p>
-</li><li><p>thresh_objective - (str, default=’fbeta_score’) Objective function for threshold optimization via grid search. One of {‘fbeta_score’, ‘accuracy_score’, ‘balanced_accuracy_score’, ‘roc_auc’, ‘log_loss’}.</p>
+</li><li><p>weights_objective - (str, default=’roc_auc’) Objective function for weight optimization. One of {‘fbeta_score’, ‘accuracy_score’, ‘balanced_accuracy_score’, ‘roc_auc’, ‘log_loss’, ‘average_precision’, ‘brier_score’}. Must match thresh_objective if one of {‘fbeta_score’, ‘accuracy_score’, ‘balanced_accuracy_score’}. If same as thresh_objective, joint optimization will be done.</p>
+</li><li><p>thresh_objective - (str, default=’fbeta_score’) Objective function for threshold optimization via grid search. One of {‘fbeta_score’, ‘accuracy_score’, ‘balanced_accuracy_score’}.</p>
 </li><li><p>thresh_bounds - (tuple of floats, default=(0,1)) Bounds to search for threshold.</p>
 </li><li><p>n_trials - (int, default=100) Indicates how many trials to search over with optuna optimizer</p>
 </li><li><p>step_size - (float, default=0.01) Indicates step size in grid search, if used.</p>
 </li><li><p>fscore_beta - (float, default=1) Value of beta in fbeta_score.</p>
+</li><li><p>show_progress_bars - (bool, default=True) If True, displays a progress bar while generating responses, scoring responses, and optimizing weights.</p>
 </li></ul><p><p>Returns: UQResult containing data (prompts, responses, sampled responses, and confidence scores) and metadata</p>
 </p><div style="background-color: rgba(0, 200, 0, 0.1); padding: 8px; border-radius: 3px; margin-top: 10px; border: 1px solid rgba(0, 200, 0, 0.2); margin-right: 5px; box-sizing: border-box; width: 100%;"><p>💡 Best For: Tuning an optimized ensemble for detecting hallucinations in a specific use case.</p>
 </div></td></tr></table><p>Note that below, we are providing a grader function that is specific to our use case (math questions). If you are running this example notebook with your own prompts/questions, update the grader function accordingly. Note that the default grader function, <code class="docutils literal notranslate"><span class="pre">vectara/hallucination_evaluation_model</span></code>, is used if no grader function is provided and generally works well across use cases.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">grade_response</span><span class="p">(</span><span class="n">response</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">answer</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-    <span class="k">return</span> <span class="p">(</span><span class="n">math_postprocessor</span><span class="p">(</span><span class="n">response</span><span class="p">)</span> <span class="o">==</span> <span class="n">answer</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">math_postprocessor</span><span class="p">(</span><span class="n">response</span><span class="p">)</span> <span class="o">==</span> <span class="n">answer</span>
 </pre></div>
 </div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tune_results</span> <span class="o">=</span> <span class="k">await</span> <span class="n">uqe</span><span class="o">.</span><span class="n">tune</span><span class="p">(</span>
+    <span class="n">prompts</span><span class="o">=</span><span class="n">tune_prompts</span><span class="p">,</span>  <span class="c1"># prompts for tuning (responses will be generated from these prompts)</span>
+    <span class="n">ground_truth_answers</span><span class="o">=</span><span class="n">gsm8k_tune</span><span class="p">[</span><span class="s2">&quot;answer&quot;</span><span class="p">],</span>  <span class="c1"># correct answers to &#39;grade&#39; LLM responses against</span>
+    <span class="n">grader_function</span><span class="o">=</span><span class="n">grade_response</span><span class="p">,</span>  <span class="c1"># grader function to grade responses against provided answers</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "f227371a2f7b4874a1fdf72be496b86b", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"></pre></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"></pre></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"></pre></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">
+</pre></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">         <span style="font-weight: bold">Optimized Ensemble Weights         </span>
+</pre></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">==================================================
+</pre></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">Scorer                            Weight
+</pre></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">--------------------------------------------------
+</pre></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">noncontradiction                  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">0.4457</span>
+</pre></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">exact_match                       <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">0.2233</span>
+</pre></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">judge_2                           <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">0.1640</span>
+</pre></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">judge_1                           <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">0.1011</span>
+</pre></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">normalized_probability            <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">0.0659</span>
+</pre></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">==================================================
+</pre></div>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tune_results</span> <span class="o">=</span> <span class="k">await</span> <span class="n">uqe</span><span class="o">.</span><span class="n">tune</span><span class="p">(</span>
-    <span class="n">prompts</span><span class="o">=</span><span class="n">tune_prompts</span><span class="p">,</span> <span class="c1"># prompts for tuning (responses will be generated from these prompts)</span>
-    <span class="n">ground_truth_answers</span><span class="o">=</span><span class="n">gsm8k_tune</span><span class="p">[</span><span class="s2">&quot;answer&quot;</span><span class="p">],</span> <span class="c1"># correct answers to &#39;grade&#39; LLM responses against</span>
-    <span class="n">grader_function</span><span class="o">=</span><span class="n">grade_response</span><span class="p">,</span> <span class="c1"># grader function to grade responses against provided answers</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-Generating responses...
-Generating candidate responses...
-Computing confidence scores...
-Generating LLMJudge scores...
-Generating LLMJudge scores...
-Grading responses with grader function...
-Optimizing weights...
-Optimizing threshold with grid search...
-</pre></div></div>
-</div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
-</pre></div>
-</div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result_df</span> <span class="o">=</span> <span class="n">tune_results</span><span class="o">.</span><span class="n">to_df</span><span class="p">()</span>
-<span class="n">result_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">result_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -878,34 +971,34 @@ Optimizing threshold with grid search...
       <td>When you solve this math problem only return t...</td>
       <td>72</td>
       <td>[72, 72, 72, 72, 72]</td>
-      <td>0.952566</td>
+      <td>0.999980</td>
       <td>1.0</td>
       <td>1.000000</td>
-      <td>0.999188</td>
+      <td>0.999700</td>
       <td>1.0</td>
-      <td>0.5</td>
+      <td>1.0</td>
     </tr>
     <tr>
       <th>1</th>
       <td>When you solve this math problem only return t...</td>
       <td>$10</td>
       <td>[$10, $10, $10, $10, $10]</td>
-      <td>0.895037</td>
+      <td>0.734830</td>
       <td>1.0</td>
       <td>1.000000</td>
-      <td>0.999019</td>
+      <td>0.999515</td>
       <td>0.0</td>
-      <td>0.5</td>
+      <td>0.0</td>
     </tr>
     <tr>
       <th>2</th>
       <td>When you solve this math problem only return t...</td>
       <td>$20</td>
-      <td>[$20, $20, $20, $20, $10]</td>
-      <td>0.762877</td>
-      <td>0.8</td>
-      <td>0.801301</td>
-      <td>0.946584</td>
+      <td>[$20, $20, $10, $20, 20]</td>
+      <td>0.651014</td>
+      <td>0.6</td>
+      <td>0.795611</td>
+      <td>0.931132</td>
       <td>1.0</td>
       <td>0.0</td>
     </tr>
@@ -914,11 +1007,11 @@ Optimizing threshold with grid search...
       <td>When you solve this math problem only return t...</td>
       <td>48</td>
       <td>[48, 48, 48, 48, 48]</td>
-      <td>0.941798</td>
+      <td>0.999871</td>
       <td>1.0</td>
       <td>1.000000</td>
-      <td>0.996091</td>
-      <td>0.0</td>
+      <td>0.998049</td>
+      <td>1.0</td>
       <td>1.0</td>
     </tr>
     <tr>
@@ -926,10 +1019,10 @@ Optimizing threshold with grid search...
       <td>When you solve this math problem only return t...</td>
       <td>624</td>
       <td>[624, 624, 624, 624, 624]</td>
-      <td>0.999969</td>
+      <td>0.999998</td>
       <td>1.0</td>
       <td>1.000000</td>
-      <td>0.999828</td>
+      <td>0.999977</td>
       <td>1.0</td>
       <td>1.0</td>
     </tr>
@@ -937,26 +1030,19 @@ Optimizing threshold with grid search...
 </table>
 </div></div>
 </div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">weight</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">uqe</span><span class="o">.</span><span class="n">weights</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Weight for </span><span class="si">{</span><span class="n">uqe</span><span class="o">.</span><span class="n">component_names</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">weight</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Save the tuned ensemble&#39;s config</span>
+<span class="n">uqe_tuned_config_file</span> <span class="o">=</span> <span class="s2">&quot;uqe_config_tuned.json&quot;</span>
+<span class="n">uqe</span><span class="o">.</span><span class="n">save_config</span><span class="p">(</span><span class="n">uqe_tuned_config_file</span><span class="p">)</span>
+
+<span class="c1"># # Load the tuned ensemble from the config file</span>
+<span class="c1"># loaded_ensemble = UQEnsemble.load_config(&quot;uqe_config_tuned.json&quot;)</span>
+<span class="c1"># loaded_ensemble.component_names, loaded_ensemble.weights, loaded_ensemble.thresh</span>
 </pre></div>
 </div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-Weight for exact_match: 0.14848838407926002
-Weight for noncontradiction: 0.5195905565435162
-Weight for normalized_probability: 0.17984565170407496
-Weight for judge_1: 0.05749867602904491
-Weight for judge_2: 0.09457673164410399
-</pre></div></div>
 </div>
 <p>## 3. Generate LLM Responses and Confidence Scores</p>
 <p>To evaluate hallucination detection performance, we will generate responses and corresponding confidence scores on a holdout set using the tuned ensemble.</p>
@@ -968,6 +1054,7 @@ Weight for judge_2: 0.09457673164410399
 </p><p><p>Parameters:</p>
 </p><ul><li><p>prompts - (list of str) A list of input prompts for the model.</p>
 </li><li><p>num_responses - (int, default=5) The number of sampled responses used to compute consistency.</p>
+</li><li><p>show_progress_bars - (bool, default=True) If True, displays a progress bar while generating and scoring responses.</p>
 </li></ul><p><p>Returns: UQResult containing data (prompts, responses, sampled responses, and confidence scores) and metadata</p>
 </p><div style="background-color: rgba(0, 200, 0, 0.1); padding: 8px; border-radius: 3px; margin-top: 10px; border: 1px solid rgba(0, 200, 0, 0.2); margin-right: 5px; box-sizing: border-box; width: 100%;"><p>💡 Best For: Complete end-to-end uncertainty quantification when starting with prompts.</p>
 </div></td></tr><tr><td style="font-weight: bold; vertical-align: top; padding: 8px; border: 1px solid rgba(127, 127, 127, 0.2);"><p>UQEnsemble.score</p>
@@ -977,44 +1064,49 @@ Weight for judge_2: 0.09457673164410399
 </li><li><p>responses - (list of str) A list of LLM responses for the prompts.</p>
 </li><li><p>sampled_responses - (list of list of str, default=None) A list of lists of sampled LLM responses for each prompt. These will be used to compute consistency scores by comparing to the corresponding response from responses. Must be provided if using Black-Box scorers.</p>
 </li><li><p>logprobs_results - (list of logprobs_result, default=None) List of lists of dictionaries, each returned by BaseChatModel.agenerate. Must be provided if using white box scorers.</p>
+</li><li><p>show_progress_bars - (bool, default=True) If True, displays a progress bar while scoring responses.</p>
 </li></ul><p><p>Returns: UQResult containing data (responses, sampled responses, and confidence scores) and metadata</p>
 </p><div style="background-color: rgba(0, 200, 0, 0.1); padding: 8px; border-radius: 3px; margin-top: 10px; border: 1px solid rgba(0, 200, 0, 0.2); margin-right: 5px; box-sizing: border-box; width: 100%;"><p>💡 Best For: Computing uncertainty scores when responses are already generated elsewhere.</p>
 </div></td></tr></table><div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_results</span> <span class="o">=</span> <span class="k">await</span> <span class="n">uqe</span><span class="o">.</span><span class="n">generate_and_score</span><span class="p">(</span><span class="n">prompts</span><span class="o">=</span><span class="n">test_prompts</span><span class="p">,</span> <span class="n">num_responses</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="nboutput nblast docutils container">
+<div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<div class="highlight"><pre>
-Generating responses...
-Generating candidate responses...
-Computing confidence scores...
-Generating LLMJudge scores...
-Generating LLMJudge scores...
-</pre></div></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "cdbe5a91b7b045d5870c5040530f3d11", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"></pre></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"></pre></div>
 </div>
 <p>## 4. Evaluate Hallucination Detection Performance</p>
 <p>To evaluate hallucination detection performance, we ‘grade’ the responses against an answer key. Again, note that the <code class="docutils literal notranslate"><span class="pre">grade_response</span></code> function is specific to our use case (math questions). <strong>If you are using your own prompts/questions, update the grading method accordingly</strong>.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_result_df</span> <span class="o">=</span> <span class="n">test_results</span><span class="o">.</span><span class="n">to_df</span><span class="p">()</span>
-<span class="n">test_result_df</span><span class="p">[</span><span class="s2">&quot;response_correct&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="n">grade_response</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span> <span class="k">for</span> <span class="n">r</span><span class="p">,</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">test_result_df</span><span class="p">[</span><span class="s2">&quot;response&quot;</span><span class="p">],</span> <span class="n">gsm8k_test</span><span class="p">[</span><span class="s2">&quot;answer&quot;</span><span class="p">])</span>
-<span class="p">]</span>
+<span class="n">test_result_df</span><span class="p">[</span><span class="s2">&quot;response_correct&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">grade_response</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span> <span class="k">for</span> <span class="n">r</span><span class="p">,</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">test_result_df</span><span class="p">[</span><span class="s2">&quot;response&quot;</span><span class="p">],</span> <span class="n">gsm8k_test</span><span class="p">[</span><span class="s2">&quot;answer&quot;</span><span class="p">])]</span>
 <span class="n">test_result_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -1052,51 +1144,51 @@ Generating LLMJudge scores...
     <tr>
       <th>0</th>
       <td>When you solve this math problem only return t...</td>
-      <td>160</td>
-      <td>[68, 176, 152, 80, 72]</td>
-      <td>0.030060</td>
-      <td>0.0</td>
-      <td>0.021150</td>
-      <td>0.106042</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>True</td>
+      <td>18</td>
+      <td>[18, 18, 18, 16, 18]</td>
+      <td>0.810747</td>
+      <td>0.8</td>
+      <td>0.802473</td>
+      <td>0.724268</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>False</td>
     </tr>
     <tr>
       <th>1</th>
       <td>When you solve this math problem only return t...</td>
-      <td>12</td>
-      <td>[12, 14, 18, 11, 13]</td>
-      <td>0.158690</td>
-      <td>0.2</td>
-      <td>0.240650</td>
-      <td>0.021982</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>False</td>
+      <td>36</td>
+      <td>[36, 36, 36, 36, 36]</td>
+      <td>0.999987</td>
+      <td>1.0</td>
+      <td>1.000000</td>
+      <td>0.999948</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>True</td>
     </tr>
     <tr>
       <th>2</th>
       <td>When you solve this math problem only return t...</td>
-      <td>$36</td>
-      <td>[$36, $36, $36, $36, 36]</td>
-      <td>0.870801</td>
+      <td>25 ml</td>
+      <td>[25 ml, 25 ml, 25ml, 25 ml, 25 ml]</td>
+      <td>0.939937</td>
       <td>0.8</td>
-      <td>0.994231</td>
-      <td>0.989287</td>
+      <td>0.999769</td>
+      <td>0.934383</td>
       <td>1.0</td>
-      <td>0.0</td>
+      <td>1.0</td>
       <td>True</td>
     </tr>
     <tr>
       <th>3</th>
       <td>When you solve this math problem only return t...</td>
-      <td>9</td>
-      <td>[$3, $9, 3, $10, 9]</td>
-      <td>0.359167</td>
-      <td>0.2</td>
-      <td>0.452459</td>
-      <td>0.205047</td>
+      <td>221</td>
+      <td>[406, 269, 338, 282, 390]</td>
+      <td>0.007846</td>
+      <td>0.0</td>
+      <td>0.020248</td>
+      <td>0.000000</td>
       <td>1.0</td>
       <td>0.0</td>
       <td>False</td>
@@ -1104,14 +1196,14 @@ Generating LLMJudge scores...
     <tr>
       <th>4</th>
       <td>When you solve this math problem only return t...</td>
-      <td>75%</td>
-      <td>[75%, 75., 75%, 75%, 75%]</td>
-      <td>0.873314</td>
-      <td>0.8</td>
-      <td>0.998718</td>
-      <td>0.990297</td>
+      <td>96</td>
+      <td>[96, 96, 96, 96, 96]</td>
+      <td>1.000000</td>
       <td>1.0</td>
-      <td>0.0</td>
+      <td>1.000000</td>
+      <td>0.999999</td>
+      <td>1.0</td>
+      <td>1.0</td>
       <td>True</td>
     </tr>
   </tbody>
@@ -1119,7 +1211,7 @@ Generating LLMJudge scores...
 </div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&quot;&quot;Baseline LLM accuracy: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">test_result_df</span><span class="p">[</span><span class="s2">&quot;response_correct&quot;</span><span class="p">])</span><span class="si">}</span><span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
@@ -1131,7 +1223,7 @@ Generating LLMJudge scores...
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Baseline LLM accuracy: 0.5714285714285714
+Baseline LLM accuracy: 0.52
 </pre></div></div>
 </div>
 </section>
@@ -1140,13 +1232,10 @@ Baseline LLM accuracy: 0.5714285714285714
 <p>Here, we explore ‘filtered accuracy’ as a metric for evaluating the performance of our confidence scores. Filtered accuracy measures the change in LLM performance when responses with confidence scores below a specified threshold are excluded. By adjusting the confidence score threshold, we can observe how the accuracy of the LLM improves as less certain responses are filtered out.</p>
 <p>We will plot the filtered accuracy across various confidence score thresholds to visualize the relationship between confidence and LLM accuracy. This analysis helps in understanding the trade-off between response coverage (measured by sample size below) and LLM accuracy, providing insights into the reliability of the LLM’s outputs.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_model_accuracies</span><span class="p">(</span>
-    <span class="n">scores</span><span class="o">=</span><span class="n">test_result_df</span><span class="o">.</span><span class="n">ensemble_score</span><span class="p">,</span>
-    <span class="n">correct_indicators</span><span class="o">=</span><span class="n">test_result_df</span><span class="o">.</span><span class="n">response_correct</span><span class="p">,</span>
-<span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_model_accuracies</span><span class="p">(</span><span class="n">scores</span><span class="o">=</span><span class="n">test_result_df</span><span class="o">.</span><span class="n">ensemble_score</span><span class="p">,</span> <span class="n">correct_indicators</span><span class="o">=</span><span class="n">test_result_df</span><span class="o">.</span><span class="n">response_correct</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1162,7 +1251,7 @@ Baseline LLM accuracy: 0.5714285714285714
 <h2>4.2 Precision, Recall, F1-Score of Hallucination Detection<a class="headerlink" href="#4.2-Precision,-Recall,-F1-Score-of-Hallucination-Detection" title="Link to this heading">#</a></h2>
 <p>Lastly, we compute the optimal threshold for binarizing confidence scores, using F1-score as the objective. Using this threshold, we compute precision, recall, and F1-score for black box scorer predictions of whether responses are correct.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># extract optimal threshold</span>
@@ -1170,12 +1259,8 @@ Baseline LLM accuracy: 0.5714285714285714
 
 <span class="c1"># Define score vector and corresponding correct indicators (i.e. ground truth)</span>
 <span class="n">y_scores</span> <span class="o">=</span> <span class="n">test_result_df</span><span class="p">[</span><span class="s2">&quot;ensemble_score&quot;</span><span class="p">]</span>  <span class="c1"># confidence score</span>
-<span class="n">correct_indicators</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">test_result_df</span><span class="o">.</span><span class="n">response_correct</span>
-<span class="p">)</span> <span class="o">*</span> <span class="mi">1</span>  <span class="c1"># Whether responses is actually correct</span>
-<span class="n">y_pred</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="p">(</span><span class="n">s</span> <span class="o">&gt;</span> <span class="n">best_threshold</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">y_scores</span>
-<span class="p">]</span>  <span class="c1"># predicts whether response is correct based on confidence score</span>
+<span class="n">correct_indicators</span> <span class="o">=</span> <span class="p">(</span><span class="n">test_result_df</span><span class="o">.</span><span class="n">response_correct</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1</span>  <span class="c1"># Whether responses is actually correct</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="p">[(</span><span class="n">s</span> <span class="o">&gt;</span> <span class="n">best_threshold</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">y_scores</span><span class="p">]</span>  <span class="c1"># predicts whether response is correct based on confidence score</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Ensemble F1-optimal threshold: </span><span class="si">{</span><span class="n">best_threshold</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1185,19 +1270,22 @@ Baseline LLM accuracy: 0.5714285714285714
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Ensemble F1-optimal threshold: 0.36
+Ensemble F1-optimal threshold: 0.48
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># evaluate precision, recall, and f1-score of semantic entropy predictions of correctness</span>
-<span class="nb">print</span><span class="p">(</span>
-    <span class="sa">f</span><span class="s2">&quot;Ensemble precision: </span><span class="si">{</span><span class="n">precision_score</span><span class="p">(</span><span class="n">y_true</span><span class="o">=</span><span class="n">correct_indicators</span><span class="p">,</span><span class="w"> </span><span class="n">y_pred</span><span class="o">=</span><span class="n">y_pred</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
-<span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Ensemble recall: </span><span class="si">{</span><span class="n">recall_score</span><span class="p">(</span><span class="n">y_true</span><span class="o">=</span><span class="n">correct_indicators</span><span class="p">,</span><span class="w"> </span><span class="n">y_pred</span><span class="o">=</span><span class="n">y_pred</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Ensemble f1-score: </span><span class="si">{</span><span class="n">f1_score</span><span class="p">(</span><span class="n">y_true</span><span class="o">=</span><span class="n">correct_indicators</span><span class="p">,</span><span class="w"> </span><span class="n">y_pred</span><span class="o">=</span><span class="n">y_pred</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># print results</span>
+<span class="n">header</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;Metrics&#39;</span><span class="si">:</span><span class="s2">&lt;25</span><span class="si">}</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;Ensemble&#39;</span><span class="si">:</span><span class="s2">&lt;25</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">header</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="n">header</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">header</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;Precision&#39;</span><span class="si">:</span><span class="s2">&lt;25</span><span class="si">}{</span><span class="nb">round</span><span class="p">(</span><span class="n">precision_score</span><span class="p">(</span><span class="n">y_true</span><span class="o">=</span><span class="n">correct_indicators</span><span class="p">,</span><span class="w"> </span><span class="n">y_pred</span><span class="o">=</span><span class="n">y_pred</span><span class="p">),</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">:</span><span class="s2">&lt;25</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;Recall&#39;</span><span class="si">:</span><span class="s2">&lt;25</span><span class="si">}{</span><span class="nb">round</span><span class="p">(</span><span class="n">recall_score</span><span class="p">(</span><span class="n">y_true</span><span class="o">=</span><span class="n">correct_indicators</span><span class="p">,</span><span class="w"> </span><span class="n">y_pred</span><span class="o">=</span><span class="n">y_pred</span><span class="p">),</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">:</span><span class="s2">&lt;25</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;F1-score&#39;</span><span class="si">:</span><span class="s2">&lt;25</span><span class="si">}{</span><span class="nb">round</span><span class="p">(</span><span class="n">f1_score</span><span class="p">(</span><span class="n">y_true</span><span class="o">=</span><span class="n">correct_indicators</span><span class="p">,</span><span class="w"> </span><span class="n">y_pred</span><span class="o">=</span><span class="n">y_pred</span><span class="p">),</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">:</span><span class="s2">&lt;25</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">header</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;F-1 optimal threshold&#39;</span><span class="si">:</span><span class="s2">&lt;25</span><span class="si">}{</span><span class="n">best_threshold</span><span class="si">:</span><span class="s2">&lt;25</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">header</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1206,9 +1294,15 @@ Ensemble F1-optimal threshold: 0.36
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Ensemble precision: 0.6585365853658537
-Ensemble recall: 0.9642857142857143
-Ensemble f1-score: 0.782608695652174
+==================================================
+Metrics                  Ensemble
+--------------------------------------------------
+Precision                0.69                     )
+Recall                   0.942
+F1-score                 0.797
+--------------------------------------------------
+F-1 optimal threshold    0.48
+==================================================
 </pre></div></div>
 </div>
 <section id="5.-Scorer-Definitions">
@@ -1278,30 +1372,27 @@ consider the discrete version of SE, where the final set of clusters is defined 
 </dl>
 <p>end{equation}` i.e. the average BERTScore F1 across pairings of the original response with all candidate responses. For more on BERTScore, refer to <a class="reference external" href="https://arxiv.org/abs/1904.09675">Zheng et al., 2020</a>.</p>
 </section>
-<section id="BLEURT-(bleurt)">
-<h2>BLEURT (<code class="docutils literal notranslate"><span class="pre">bleurt</span></code>)<a class="headerlink" href="#BLEURT-(bleurt)" title="Link to this heading">#</a></h2>
-<p>In contrast to the aforementioned scorers, BLEURT is specifically pre-trained and fine-tuned to learn human judgments of text similarity. Our BLEURT confidence score is the average BLEURT value across pairings of the original response with all candidate responses:</p>
-<dl class="simple">
-<dt>:nbsphinx-math:<a href="#id19"><span class="problematic" id="id20">`</span></a>begin{equation}</dt><dd><p>BLEURTConfidence(y_i; tilde{mathbf{y}}_i) = frac{1}{m} sum_{j=1}^m BLEURT(y_i, tilde{y}_{ij}).</p>
-</dd>
-</dl>
-<p>end{equation}`</p>
-<p>For more on this scorer, refer to <a class="reference external" href="https://arxiv.org/abs/2004.04696">Sellam et al., 2020</a>.</p>
-</section>
 <section id="Normalized-Cosine-Similarity-(cosine_sim)">
 <h2>Normalized Cosine Similarity (<code class="docutils literal notranslate"><span class="pre">cosine_sim</span></code>)<a class="headerlink" href="#Normalized-Cosine-Similarity-(cosine_sim)" title="Link to this heading">#</a></h2>
 <p>This scorer leverages a sentence transformer to map LLM outputs to an embedding space and measure similarity using those sentence embeddings. Let <span class="math notranslate nohighlight">\(V: \mathcal{Y} \xrightarrow{} \mathbb{R}^d\)</span> denote the sentence transformer, where <span class="math notranslate nohighlight">\(d\)</span> is the dimension of the embedding space. The average cosine similarity across pairings of the original response with all candidate responses is given as follows:</p>
 <dl class="simple">
-<dt>:nbsphinx-math:<a href="#id21"><span class="problematic" id="id22">`</span></a>begin{equation}</dt><dd><p>CS(y_i; tilde{mathbf{y}}_i) = frac{1}{m} sum_{i=1}^m   frac{mathbf{V}(y_i) cdot mathbf{V}(tilde{y}_{ij}) }{ lVert mathbf{V}(y_i) rVert lVert mathbf{V}(tilde{y}_{ij}) rVert}.</p>
+<dt>:nbsphinx-math:<a href="#id19"><span class="problematic" id="id20">`</span></a>begin{equation}</dt><dd><p>CS(y_i; tilde{mathbf{y}}_i) = frac{1}{m} sum_{i=1}^m   frac{mathbf{V}(y_i) cdot mathbf{V}(tilde{y}_{ij}) }{ lVert mathbf{V}(y_i) rVert lVert mathbf{V}(tilde{y}_{ij}) rVert}.</p>
 </dd>
 </dl>
 <p>end{equation}`</p>
 <p>To ensure a standardized support of <span class="math notranslate nohighlight">\([0, 1]\)</span>, we normalize cosine similarity to obtain confidence scores as follows:</p>
 <dl class="simple">
-<dt>:nbsphinx-math:<a href="#id23"><span class="problematic" id="id24">`</span></a>begin{equation}</dt><dd><p>NCS(y_i; tilde{mathbf{y}}_i) = frac{CS(y_i; tilde{mathbf{y}}_i) + 1}{2}.</p>
+<dt>:nbsphinx-math:<a href="#id21"><span class="problematic" id="id22">`</span></a>begin{equation}</dt><dd><p>NCS(y_i; tilde{mathbf{y}}_i) = frac{CS(y_i; tilde{mathbf{y}}_i) + 1}{2}.</p>
 </dd>
 </dl>
 <p>end{equation}`</p>
+<p>In contrast to the aforementioned scorers, BLEURT is specifically pre-trained and fine-tuned to learn human judgments of text similarity. Our BLEURT confidence score is the average BLEURT value across pairings of the original response with all candidate responses:</p>
+<dl class="simple">
+<dt>:nbsphinx-math:<a href="#id23"><span class="problematic" id="id24">`</span></a>begin{equation}</dt><dd><p>BLEURTConfidence(y_i; tilde{mathbf{y}}_i) = frac{1}{m} sum_{j=1}^m BLEURT(y_i, tilde{y}_{ij}).</p>
+</dd>
+</dl>
+<p>end{equation}`</p>
+<p>For more on this scorer, refer to <a class="reference external" href="https://arxiv.org/abs/2004.04696">Sellam et al., 2020</a>.</p>
 <p>White-box UQ scorers leverage token probabilities of the LLM’s generated response to quantify uncertainty. All scorers have outputs ranging from 0 to 1, with higher values indicating higher confidence. We define two white-box UQ scorers below.</p>
 </section>
 <section id="Length-Normalized-Token-Probability-(normalized_probability)">
@@ -1412,7 +1503,6 @@ end{equation}`</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Non-Contradiction-Probability-(noncontradiction)">Non-Contradiction Probability (<code class="docutils literal notranslate"><span class="pre">noncontradiction</span></code>)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Normalized-Semantic-Negentropy-(semantic_negentropy)">Normalized Semantic Negentropy (<code class="docutils literal notranslate"><span class="pre">semantic_negentropy</span></code>)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#BERTScore-(bert_score)">BERTScore (<code class="docutils literal notranslate"><span class="pre">bert_score</span></code>)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#BLEURT-(bleurt)">BLEURT (<code class="docutils literal notranslate"><span class="pre">bleurt</span></code>)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Normalized-Cosine-Similarity-(cosine_sim)">Normalized Cosine Similarity (<code class="docutils literal notranslate"><span class="pre">cosine_sim</span></code>)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Length-Normalized-Token-Probability-(normalized_probability)">Length-Normalized Token Probability (<code class="docutils literal notranslate"><span class="pre">normalized_probability</span></code>)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Minimum-Token-Probability-(min_probability)">Minimum Token Probability (<code class="docutils literal notranslate"><span class="pre">min_probability</span></code>)</a></li>
@@ -1463,7 +1553,7 @@ end{equation}`</p>
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
     <br/>
   </p>
 </div>

@@ -1,0 +1,32 @@
+uqlm.quantifiers.baseclass.uncertainty
+======================================
+
+.. automodule:: uqlm.quantifiers.baseclass.uncertainty
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+      :toctree:
+      :template: class.rst
+   
+      UQResult
+      UncertaintyQuantifier
+   
+   
+
+   
+   
+   
+
+
+

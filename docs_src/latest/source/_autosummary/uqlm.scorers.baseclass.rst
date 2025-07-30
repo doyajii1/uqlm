@@ -28,5 +28,5 @@ uqlm.scorers.baseclass
    :template: module.rst
    :recursive:
 
-   uncertainty
+   uqlm.scorers.baseclass.uncertainty
 

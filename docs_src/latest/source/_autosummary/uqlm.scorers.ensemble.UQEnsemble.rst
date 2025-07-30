@@ -20,6 +20,9 @@ uqlm.scorers.ensemble.UQEnsemble
       ~UQEnsemble.generate_and_score
       ~UQEnsemble.generate_candidate_responses
       ~UQEnsemble.generate_original_responses
+      ~UQEnsemble.load_config
+      ~UQEnsemble.print_ensemble_weights
+      ~UQEnsemble.save_config
       ~UQEnsemble.score
       ~UQEnsemble.tune
       ~UQEnsemble.tune_from_graded

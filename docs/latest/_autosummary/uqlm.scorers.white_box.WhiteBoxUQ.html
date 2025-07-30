@@ -10,7 +10,7 @@
     <link rel="icon" sizes="16x16" href="../_static/images/favicon/favicon-16x16.png" type="image/png">
     <link rel="icon" sizes="32x32" href="../_static/images/favicon/favicon-32x32.png" type="image/png">
     <link rel="apple-touch-icon" sizes="180x180" href="../_static/images/favicon/apple-touch-icon.png" type="image/png">
-    <title>uqlm.scorers.white_box.WhiteBoxUQ &#8212; uqlm 0.1 documentation</title>
+    <title>uqlm.scorers.white_box.WhiteBoxUQ &#8212; uqlm 0.2 documentation</title>
   
   
   
@@ -41,15 +41,15 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=2709fde1"></script>
-    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/documentation_options.js?v=10f1778b"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_autosummary/uqlm.scorers.white_box.WhiteBoxUQ';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://github.com/pages/cvs-health/uqlm/versions.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.2';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
@@ -126,8 +126,8 @@
       
     
     
-    <img src="../_static/horizontal_logo.png" class="logo__image only-light" alt="uqlm 0.1 documentation - Home"/>
-    <img src="../_static/horizontal_logo_no_bg.png" class="logo__image only-dark pst-js-only" alt="uqlm 0.1 documentation - Home"/>
+    <img src="../_static/horizontal_logo.png" class="logo__image only-light" alt="uqlm 0.2 documentation - Home"/>
+    <img src="../_static/horizontal_logo_no_bg.png" class="logo__image only-dark pst-js-only" alt="uqlm 0.2 documentation - Home"/>
   
   
 </a></div>
@@ -166,6 +166,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../contribute.html">
     Contributor Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../faqs.html">
+    FAQs
   </a>
 </li>
 
@@ -305,6 +312,13 @@
   </a>
 </li>
 
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../faqs.html">
+    FAQs
+  </a>
+</li>
+
   </ul>
 </nav></div>
           
@@ -438,6 +452,18 @@
 <li class="toctree-l3"><a class="reference internal" href="uqlm.utils.dataloader.load_example_dataset.html">uqlm.utils.dataloader.load_example_dataset</a></li>
 </ul>
 </details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="uqlm.utils.display.html">uqlm.utils.display</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="uqlm.utils.display.ConditionalBarColumn.html">uqlm.utils.display.ConditionalBarColumn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="uqlm.utils.display.ConditionalSpinnerColumn.html">uqlm.utils.display.ConditionalSpinnerColumn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="uqlm.utils.display.ConditionalTextColumn.html">uqlm.utils.display.ConditionalTextColumn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="uqlm.utils.display.ConditionalTimeElapsedColumn.html">uqlm.utils.display.ConditionalTimeElapsedColumn</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="uqlm.utils.llm_config.html">uqlm.utils.llm_config</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="uqlm.utils.llm_config.load_llm_config.html">uqlm.utils.llm_config.load_llm_config</a></li>
+<li class="toctree-l3"><a class="reference internal" href="uqlm.utils.llm_config.save_llm_config.html">uqlm.utils.llm_config.save_llm_config</a></li>
+</ul>
+</details></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="uqlm.utils.plots.html">uqlm.utils.plots</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="uqlm.utils.plots.plot_model_accuracies.html">uqlm.utils.plots.plot_model_accuracies</a></li>
 <li class="toctree-l3"><a class="reference internal" href="uqlm.utils.plots.scale.html">uqlm.utils.plots.scale</a></li>
@@ -558,13 +584,13 @@ temperature and other relevant parameters to the constructor of their <cite>llm<
 <tr class="row-even"><td><p><a class="reference internal" href="#uqlm.scorers.white_box.WhiteBoxUQ.avg_logprob" title="uqlm.scorers.white_box.WhiteBoxUQ.avg_logprob"><code class="xref py py-obj docutils literal notranslate"><span class="pre">avg_logprob</span></code></a>(logprobs)</p></td>
 <td><p>Compute average logprob</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#uqlm.scorers.white_box.WhiteBoxUQ.generate_and_score" title="uqlm.scorers.white_box.WhiteBoxUQ.generate_and_score"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_and_score</span></code></a>(prompts)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#uqlm.scorers.white_box.WhiteBoxUQ.generate_and_score" title="uqlm.scorers.white_box.WhiteBoxUQ.generate_and_score"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_and_score</span></code></a>(prompts[, show_progress_bars])</p></td>
 <td><p>Generate responses and compute white-box confidence scores based on extracted token probabilities.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#uqlm.scorers.white_box.WhiteBoxUQ.generate_candidate_responses" title="uqlm.scorers.white_box.WhiteBoxUQ.generate_candidate_responses"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_candidate_responses</span></code></a>(prompts)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#uqlm.scorers.white_box.WhiteBoxUQ.generate_candidate_responses" title="uqlm.scorers.white_box.WhiteBoxUQ.generate_candidate_responses"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_candidate_responses</span></code></a>(prompts[, ...])</p></td>
 <td><p>This method generates multiple responses for uncertainty estimation.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#uqlm.scorers.white_box.WhiteBoxUQ.generate_original_responses" title="uqlm.scorers.white_box.WhiteBoxUQ.generate_original_responses"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_original_responses</span></code></a>(prompts)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#uqlm.scorers.white_box.WhiteBoxUQ.generate_original_responses" title="uqlm.scorers.white_box.WhiteBoxUQ.generate_original_responses"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_original_responses</span></code></a>(prompts[, ...])</p></td>
 <td><p>This method generates original responses for uncertainty estimation.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#uqlm.scorers.white_box.WhiteBoxUQ.get_logprobs" title="uqlm.scorers.white_box.WhiteBoxUQ.get_logprobs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_logprobs</span></code></a>(logprobs)</p></td>
@@ -589,14 +615,17 @@ temperature and other relevant parameters to the constructor of their <cite>llm<
 
 <dl class="py method">
 <dt class="sig sig-object py" id="uqlm.scorers.white_box.WhiteBoxUQ.generate_and_score">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">generate_and_score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prompts</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqlm.scorers.white_box.WhiteBoxUQ.generate_and_score" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">generate_and_score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prompts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_progress_bars</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqlm.scorers.white_box.WhiteBoxUQ.generate_and_score" title="Link to this definition">#</a></dt>
 <dd><p>Generate responses and compute white-box confidence scores based on extracted token probabilities.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="uqlm.scorers.baseclass.uncertainty.UQResult.html#uqlm.scorers.baseclass.uncertainty.UQResult" title="uqlm.scorers.baseclass.uncertainty.UQResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">UQResult</span></code></a></span></p>
 </dd>
 <dt class="field-even">Parameters<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>prompts</strong> (<em>list</em><em> of </em><em>str</em>) – A list of input prompts for the model.</p>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>prompts</strong> (<em>list</em><em> of </em><em>str</em>) – A list of input prompts for the model.</p></li>
+<li><p><strong>show_progress_bars</strong> (<em>bool</em><em>, </em><em>default=True</em>) – If True, displays a progress bar while generating and scoring responses</p></li>
+</ul>
 </dd>
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>UQResult containing prompts, responses, logprobs, and white-box UQ scores</p>
@@ -609,7 +638,7 @@ temperature and other relevant parameters to the constructor of their <cite>llm<
 
 <dl class="py method">
 <dt class="sig sig-object py" id="uqlm.scorers.white_box.WhiteBoxUQ.generate_candidate_responses">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">generate_candidate_responses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prompts</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqlm.scorers.white_box.WhiteBoxUQ.generate_candidate_responses" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">generate_candidate_responses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prompts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">progress_bar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqlm.scorers.white_box.WhiteBoxUQ.generate_candidate_responses" title="Link to this definition">#</a></dt>
 <dd><p>This method generates multiple responses for uncertainty
 estimation. If specified in the child class, all responses are postprocessed
 using the callable function defined by the user.</p>
@@ -622,7 +651,7 @@ using the callable function defined by the user.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="uqlm.scorers.white_box.WhiteBoxUQ.generate_original_responses">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">generate_original_responses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prompts</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqlm.scorers.white_box.WhiteBoxUQ.generate_original_responses" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">generate_original_responses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prompts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">progress_bar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqlm.scorers.white_box.WhiteBoxUQ.generate_original_responses" title="Link to this definition">#</a></dt>
 <dd><p>This method generates original responses for uncertainty
 estimation. If specified in the child class, all responses are postprocessed
 using the callable function defined by the user.</p>
@@ -783,7 +812,7 @@ using the callable function defined by the user.</p>
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
     <br/>
   </p>
 </div>

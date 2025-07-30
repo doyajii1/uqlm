@@ -10,7 +10,7 @@
     <link rel="icon" sizes="16x16" href="../_static/images/favicon/favicon-16x16.png" type="image/png">
     <link rel="icon" sizes="32x32" href="../_static/images/favicon/favicon-32x32.png" type="image/png">
     <link rel="apple-touch-icon" sizes="180x180" href="../_static/images/favicon/apple-touch-icon.png" type="image/png">
-    <title>uqlm.scorers.panel.LLMPanel &#8212; uqlm 0.1 documentation</title>
+    <title>uqlm.scorers.panel.LLMPanel &#8212; uqlm 0.2 documentation</title>
   
   
   
@@ -41,15 +41,15 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=2709fde1"></script>
-    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/documentation_options.js?v=10f1778b"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_autosummary/uqlm.scorers.panel.LLMPanel';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://github.com/pages/cvs-health/uqlm/versions.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.2';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
@@ -126,8 +126,8 @@
       
     
     
-    <img src="../_static/horizontal_logo.png" class="logo__image only-light" alt="uqlm 0.1 documentation - Home"/>
-    <img src="../_static/horizontal_logo_no_bg.png" class="logo__image only-dark pst-js-only" alt="uqlm 0.1 documentation - Home"/>
+    <img src="../_static/horizontal_logo.png" class="logo__image only-light" alt="uqlm 0.2 documentation - Home"/>
+    <img src="../_static/horizontal_logo_no_bg.png" class="logo__image only-dark pst-js-only" alt="uqlm 0.2 documentation - Home"/>
   
   
 </a></div>
@@ -166,6 +166,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../contribute.html">
     Contributor Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../faqs.html">
+    FAQs
   </a>
 </li>
 
@@ -305,6 +312,13 @@
   </a>
 </li>
 
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../faqs.html">
+    FAQs
+  </a>
+</li>
+
   </ul>
 </nav></div>
           
@@ -438,6 +452,18 @@
 <li class="toctree-l3"><a class="reference internal" href="uqlm.utils.dataloader.load_example_dataset.html">uqlm.utils.dataloader.load_example_dataset</a></li>
 </ul>
 </details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="uqlm.utils.display.html">uqlm.utils.display</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="uqlm.utils.display.ConditionalBarColumn.html">uqlm.utils.display.ConditionalBarColumn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="uqlm.utils.display.ConditionalSpinnerColumn.html">uqlm.utils.display.ConditionalSpinnerColumn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="uqlm.utils.display.ConditionalTextColumn.html">uqlm.utils.display.ConditionalTextColumn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="uqlm.utils.display.ConditionalTimeElapsedColumn.html">uqlm.utils.display.ConditionalTimeElapsedColumn</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="uqlm.utils.llm_config.html">uqlm.utils.llm_config</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="uqlm.utils.llm_config.load_llm_config.html">uqlm.utils.llm_config.load_llm_config</a></li>
+<li class="toctree-l3"><a class="reference internal" href="uqlm.utils.llm_config.save_llm_config.html">uqlm.utils.llm_config.save_llm_config</a></li>
+</ul>
+</details></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="uqlm.utils.plots.html">uqlm.utils.plots</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="uqlm.utils.plots.plot_model_accuracies.html">uqlm.utils.plots.plot_model_accuracies</a></li>
 <li class="toctree-l3"><a class="reference internal" href="uqlm.utils.plots.scale.html">uqlm.utils.plots.scale</a></li>
@@ -527,11 +553,11 @@
 <h1>uqlm.scorers.panel.LLMPanel<a class="headerlink" href="#uqlm-scorers-panel-llmpanel" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="uqlm.scorers.panel.LLMPanel">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">uqlm.scorers.panel.</span></span><span class="sig-name descname"><span class="pre">LLMPanel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">judges</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">llm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">system_prompt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'You</span> <span class="pre">are</span> <span class="pre">a</span> <span class="pre">helpful</span> <span class="pre">assistant.'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_calls_per_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqlm.scorers.panel.LLMPanel" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">uqlm.scorers.panel.</span></span><span class="sig-name descname"><span class="pre">LLMPanel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">judges</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">llm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">system_prompt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'You</span> <span class="pre">are</span> <span class="pre">a</span> <span class="pre">helpful</span> <span class="pre">assistant.'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_calls_per_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scoring_templates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqlm.scorers.panel.LLMPanel" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="uqlm.scorers.baseclass.uncertainty.UncertaintyQuantifier.html#uqlm.scorers.baseclass.uncertainty.UncertaintyQuantifier" title="uqlm.scorers.baseclass.uncertainty.UncertaintyQuantifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">UncertaintyQuantifier</span></code></a></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="uqlm.scorers.panel.LLMPanel.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">judges</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">llm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">system_prompt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'You</span> <span class="pre">are</span> <span class="pre">a</span> <span class="pre">helpful</span> <span class="pre">assistant.'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_calls_per_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqlm.scorers.panel.LLMPanel.__init__" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">judges</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">llm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">system_prompt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'You</span> <span class="pre">are</span> <span class="pre">a</span> <span class="pre">helpful</span> <span class="pre">assistant.'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_calls_per_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scoring_templates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqlm.scorers.panel.LLMPanel.__init__" title="Link to this definition">#</a></dt>
 <dd><p>Class for aggregating multiple instances of LLMJudge using min, max, or majority voting</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -542,6 +568,11 @@ temperature and other relevant parameters to the constructor of their <cite>llm<
 <li><p><strong>max_calls_per_min</strong> (<em>int</em><em>, </em><em>default=None</em>) – Used to control rate limiting. Will be used for original llm and any judges constructed
 from instances of BaseChatModel in judges</p></li>
 <li><p><strong>system_prompt</strong> (<em>str</em><em> or </em><em>None</em><em>, </em><em>default=&quot;You are a helpful assistant.&quot;</em>) – Optional argument for user to provide custom system prompt</p></li>
+<li><p><strong>scoring_templates</strong> (<em>List</em><em>[</em><em>str</em><em>]</em><em>, </em><em>default=None</em>) – Specifies which off-the-shelf template to use for each judge. Four off-the-shelf templates offered:
+incorrect/uncertain/correct (0/0.5/1), incorrect/correct (0/1), continuous score (0 to 1), and likert scale score ( 1-5 scale, normalized to 0/0.25/0.5/0.75/1).
+These templates are respectively specified as ‘true_false_uncertain’, ‘true_false’, ‘continuous’, and ‘likert’
+If specified, must be of equal length to <cite>judges</cite> list. Defaults to ‘true_false_uncertain’ template
+used by Chen and Mueller (2023) <a class="footnote-reference brackets" href="#footcite-chen2023quantifyinguncertaintyanswerslanguage" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> for each judge.</p></li>
 </ul>
 </dd>
 </dl>
@@ -553,16 +584,16 @@ from instances of BaseChatModel in judges</p></li>
 <tr class="row-odd"><td><p><a class="reference internal" href="#uqlm.scorers.panel.LLMPanel.__init__" title="uqlm.scorers.panel.LLMPanel.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(judges[, llm, system_prompt, ...])</p></td>
 <td><p>Class for aggregating multiple instances of LLMJudge using min, max, or majority voting</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#uqlm.scorers.panel.LLMPanel.generate_and_score" title="uqlm.scorers.panel.LLMPanel.generate_and_score"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_and_score</span></code></a>(prompts)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#uqlm.scorers.panel.LLMPanel.generate_and_score" title="uqlm.scorers.panel.LLMPanel.generate_and_score"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_and_score</span></code></a>(prompts[, show_progress_bars])</p></td>
 <td><p>Generate LLM responses to provided prompts and use panel of judges to score responses for correctness.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#uqlm.scorers.panel.LLMPanel.generate_candidate_responses" title="uqlm.scorers.panel.LLMPanel.generate_candidate_responses"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_candidate_responses</span></code></a>(prompts)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#uqlm.scorers.panel.LLMPanel.generate_candidate_responses" title="uqlm.scorers.panel.LLMPanel.generate_candidate_responses"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_candidate_responses</span></code></a>(prompts[, ...])</p></td>
 <td><p>This method generates multiple responses for uncertainty estimation.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#uqlm.scorers.panel.LLMPanel.generate_original_responses" title="uqlm.scorers.panel.LLMPanel.generate_original_responses"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_original_responses</span></code></a>(prompts)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#uqlm.scorers.panel.LLMPanel.generate_original_responses" title="uqlm.scorers.panel.LLMPanel.generate_original_responses"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_original_responses</span></code></a>(prompts[, ...])</p></td>
 <td><p>This method generates original responses for uncertainty estimation.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#uqlm.scorers.panel.LLMPanel.score" title="uqlm.scorers.panel.LLMPanel.score"><code class="xref py py-obj docutils literal notranslate"><span class="pre">score</span></code></a>(prompts[, responses])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#uqlm.scorers.panel.LLMPanel.score" title="uqlm.scorers.panel.LLMPanel.score"><code class="xref py py-obj docutils literal notranslate"><span class="pre">score</span></code></a>(prompts[, responses, ...])</p></td>
 <td><p>Use panel to of judges to score provided responses for correctness.</p></td>
 </tr>
 </tbody>
@@ -570,14 +601,17 @@ from instances of BaseChatModel in judges</p></li>
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="uqlm.scorers.panel.LLMPanel.generate_and_score">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">generate_and_score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prompts</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqlm.scorers.panel.LLMPanel.generate_and_score" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">generate_and_score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prompts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_progress_bars</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqlm.scorers.panel.LLMPanel.generate_and_score" title="Link to this definition">#</a></dt>
 <dd><p>Generate LLM responses to provided prompts and use panel of judges to score responses for correctness.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="uqlm.scorers.baseclass.uncertainty.UQResult.html#uqlm.scorers.baseclass.uncertainty.UQResult" title="uqlm.scorers.baseclass.uncertainty.UQResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">UQResult</span></code></a></span></p>
 </dd>
 <dt class="field-even">Parameters<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>prompts</strong> (<em>list</em><em> of </em><em>str</em>) – A list of input prompts for the model.</p>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>prompts</strong> (<em>list</em><em> of </em><em>str</em>) – A list of input prompts for the model.</p></li>
+<li><p><strong>show_progress_bars</strong> (<em>bool</em><em>, </em><em>default=True</em>) – If True, displays a progress bar while generating and scoring responses</p></li>
+</ul>
 </dd>
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>UQResult containing prompts, responses, Q/A concatenations, judge responses, and judge scores</p>
@@ -590,7 +624,7 @@ from instances of BaseChatModel in judges</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="uqlm.scorers.panel.LLMPanel.generate_candidate_responses">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">generate_candidate_responses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prompts</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqlm.scorers.panel.LLMPanel.generate_candidate_responses" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">generate_candidate_responses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prompts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">progress_bar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqlm.scorers.panel.LLMPanel.generate_candidate_responses" title="Link to this definition">#</a></dt>
 <dd><p>This method generates multiple responses for uncertainty
 estimation. If specified in the child class, all responses are postprocessed
 using the callable function defined by the user.</p>
@@ -603,7 +637,7 @@ using the callable function defined by the user.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="uqlm.scorers.panel.LLMPanel.generate_original_responses">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">generate_original_responses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prompts</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqlm.scorers.panel.LLMPanel.generate_original_responses" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">generate_original_responses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prompts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">progress_bar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqlm.scorers.panel.LLMPanel.generate_original_responses" title="Link to this definition">#</a></dt>
 <dd><p>This method generates original responses for uncertainty
 estimation. If specified in the child class, all responses are postprocessed
 using the callable function defined by the user.</p>
@@ -616,7 +650,7 @@ using the callable function defined by the user.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="uqlm.scorers.panel.LLMPanel.score">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prompts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">responses</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqlm.scorers.panel.LLMPanel.score" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prompts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">responses</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_progress_bars</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_display_header</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqlm.scorers.panel.LLMPanel.score" title="Link to this definition">#</a></dt>
 <dd><p>Use panel to of judges to score provided responses for correctness. Use if responses are already generated. Otherwise,
 use generate_and_score.</p>
 <dl class="field-list simple">
@@ -627,6 +661,7 @@ use generate_and_score.</p>
 <dd class="field-even"><ul class="simple">
 <li><p><strong>prompts</strong> (<em>list</em><em> of </em><em>str</em>) – A list of input prompts for the model.</p></li>
 <li><p><strong>responses</strong> (<em>list</em><em> of </em><em>str</em><em>, </em><em>default = None</em>) – A list of LLM responses for the corresponding to the provided prompts.</p></li>
+<li><p><strong>show_progress_bars</strong> (<em>bool</em><em>, </em><em>default=True</em>) – If True, displays a progress bar while scoring responses</p></li>
 </ul>
 </dd>
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -641,6 +676,14 @@ use generate_and_score.</p>
 </dd></dl>
 
 <p class="rubric">References</p>
+<div class="docutils container" id="id2">
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="footcite-chen2023quantifyinguncertaintyanswerslanguage" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Jiuhai Chen and Jonas Mueller. Quantifying uncertainty in answers from any language model and enhancing their trustworthiness. 2023. URL: <a class="reference external" href="https://arxiv.org/abs/2308.16175">https://arxiv.org/abs/2308.16175</a>, <a class="reference external" href="https://arxiv.org/abs/2308.16175">arXiv:2308.16175</a>.</p>
+</aside>
+</aside>
+</div>
 </section>
 
 
@@ -744,7 +787,7 @@ use generate_and_score.</p>
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
     <br/>
   </p>
 </div>

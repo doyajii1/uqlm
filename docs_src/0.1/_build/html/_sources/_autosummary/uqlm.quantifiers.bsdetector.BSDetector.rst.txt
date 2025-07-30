@@ -1,0 +1,31 @@
+uqlm.quantifiers.bsdetector.BSDetector
+======================================
+
+.. currentmodule:: uqlm.quantifiers.bsdetector
+
+.. autoclass:: BSDetector
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~BSDetector.__init__
+      ~BSDetector.evaluate
+      ~BSDetector.generate_candidate_responses
+      ~BSDetector.generate_original_responses
+      ~BSDetector.observed_consistency
+      ~BSDetector.self_reflection_certainty
+      ~BSDetector.tune_params
+   
+   
+
+   
+   
+   

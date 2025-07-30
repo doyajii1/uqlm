@@ -28,9 +28,9 @@
    :template: module.rst
    :recursive:
 
-   bert
-   bleurt
-   cosine
-   match
-   nli
+   uqlm.black_box.bert
+   uqlm.black_box.bleurt
+   uqlm.black_box.cosine
+   uqlm.black_box.match
+   uqlm.black_box.nli
 

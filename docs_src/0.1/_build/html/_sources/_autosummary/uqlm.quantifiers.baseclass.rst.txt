@@ -1,0 +1,32 @@
+uqlm.quantifiers.baseclass
+==========================
+
+.. automodule:: uqlm.quantifiers.baseclass
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+
+
+.. rubric:: Modules
+
+.. autosummary::
+   :toctree:
+   :template: module.rst
+   :recursive:
+
+   uncertainty
+

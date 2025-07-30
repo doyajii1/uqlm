@@ -10,7 +10,7 @@
     <link rel="icon" sizes="16x16" href="../../_static/images/favicon/favicon-16x16.png" type="image/png">
     <link rel="icon" sizes="32x32" href="../../_static/images/favicon/favicon-32x32.png" type="image/png">
     <link rel="apple-touch-icon" sizes="180x180" href="../../_static/images/favicon/apple-touch-icon.png" type="image/png">
-    <title>Uncertainty Quantification Ensemble Demo (Advanced) &#8212; uqlm 0.1 documentation</title>
+    <title>Uncertainty Quantification Ensemble Demo (Advanced) &#8212; uqlm 0.2 documentation</title>
   
   
   
@@ -42,8 +42,8 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=2709fde1"></script>
-    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/documentation_options.js?v=10f1778b"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
@@ -52,7 +52,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://github.com/pages/cvs-health/uqlm/versions.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.2';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
@@ -127,8 +127,8 @@
       
     
     
-    <img src="../../_static/horizontal_logo.png" class="logo__image only-light" alt="uqlm 0.1 documentation - Home"/>
-    <img src="../../_static/horizontal_logo_no_bg.png" class="logo__image only-dark pst-js-only" alt="uqlm 0.1 documentation - Home"/>
+    <img src="../../_static/horizontal_logo.png" class="logo__image only-light" alt="uqlm 0.2 documentation - Home"/>
+    <img src="../../_static/horizontal_logo_no_bg.png" class="logo__image only-dark pst-js-only" alt="uqlm 0.2 documentation - Home"/>
   
   
 </a></div>
@@ -167,6 +167,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../contribute.html">
     Contributor Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../faqs.html">
+    FAQs
   </a>
 </li>
 
@@ -305,6 +312,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../contribute.html">
     Contributor Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../faqs.html">
+    FAQs
   </a>
 </li>
 
@@ -1180,7 +1194,7 @@ consider the discrete version of SE, where the final set of clusters is defined 
 </section>
 <section id="BLEURT-(bleurt_score)">
 <h2>BLEURT (<code class="docutils literal notranslate"><span class="pre">bleurt_score</span></code>)<a class="headerlink" href="#BLEURT-(bleurt_score)" title="Link to this heading">#</a></h2>
-<p>In contrast to the aforementioned scorers, BLEURT is specifically pre-trained and fine-tuned to learn human judgments of text similarity.footnote{We use the recommended BLEURT checkpoint of <span class="math">\texttt{BLEURT-20}</span>. Our BLEURT confidence score is the average BLEURT value across pairings of the original response with all candidate responses:</p>
+<p>In contrast to the aforementioned scorers, BLEURT is specifically pre-trained and fine-tuned to learn human judgments of text similarity.\footnote{We use the recommended BLEURT checkpoint of <span class="math">\texttt{BLEURT-20}</span>. Our BLEURT confidence score is the average BLEURT value across pairings of the original response with all candidate responses:</p>
 <dl class="simple">
 <dt>:nbsphinx-math:<a href="#id19"><span class="problematic" id="id20">`</span></a>begin{equation}</dt><dd><p>BLEURTConfidence(y_i; tilde{mathbf{y}}_i) = frac{1}{m} sum_{j=1}^m BLEURT(y_i, tilde{y}_{ij}).</p>
 </dd>
@@ -1340,7 +1354,7 @@ end{equation}`</p>
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
     <br/>
   </p>
 </div>

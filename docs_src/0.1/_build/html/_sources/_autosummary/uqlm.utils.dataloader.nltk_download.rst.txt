@@ -1,0 +1,6 @@
+uqlm.utils.dataloader.nltk\_download
+====================================
+
+.. currentmodule:: uqlm.utils.dataloader
+
+.. autofunction:: nltk_download

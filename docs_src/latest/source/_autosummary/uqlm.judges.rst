@@ -28,5 +28,5 @@
    :template: module.rst
    :recursive:
 
-   judge
+   uqlm.judges.judge
 

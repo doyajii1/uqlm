@@ -1,0 +1,29 @@
+uqlm.quantifiers.ensemble.UQEnsemble
+====================================
+
+.. currentmodule:: uqlm.quantifiers.ensemble
+
+.. autoclass:: UQEnsemble
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~UQEnsemble.__init__
+      ~UQEnsemble.evaluate
+      ~UQEnsemble.generate_candidate_responses
+      ~UQEnsemble.generate_original_responses
+      ~UQEnsemble.tune_params
+   
+   
+
+   
+   
+   

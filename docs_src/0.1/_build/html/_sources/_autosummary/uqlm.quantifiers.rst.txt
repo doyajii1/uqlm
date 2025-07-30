@@ -1,0 +1,38 @@
+﻿uqlm.quantifiers
+================
+
+.. automodule:: uqlm.quantifiers
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+
+
+.. rubric:: Modules
+
+.. autosummary::
+   :toctree:
+   :template: module.rst
+   :recursive:
+
+   baseclass
+   black_box
+   bsdetector
+   ensemble
+   entropy
+   panel
+   white_box
+

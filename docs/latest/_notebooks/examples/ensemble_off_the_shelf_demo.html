@@ -10,7 +10,7 @@
     <link rel="icon" sizes="16x16" href="../../_static/images/favicon/favicon-16x16.png" type="image/png">
     <link rel="icon" sizes="32x32" href="../../_static/images/favicon/favicon-32x32.png" type="image/png">
     <link rel="apple-touch-icon" sizes="180x180" href="../../_static/images/favicon/apple-touch-icon.png" type="image/png">
-    <title>🎯 BS Detector: Off-the-Shelf Ensemble for LLM Uncertainty &#8212; uqlm 0.1 documentation</title>
+    <title>🎯 BS Detector: Off-the-Shelf Ensemble for LLM Uncertainty &#8212; uqlm 0.2 documentation</title>
   
   
   
@@ -42,8 +42,8 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=2709fde1"></script>
-    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/documentation_options.js?v=10f1778b"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
@@ -52,7 +52,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://github.com/pages/cvs-health/uqlm/versions.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.2';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
@@ -129,8 +129,8 @@
       
     
     
-    <img src="../../_static/horizontal_logo.png" class="logo__image only-light" alt="uqlm 0.1 documentation - Home"/>
-    <img src="../../_static/horizontal_logo_no_bg.png" class="logo__image only-dark pst-js-only" alt="uqlm 0.1 documentation - Home"/>
+    <img src="../../_static/horizontal_logo.png" class="logo__image only-light" alt="uqlm 0.2 documentation - Home"/>
+    <img src="../../_static/horizontal_logo_no_bg.png" class="logo__image only-dark pst-js-only" alt="uqlm 0.2 documentation - Home"/>
   
   
 </a></div>
@@ -169,6 +169,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../contribute.html">
     Contributor Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../faqs.html">
+    FAQs
   </a>
 </li>
 
@@ -305,6 +312,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../contribute.html">
     Contributor Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../faqs.html">
+    FAQs
   </a>
 </li>
 
@@ -465,7 +479,7 @@
 </h3><ul style="margin-bottom: 0"><li><p>Higher Cost: Requires multiple generations per prompt</p>
 </li><li><p>Slower: Multiple generations and comparison calculations increase latency</p>
 </li></ul></div></div><div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -477,14 +491,14 @@
 </div>
 </div>
 <p>## 1. Set up LLM and Prompts</p>
-<p>In this demo, we will illustrate this approach using a set of math questions from the <a class="reference external" href="https://arxiv.org/abs/2103.07191">SVAMP benchmark</a>. To implement with your use case, simply <strong>replace the example prompts with your data</strong>.</p>
+<p>In this demo, we will illustrate this approach using a set of math questions from the <a class="reference external" href="https://github.com/openai/grade-school-math">gsm8k benchmark</a>). To implement with your use case, simply <strong>replace the example prompts with your data</strong>.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load example dataset (SVAMP)</span>
-<span class="n">svamp</span> <span class="o">=</span> <span class="n">load_example_dataset</span><span class="p">(</span><span class="s2">&quot;svamp&quot;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
-<span class="n">svamp</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load example dataset (gsm8k)</span>
+<span class="n">gsm8k</span> <span class="o">=</span> <span class="n">load_example_dataset</span><span class="p">(</span><span class="s2">&quot;gsm8k&quot;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">gsm8k</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -493,7 +507,7 @@
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Loading dataset - svamp...
+Loading dataset - gsm8k...
 Processing dataset...
 Dataset ready!
 </pre></div></div>
@@ -528,28 +542,28 @@ Dataset ready!
   <tbody>
     <tr>
       <th>0</th>
-      <td>There are 87 oranges and 290 bananas in Philip...</td>
-      <td>145</td>
+      <td>Natalia sold clips to 48 of her friends in Apr...</td>
+      <td>72</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>Marco and his dad went strawberry picking. Mar...</td>
-      <td>19</td>
+      <td>Weng earns $12 an hour for babysitting. Yester...</td>
+      <td>10</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>Edward spent $ 6 to buy 2 books each book cost...</td>
-      <td>3</td>
+      <td>Betty is saving money for a new wallet which c...</td>
+      <td>5</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>Frank was reading through his favorite book. T...</td>
-      <td>198</td>
+      <td>Julie is reading a 120-page book. Yesterday, s...</td>
+      <td>42</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>There were 78 dollars in Olivia's wallet. She ...</td>
-      <td>63</td>
+      <td>James writes a 3-page letter to 2 different fr...</td>
+      <td>624</td>
     </tr>
   </tbody>
 </table>
@@ -560,10 +574,8 @@ Dataset ready!
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define prompts. These can be replaced with your own prompts.</span>
-<span class="n">MATH_INSTRUCTION</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="s2">&quot;When you solve this math problem only return the answer with no additional text.</span><span class="se">\n</span><span class="s2">&quot;</span>
-<span class="p">)</span>
-<span class="n">prompts</span> <span class="o">=</span> <span class="p">[</span><span class="n">MATH_INSTRUCTION</span> <span class="o">+</span> <span class="n">prompt</span> <span class="k">for</span> <span class="n">prompt</span> <span class="ow">in</span> <span class="n">svamp</span><span class="o">.</span><span class="n">question</span><span class="p">]</span>
+<span class="n">MATH_INSTRUCTION</span> <span class="o">=</span> <span class="s2">&quot;When you solve this math problem only return the answer with no additional text.</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="n">prompts</span> <span class="o">=</span> <span class="p">[</span><span class="n">MATH_INSTRUCTION</span> <span class="o">+</span> <span class="n">prompt</span> <span class="k">for</span> <span class="n">prompt</span> <span class="ow">in</span> <span class="n">gsm8k</span><span class="o">.</span><span class="n">question</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -576,7 +588,7 @@ Dataset ready!
 <span class="c1"># !{sys.executable} -m pip install langchain-google-vertexai</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">langchain_google_vertexai</span><span class="w"> </span><span class="kn">import</span> <span class="n">ChatVertexAI</span>
 
-<span class="n">llm</span> <span class="o">=</span> <span class="n">ChatVertexAI</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;gemini-pro&quot;</span><span class="p">)</span>
+<span class="n">llm</span> <span class="o">=</span> <span class="n">ChatVertexAI</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;gemini-1.5-flash&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -698,6 +710,7 @@ Some weights of the model checkpoint at microsoft/deberta-large-mnli were not us
 </p><p><p>Parameters:</p>
 </p><ul><li><p>prompts - (list of str) A list of input prompts for the model.</p>
 </li><li><p>num_responses - (int, default=5) The number of sampled responses used to compute consistency.</p>
+</li><li><p>show_progress_bars - (bool, default=True) If True, displays a progress bar while generating and scoring responses.</p>
 </li></ul><p><p>Returns: UQResult containing data (prompts, responses, sampled responses, and confidence scores) and metadata</p>
 </p><div style="background-color: rgba(0, 200, 0, 0.1); padding: 8px; border-radius: 3px; margin-top: 10px; border: 1px solid rgba(0, 200, 0, 0.2); margin-right: 5px; box-sizing: border-box; width: 100%;"><p>💡 Best For: Complete end-to-end uncertainty quantification when starting with prompts.</p>
 </div></td></tr><tr><td style="font-weight: bold; vertical-align: top; padding: 8px; border: 1px solid rgba(127, 127, 127, 0.2);"><p>UQEnsemble.score</p>
@@ -706,31 +719,31 @@ Some weights of the model checkpoint at microsoft/deberta-large-mnli were not us
 </p><ul><li><p>prompts - (list of str) A list of input prompts for the LLM.</p>
 </li><li><p>responses - (list of str) A list of LLM responses for the prompts.</p>
 </li><li><p>sampled_responses - (list of list of str) A list of lists of sampled LLM responses for each prompt. These will be used to compute consistency scores by comparing to the corresponding response from responses.</p>
+</li><li><p>show_progress_bars - (bool, default=True) If True, displays a progress bar while scoring responses.</p>
 </li></ul><p><p>Returns: UQResult containing data (responses, sampled responses, and confidence scores) and metadata</p>
 </p><div style="background-color: rgba(0, 200, 0, 0.1); padding: 8px; border-radius: 3px; margin-top: 10px; border: 1px solid rgba(0, 200, 0, 0.2); margin-right: 5px; box-sizing: border-box; width: 100%;"><p>💡 Best For: Computing uncertainty scores when responses are already generated elsewhere.</p>
 </div></td></tr></table><div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="k">await</span> <span class="n">bsd</span><span class="o">.</span><span class="n">generate_and_score</span><span class="p">(</span>
-    <span class="n">prompts</span><span class="o">=</span><span class="n">prompts</span><span class="p">,</span> <span class="n">num_responses</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
-<span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="k">await</span> <span class="n">bsd</span><span class="o">.</span><span class="n">generate_and_score</span><span class="p">(</span><span class="n">prompts</span><span class="o">=</span><span class="n">prompts</span><span class="p">,</span> <span class="n">num_responses</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 
 <span class="c1"># # alternative approach: directly score if responses already generated</span>
 <span class="c1"># results = bsd.score(prompts=prompts, responses=responses, sampled_responses=sampled_responses)</span>
 </pre></div>
 </div>
 </div>
-<div class="nboutput nblast docutils container">
+<div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<div class="highlight"><pre>
-Generating responses...
-Generating candidate responses...
-Computing confidence scores...
-Generating LLMJudge scores...
-</pre></div></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "20c4fd8338f64e09bcb75993f091e087", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"></pre></div>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
@@ -778,8 +791,8 @@ Generating LLMJudge scores...
     <tr>
       <th>0</th>
       <td>When you solve this math problem only return t...</td>
-      <td>145</td>
-      <td>[145, 145, 145, 145, 145]</td>
+      <td>72\n</td>
+      <td>[72\n, 72\n, 72\n, 72\n, 72\n]</td>
       <td>1.000000</td>
       <td>1.000000</td>
       <td>1.0</td>
@@ -788,41 +801,41 @@ Generating LLMJudge scores...
     <tr>
       <th>1</th>
       <td>When you solve this math problem only return t...</td>
-      <td>19</td>
-      <td>[19, 19 pounds., 19, 19 pounds, 19 pounds]</td>
-      <td>0.763228</td>
-      <td>0.995051</td>
-      <td>0.4</td>
-      <td>0.5</td>
+      <td>$10\n</td>
+      <td>[$10\n, $10\n, $10\n, $10\n, $10\n]</td>
+      <td>0.700000</td>
+      <td>1.000000</td>
+      <td>1.0</td>
+      <td>0.0</td>
     </tr>
     <tr>
       <th>2</th>
       <td>When you solve this math problem only return t...</td>
-      <td>$3</td>
-      <td>[$3, $3.00, This math problem has two equation...</td>
-      <td>0.878711</td>
-      <td>0.983412</td>
-      <td>0.2</td>
+      <td>25\n</td>
+      <td>[35\n, 25\n, 25\n, 25\n, 25\n]</td>
+      <td>0.861881</td>
+      <td>0.803359</td>
+      <td>0.8</td>
       <td>1.0</td>
     </tr>
     <tr>
       <th>3</th>
       <td>When you solve this math problem only return t...</td>
-      <td>198</td>
-      <td>[198, 198, 198, 198, 198]</td>
-      <td>1.000000</td>
-      <td>1.000000</td>
-      <td>1.0</td>
+      <td>30\n</td>
+      <td>[30\n, 30\n, 30\n, 30\n, 36\n]</td>
+      <td>0.861744</td>
+      <td>0.803114</td>
+      <td>0.8</td>
       <td>1.0</td>
     </tr>
     <tr>
       <th>4</th>
       <td>When you solve this math problem only return t...</td>
-      <td>63</td>
-      <td>[63 dollars., 63 dollars, 63, 63, 63]</td>
-      <td>0.941517</td>
-      <td>0.995565</td>
-      <td>0.6</td>
+      <td>156\n</td>
+      <td>[780\n, 156\n, 156\n, 312\n, 728\n]</td>
+      <td>0.588449</td>
+      <td>0.415087</td>
+      <td>0.4</td>
       <td>1.0</td>
     </tr>
   </tbody>
@@ -836,10 +849,8 @@ Generating LLMJudge scores...
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Populate correct answers and grade responses</span>
-<span class="n">result_df</span><span class="p">[</span><span class="s2">&quot;answer&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">svamp</span><span class="o">.</span><span class="n">answer</span>
-<span class="n">result_df</span><span class="p">[</span><span class="s2">&quot;response_correct&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="n">math_postprocessor</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="o">==</span> <span class="n">a</span> <span class="k">for</span> <span class="n">r</span><span class="p">,</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">result_df</span><span class="p">[</span><span class="s2">&quot;response&quot;</span><span class="p">],</span> <span class="n">svamp</span><span class="p">[</span><span class="s2">&quot;answer&quot;</span><span class="p">])</span>
-<span class="p">]</span>
+<span class="n">result_df</span><span class="p">[</span><span class="s2">&quot;answer&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gsm8k</span><span class="o">.</span><span class="n">answer</span>
+<span class="n">result_df</span><span class="p">[</span><span class="s2">&quot;response_correct&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">math_postprocessor</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="o">==</span> <span class="n">a</span> <span class="k">for</span> <span class="n">r</span><span class="p">,</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">result_df</span><span class="p">[</span><span class="s2">&quot;response&quot;</span><span class="p">],</span> <span class="n">gsm8k</span><span class="p">[</span><span class="s2">&quot;answer&quot;</span><span class="p">])]</span>
 <span class="n">result_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -882,62 +893,62 @@ Generating LLMJudge scores...
     <tr>
       <th>0</th>
       <td>When you solve this math problem only return t...</td>
-      <td>145</td>
-      <td>[145, 145, 145, 145, 145]</td>
+      <td>72\n</td>
+      <td>[72\n, 72\n, 72\n, 72\n, 72\n]</td>
       <td>1.000000</td>
       <td>1.000000</td>
       <td>1.0</td>
       <td>1.0</td>
-      <td>145</td>
+      <td>72</td>
       <td>True</td>
     </tr>
     <tr>
       <th>1</th>
       <td>When you solve this math problem only return t...</td>
-      <td>19</td>
-      <td>[19, 19 pounds., 19, 19 pounds, 19 pounds]</td>
-      <td>0.763228</td>
-      <td>0.995051</td>
-      <td>0.4</td>
-      <td>0.5</td>
-      <td>19</td>
+      <td>$10\n</td>
+      <td>[$10\n, $10\n, $10\n, $10\n, $10\n]</td>
+      <td>0.700000</td>
+      <td>1.000000</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>10</td>
       <td>True</td>
     </tr>
     <tr>
       <th>2</th>
       <td>When you solve this math problem only return t...</td>
-      <td>$3</td>
-      <td>[$3, $3.00, This math problem has two equation...</td>
-      <td>0.878711</td>
-      <td>0.983412</td>
-      <td>0.2</td>
+      <td>25\n</td>
+      <td>[25\n, 25\n, 25\n, 25\n, 25\n]</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
       <td>1.0</td>
-      <td>3</td>
-      <td>True</td>
+      <td>1.0</td>
+      <td>5</td>
+      <td>False</td>
     </tr>
     <tr>
       <th>3</th>
       <td>When you solve this math problem only return t...</td>
-      <td>198</td>
-      <td>[198, 198, 198, 198, 198]</td>
-      <td>1.000000</td>
-      <td>1.000000</td>
+      <td>30\n</td>
+      <td>[30\n, 30\n, 30\n, 30\n, 36\n]</td>
+      <td>0.861744</td>
+      <td>0.803114</td>
+      <td>0.8</td>
       <td>1.0</td>
-      <td>1.0</td>
-      <td>198</td>
-      <td>True</td>
+      <td>42</td>
+      <td>False</td>
     </tr>
     <tr>
       <th>4</th>
       <td>When you solve this math problem only return t...</td>
-      <td>63</td>
-      <td>[63 dollars., 63 dollars, 63, 63, 63]</td>
-      <td>0.941517</td>
-      <td>0.995565</td>
-      <td>0.6</td>
+      <td>156\n</td>
+      <td>[780\n, 312\n, 156\n, 780\n, 156\n]</td>
+      <td>0.587306</td>
+      <td>0.413046</td>
+      <td>0.4</td>
       <td>1.0</td>
-      <td>63</td>
-      <td>True</td>
+      <td>624</td>
+      <td>False</td>
     </tr>
   </tbody>
 </table>
@@ -956,7 +967,7 @@ Generating LLMJudge scores...
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Baseline LLM accuracy: 0.67
+Baseline LLM accuracy: 0.37
 </pre></div></div>
 </div>
 <section id="3.1-Filtered-LLM-Accuracy-Evaluation">
@@ -967,9 +978,7 @@ Baseline LLM accuracy: 0.67
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_model_accuracies</span><span class="p">(</span>
-    <span class="n">scores</span><span class="o">=</span><span class="n">result_df</span><span class="o">.</span><span class="n">ensemble_score</span><span class="p">,</span> <span class="n">correct_indicators</span><span class="o">=</span><span class="n">result_df</span><span class="o">.</span><span class="n">response_correct</span>
-<span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_model_accuracies</span><span class="p">(</span><span class="n">scores</span><span class="o">=</span><span class="n">result_df</span><span class="o">.</span><span class="n">ensemble_score</span><span class="p">,</span> <span class="n">correct_indicators</span><span class="o">=</span><span class="n">result_df</span><span class="o">.</span><span class="n">response_correct</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -985,60 +994,70 @@ Baseline LLM accuracy: 0.67
 <h4>3.2 Precision, Recall, F1-Score of Hallucination Detection<a class="headerlink" href="#3.2-Precision,-Recall,-F1-Score-of-Hallucination-Detection" title="Link to this heading">#</a></h4>
 <p>Lastly, we compute the optimal threshold for binarizing confidence scores, using F1-score as the objective. Using this threshold, we compute precision, recall, and F1-score for black box scorer predictions of whether responses are correct.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># instantiate UQLM tuner object for threshold selection</span>
-<span class="n">t</span> <span class="o">=</span> <span class="n">Tuner</span><span class="p">()</span>
-
-<span class="c1"># Define score vector and corresponding correct indicators (i.e. ground truth)</span>
-<span class="n">y_scores</span> <span class="o">=</span> <span class="n">result_df</span><span class="p">[</span><span class="s2">&quot;ensemble_score&quot;</span><span class="p">]</span>  <span class="c1"># confidence score</span>
-<span class="n">correct_indicators</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">result_df</span><span class="o">.</span><span class="n">response_correct</span>
-<span class="p">)</span> <span class="o">*</span> <span class="mi">1</span>  <span class="c1"># Whether responses is actually correct</span>
-
-<span class="c1"># Solve for threshold that maximizes F1-score</span>
-<span class="n">best_threshold</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">tune_threshold</span><span class="p">(</span>
-    <span class="n">y_scores</span><span class="o">=</span><span class="n">y_scores</span><span class="p">,</span>
-    <span class="n">correct_indicators</span><span class="o">=</span><span class="n">correct_indicators</span><span class="p">,</span>
-    <span class="n">thresh_objective</span><span class="o">=</span><span class="s2">&quot;fbeta_score&quot;</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="n">y_pred</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="p">(</span><span class="n">s</span> <span class="o">&gt;</span> <span class="n">best_threshold</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">y_scores</span>
-<span class="p">]</span>  <span class="c1"># predicts whether response is correct based on confidence score</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;BS Detector F1-optimal threshold: </span><span class="si">{</span><span class="n">best_threshold</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-BS Detector F1-optimal threshold: 0.39
-</pre></div></div>
-</div>
-<div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># evaluate precision, recall, and f1-score of BS Detector predictions of correctness</span>
-<span class="nb">print</span><span class="p">(</span>
-    <span class="sa">f</span><span class="s2">&quot;BS Detector precision: </span><span class="si">{</span><span class="n">precision_score</span><span class="p">(</span><span class="n">y_true</span><span class="o">=</span><span class="n">correct_indicators</span><span class="p">,</span><span class="w"> </span><span class="n">y_pred</span><span class="o">=</span><span class="n">y_pred</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
-<span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;BS Detector recall: </span><span class="si">{</span><span class="n">recall_score</span><span class="p">(</span><span class="n">y_true</span><span class="o">=</span><span class="n">correct_indicators</span><span class="p">,</span><span class="w"> </span><span class="n">y_pred</span><span class="o">=</span><span class="n">y_pred</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;BS Detector f1-score: </span><span class="si">{</span><span class="n">f1_score</span><span class="p">(</span><span class="n">y_true</span><span class="o">=</span><span class="n">correct_indicators</span><span class="p">,</span><span class="w"> </span><span class="n">y_pred</span><span class="o">=</span><span class="n">y_pred</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># instantiate UQLM tuner object for threshold selection</span>
+<span class="n">split</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">result_df</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">Tuner</span><span class="p">()</span>
+
+<span class="n">correct_indicators</span> <span class="o">=</span> <span class="p">(</span><span class="n">result_df</span><span class="o">.</span><span class="n">response_correct</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1</span>  <span class="c1"># Whether responses is actually correct</span>
+<span class="n">metric_values</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Precision&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;Recall&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;F1-score&quot;</span><span class="p">:</span> <span class="p">[]}</span>
+<span class="n">optimal_thresholds</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">confidence_score</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;ensemble_score&quot;</span><span class="p">]:</span>
+    <span class="c1"># tune threshold on first half</span>
+    <span class="n">y_scores</span> <span class="o">=</span> <span class="n">result_df</span><span class="p">[</span><span class="n">confidence_score</span><span class="p">]</span>
+    <span class="n">y_scores_tune</span> <span class="o">=</span> <span class="n">y_scores</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">split</span><span class="p">]</span>
+    <span class="n">y_true_tune</span> <span class="o">=</span> <span class="n">correct_indicators</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">split</span><span class="p">]</span>
+    <span class="n">best_threshold</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">tune_threshold</span><span class="p">(</span><span class="n">y_scores</span><span class="o">=</span><span class="n">y_scores_tune</span><span class="p">,</span> <span class="n">correct_indicators</span><span class="o">=</span><span class="n">y_true_tune</span><span class="p">,</span> <span class="n">thresh_objective</span><span class="o">=</span><span class="s2">&quot;fbeta_score&quot;</span><span class="p">)</span>
+
+    <span class="n">y_pred</span> <span class="o">=</span> <span class="p">[(</span><span class="n">s</span> <span class="o">&gt;</span> <span class="n">best_threshold</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">y_scores</span><span class="p">]</span>  <span class="c1"># predicts whether response is correct based on confidence score</span>
+    <span class="n">optimal_thresholds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">best_threshold</span><span class="p">)</span>
+
+    <span class="c1"># evaluate on last half</span>
+    <span class="n">y_true_eval</span> <span class="o">=</span> <span class="n">correct_indicators</span><span class="p">[</span><span class="n">split</span><span class="p">:]</span>
+    <span class="n">y_pred_eval</span> <span class="o">=</span> <span class="n">y_pred</span><span class="p">[</span><span class="n">split</span><span class="p">:]</span>
+    <span class="n">metric_values</span><span class="p">[</span><span class="s2">&quot;Precision&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">precision_score</span><span class="p">(</span><span class="n">y_true</span><span class="o">=</span><span class="n">y_true_eval</span><span class="p">,</span> <span class="n">y_pred</span><span class="o">=</span><span class="n">y_pred_eval</span><span class="p">))</span>
+    <span class="n">metric_values</span><span class="p">[</span><span class="s2">&quot;Recall&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">recall_score</span><span class="p">(</span><span class="n">y_true</span><span class="o">=</span><span class="n">y_true_eval</span><span class="p">,</span> <span class="n">y_pred</span><span class="o">=</span><span class="n">y_pred_eval</span><span class="p">))</span>
+    <span class="n">metric_values</span><span class="p">[</span><span class="s2">&quot;F1-score&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f1_score</span><span class="p">(</span><span class="n">y_true</span><span class="o">=</span><span class="n">y_true_eval</span><span class="p">,</span> <span class="n">y_pred</span><span class="o">=</span><span class="n">y_pred_eval</span><span class="p">))</span>
+
+<span class="c1"># print results</span>
+<span class="n">header</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;Metrics&#39;</span><span class="si">:</span><span class="s2">&lt;25</span><span class="si">}</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">scorer_name</span><span class="si">:</span><span class="s2">&lt;25</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">scorer_name</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;ensemble_score&quot;</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">header</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="n">header</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">header</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">metric</span> <span class="ow">in</span> <span class="n">metric_values</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">metric</span><span class="si">:</span><span class="s2">&lt;25</span><span class="si">}</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">x_</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">:</span><span class="s2">&lt;25</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">x_</span> <span class="ow">in</span> <span class="n">metric_values</span><span class="p">[</span><span class="n">metric</span><span class="p">]]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">header</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;F-1 optimal threshold&#39;</span><span class="si">:</span><span class="s2">&lt;25</span><span class="si">}</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">x_</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">:</span><span class="s2">&lt;25</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">x_</span> <span class="ow">in</span> <span class="n">optimal_thresholds</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">header</span><span class="p">))</span>
 </pre></div>
 </div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "5685d0700ab54c9188aadb65da4f22bc", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"></pre></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-BS Detector precision: 0.7951807228915663
-BS Detector recall: 0.9850746268656716
-BS Detector f1-score: 0.88
+==================================================
+Metrics                  ensemble_score
+--------------------------------------------------
+Precision                0.556
+Recall                   0.732
+F1-score                 0.632
+--------------------------------------------------
+F-1 optimal threshold    0.95
+==================================================
 </pre></div></div>
 </div>
 <p>© 2025 CVS Health and/or one of its affiliates. All rights reserved.</p>
@@ -1155,7 +1174,7 @@ BS Detector f1-score: 0.88
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
     <br/>
   </p>
 </div>

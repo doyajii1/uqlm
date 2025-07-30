@@ -1,0 +1,28 @@
+uqlm.quantifiers.entropy.SemanticEntropy
+========================================
+
+.. currentmodule:: uqlm.quantifiers.entropy
+
+.. autoclass:: SemanticEntropy
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~SemanticEntropy.__init__
+      ~SemanticEntropy.evaluate
+      ~SemanticEntropy.generate_candidate_responses
+      ~SemanticEntropy.generate_original_responses
+   
+   
+
+   
+   
+   

@@ -1,0 +1,33 @@
+uqlm.judges.judge.LLMJudge
+==========================
+
+.. currentmodule:: uqlm.judges.judge
+
+.. autoclass:: LLMJudge
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~LLMJudge.__init__
+      ~LLMJudge.generate_responses
+      ~LLMJudge.judge_responses
+   
+   
+
+   
+   
+   
+
+
+.. rubric:: References
+
+.. footbibliography::
+   

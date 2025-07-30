@@ -1,0 +1,134 @@
+Example Notebooks
+=================
+
+Here's a list of example notebooks for using the library. If you're interested in contributing to existing notebooks or
+adding new ones please consult the guide on :ref:`how to contribute <contribute>`.
+
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="BS Detector Demo">
+
+.. only:: html
+
+  .. image:: /_static/images/no_image.png
+    :alt:
+
+  :doc:`examples/bs_detector_demo`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">BS Detector Demo</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Ensemble Demo">
+
+.. only:: html
+
+  .. image:: /_static/images/no_image.png
+    :alt:
+
+  :doc:`examples/ensemble_demo`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Ensemble Demo</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Judges Demo">
+
+.. only:: html
+
+  .. image:: /_static/images/no_image.png
+    :alt:
+
+  :doc:`examples/judges_demo`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Judges Demo</div>
+    </div>  
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Semantic Entropy Demo">
+
+.. only:: html
+
+  .. image:: /_static/images/no_image.png
+    :alt:
+
+  :doc:`examples/semantic_entropy_demo`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Semantic Entropy Demo</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="White Box Demo">
+
+.. only:: html
+
+  .. image:: /_static/images/no_image.png
+    :alt:
+
+  :doc:`examples/white_box_demo`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">White Box Demo</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Black Box Demo">
+
+.. only:: html
+
+  .. image:: /_static/images/no_image.png
+    :alt:
+
+  :doc:`examples/black_box_demo`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Black Box Demo</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   examples/bs_detector_demo.ipynb
+   examples/ensemble_demo.ipynb
+   examples/judges_demo.ipynb
+   examples/semantic_entropy_demo.ipynb
+   examples/white_box_demo.ipynb
+   examples/black_box_demo.ipynb

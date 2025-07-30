@@ -1,0 +1,36 @@
+﻿uqlm.black\_box
+===============
+
+.. automodule:: uqlm.black_box
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+
+
+.. rubric:: Modules
+
+.. autosummary::
+   :toctree:
+   :template: module.rst
+   :recursive:
+
+   bert
+   bleurt
+   cosine
+   match
+   nli
+

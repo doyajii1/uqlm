@@ -10,7 +10,7 @@
     <link rel="icon" sizes="16x16" href="../_static/images/favicon/favicon-16x16.png" type="image/png">
     <link rel="icon" sizes="32x32" href="../_static/images/favicon/favicon-32x32.png" type="image/png">
     <link rel="apple-touch-icon" sizes="180x180" href="../_static/images/favicon/apple-touch-icon.png" type="image/png">
-    <title>uqlm.black_box.nli.NLIScorer &#8212; uqlm 0.1 documentation</title>
+    <title>uqlm.black_box.nli.NLIScorer &#8212; uqlm 0.2 documentation</title>
   
   
   
@@ -41,15 +41,15 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=2709fde1"></script>
-    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/documentation_options.js?v=10f1778b"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_autosummary/uqlm.black_box.nli.NLIScorer';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://github.com/pages/cvs-health/uqlm/versions.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.2';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
@@ -126,8 +126,8 @@
       
     
     
-    <img src="../_static/horizontal_logo.png" class="logo__image only-light" alt="uqlm 0.1 documentation - Home"/>
-    <img src="../_static/horizontal_logo_no_bg.png" class="logo__image only-dark pst-js-only" alt="uqlm 0.1 documentation - Home"/>
+    <img src="../_static/horizontal_logo.png" class="logo__image only-light" alt="uqlm 0.2 documentation - Home"/>
+    <img src="../_static/horizontal_logo_no_bg.png" class="logo__image only-dark pst-js-only" alt="uqlm 0.2 documentation - Home"/>
   
   
 </a></div>
@@ -166,6 +166,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../contribute.html">
     Contributor Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../faqs.html">
+    FAQs
   </a>
 </li>
 
@@ -305,6 +312,13 @@
   </a>
 </li>
 
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../faqs.html">
+    FAQs
+  </a>
+</li>
+
   </ul>
 </nav></div>
           
@@ -438,6 +452,18 @@
 <li class="toctree-l3"><a class="reference internal" href="uqlm.utils.dataloader.load_example_dataset.html">uqlm.utils.dataloader.load_example_dataset</a></li>
 </ul>
 </details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="uqlm.utils.display.html">uqlm.utils.display</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="uqlm.utils.display.ConditionalBarColumn.html">uqlm.utils.display.ConditionalBarColumn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="uqlm.utils.display.ConditionalSpinnerColumn.html">uqlm.utils.display.ConditionalSpinnerColumn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="uqlm.utils.display.ConditionalTextColumn.html">uqlm.utils.display.ConditionalTextColumn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="uqlm.utils.display.ConditionalTimeElapsedColumn.html">uqlm.utils.display.ConditionalTimeElapsedColumn</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="uqlm.utils.llm_config.html">uqlm.utils.llm_config</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="uqlm.utils.llm_config.load_llm_config.html">uqlm.utils.llm_config.load_llm_config</a></li>
+<li class="toctree-l3"><a class="reference internal" href="uqlm.utils.llm_config.save_llm_config.html">uqlm.utils.llm_config.save_llm_config</a></li>
+</ul>
+</details></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="uqlm.utils.plots.html">uqlm.utils.plots</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="uqlm.utils.plots.plot_model_accuracies.html">uqlm.utils.plots.plot_model_accuracies</a></li>
 <li class="toctree-l3"><a class="reference internal" href="uqlm.utils.plots.scale.html">uqlm.utils.plots.scale</a></li>
@@ -556,18 +582,32 @@ avoid OutOfMemoryError</p></li>
 <tr class="row-odd"><td><p><a class="reference internal" href="#uqlm.black_box.nli.NLIScorer.__init__" title="uqlm.black_box.nli.NLIScorer.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>([device, verbose, nli_model_name, ...])</p></td>
 <td><p>A class to computing NLI-based confidence scores.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#uqlm.black_box.nli.NLIScorer.evaluate" title="uqlm.black_box.nli.NLIScorer.evaluate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">evaluate</span></code></a>(responses, sampled_responses, use_best)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#uqlm.black_box.nli.NLIScorer.avg_logprob" title="uqlm.black_box.nli.NLIScorer.avg_logprob"><code class="xref py py-obj docutils literal notranslate"><span class="pre">avg_logprob</span></code></a>(logprobs)</p></td>
+<td><p>Compute average logprob</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#uqlm.black_box.nli.NLIScorer.evaluate" title="uqlm.black_box.nli.NLIScorer.evaluate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">evaluate</span></code></a>(responses, sampled_responses[, ...])</p></td>
 <td><p>Evaluate confidence scores on LLM responses.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#uqlm.black_box.nli.NLIScorer.predict" title="uqlm.black_box.nli.NLIScorer.predict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">predict</span></code></a>(response1, response2)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#uqlm.black_box.nli.NLIScorer.predict" title="uqlm.black_box.nli.NLIScorer.predict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">predict</span></code></a>(response1, response2)</p></td>
 <td><p>This method compute probability of contradiction on the provide inputs.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <dl class="py method">
+<dt class="sig sig-object py" id="uqlm.black_box.nli.NLIScorer.avg_logprob">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">avg_logprob</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logprobs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqlm.black_box.nli.NLIScorer.avg_logprob" title="Link to this definition">#</a></dt>
+<dd><p>Compute average logprob</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="uqlm.black_box.nli.NLIScorer.evaluate">
-<span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">responses</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampled_responses</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_best</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compute_entropy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqlm.black_box.nli.NLIScorer.evaluate" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">responses</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampled_responses</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">responses_logprobs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampled_responses_logprobs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_best</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compute_entropy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">best_response_selection</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'discrete'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">progress_bar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqlm.black_box.nli.NLIScorer.evaluate" title="Link to this definition">#</a></dt>
 <dd><p>Evaluate confidence scores on LLM responses.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -577,9 +617,13 @@ avoid OutOfMemoryError</p></li>
 <dd class="field-even"><ul class="simple">
 <li><p><strong>responses</strong> (<em>list</em><em> of </em><em>strings</em>) – Original LLM response</p></li>
 <li><p><strong>sampled_responses</strong> (<em>list</em><em> of </em><em>list</em><em> of </em><em>strings</em>) – Sampled candidate responses to be compared to the original response</p></li>
+<li><p><strong>responses_logprobs</strong> (<em>list</em><em> of </em><em>list</em><em> of </em><em>dicts</em><em>, </em><em>default=None</em>) – Log probabilities of the original response</p></li>
+<li><p><strong>sampled_responses_logprobs</strong> (<em>list</em><em> of </em><em>list</em><em> of </em><em>list</em><em> of </em><em>dicts</em><em>, </em><em>default=None</em>) – Log probabilities of the sampled responses</p></li>
 <li><p><strong>use_best</strong> (<em>bool</em>) – Specifies whether to swap the original response for the uncertainty-minimized response
 based on semantic entropy clusters.</p></li>
 <li><p><strong>compute_entropy</strong> (<em>bool</em><em>, </em><em>default=False</em>) – Specifies whether to include semantic entropy in returned result</p></li>
+<li><p><strong>best_response_selection</strong> (<em>str</em><em>, </em><em>default=&quot;discrete&quot;</em>) – Specifies the type of entropy confidence score to compute best response. Must be one of “discrete” or “token-based”.</p></li>
+<li><p><strong>progress_bar</strong> (<em>rich.progress.Progress</em><em>, </em><em>default=None</em>) – If provided, displays a progress bar while scoring responses</p></li>
 </ul>
 </dd>
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -681,6 +725,7 @@ The dictionary will also contain original and multiple responses, updated if <ci
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uqlm.black_box.nli.NLIScorer"><code class="docutils literal notranslate"><span class="pre">NLIScorer</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uqlm.black_box.nli.NLIScorer.__init__"><code class="docutils literal notranslate"><span class="pre">NLIScorer.__init__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uqlm.black_box.nli.NLIScorer.avg_logprob"><code class="docutils literal notranslate"><span class="pre">NLIScorer.avg_logprob()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uqlm.black_box.nli.NLIScorer.evaluate"><code class="docutils literal notranslate"><span class="pre">NLIScorer.evaluate()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uqlm.black_box.nli.NLIScorer.predict"><code class="docutils literal notranslate"><span class="pre">NLIScorer.predict()</span></code></a></li>
 </ul>
@@ -731,7 +776,7 @@ The dictionary will also contain original and multiple responses, updated if <ci
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
     <br/>
   </p>
 </div>

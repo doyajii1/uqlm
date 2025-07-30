@@ -1,0 +1,28 @@
+uqlm.quantifiers.black\_box.BlackBoxUQ
+======================================
+
+.. currentmodule:: uqlm.quantifiers.black_box
+
+.. autoclass:: BlackBoxUQ
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~BlackBoxUQ.__init__
+      ~BlackBoxUQ.evaluate
+      ~BlackBoxUQ.generate_candidate_responses
+      ~BlackBoxUQ.generate_original_responses
+   
+   
+
+   
+   
+   

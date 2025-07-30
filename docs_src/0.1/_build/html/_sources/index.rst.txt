@@ -1,0 +1,116 @@
+.. image:: ./_static/images/horizontal_logo.png
+   :scale: 40%
+   :align: center
+   :class: only-light no-scaled-link
+
+.. image:: ./_static/images/horizontal_logo_no_bg.png
+   :scale: 40%
+   :align: center
+   :class: only-dark no-scaled-link
+
+uqlm: Uncertainty Quantification for Language Models
+====================================================
+
+:doc:`Get Started → <getstarted>` | :doc:`View Examples → <_notebooks/index>`
+
+UQLM is a Python library for Large Language Model (LLM) hallucination detection using state-of-the-art uncertainty quantification techniques.
+
+
+Hallucination Detection
+-----------------------
+
+UQLM provides a suite of response-level scorers for quantifying the uncertainty of Large Language Model (LLM) outputs. Each scorer returns a confidence score between 0 and 1, where higher scores indicate a lower likelihood of errors or hallucinations.  We categorize these scorers into four main types:
+
+1. Black-Box Scorers(Consistency-Based)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+  * Contradiction Probability (`Chen & Mueller, 2023 <https://arxiv.org/abs/2308.16175>`_; `Lin et al., 2025 <https://arxiv.org/abs/2305.19187>`_; `Manakul et al., 2023 <https://arxiv.org/abs/2303.08896>`_)
+
+  * Semantic Entropy (`Farquhar et al., 2024 <https://www.nature.com/articles/s41586-024-07421-0>`_; `Kuh et al., 2023 <https://arxiv.org/pdf/2302.09664>`_)
+
+  * Exact Match (`Cole et al., 2023 <https://arxiv.org/abs/2305.14613>`_; `Chen & Mueller, 2023 <https://arxiv.org/abs/2308.16175>`_)
+
+  * BERT-score (`Manakul et al., 2023 <https://arxiv.org/abs/2303.08896>`_; `Zheng et al., 2020 <https://arxiv.org/abs/1904.09675>`_)
+
+  * BLUERT-score (`Sellam et al., 2020 <https://arxiv.org/abs/2004.04696>`_)
+
+  * Cosine Similarity (`Shorinwa et al., 2024 <https://arxiv.org/pdf/2412.05563>`_; `HuggingFace <https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2>`_)
+
+**Pros:**
+
+* ✅  **Universal Compatibility:** Works with any LLM.
+* ✅  **Intuitive:** Easy to understand and implement.
+* ✅  **No Internal Access Required:** Doesn't need token probabilities or model internals.
+
+**Cons:**
+
+* ⚠️  **Higher Cost:** Requires multiple generations per prompt.
+* ⚠️  **Slower:**  Multiple generations and comparison calculations increase latency.
+
+
+
+2. White-Box Scorers(Token-Probability-Based)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+  * Minimum token probability (`Manakul et al., 2023 <https://arxiv.org/abs/2303.08896>`_)
+
+  * Perplexity (`Fadeeva et al., 2024 <https://arxiv.org/pdf/2403.04696>`_)
+
+  * Length-Normalized Joint Token Probability (`Malinin & Gales, 2021 <https://arxiv.org/pdf/2002.07650>`_)
+
+**Pros:**
+
+*   ✅  **Minimal Latency Impact:** Token probabilities are typically already returned by the LLM.
+*   ✅  **No Added Cost:**  Doesn't require additional LLM calls.
+
+**Cons:**
+
+*   ⚠️  **Limited Compatibility:** Requires access to token probabilities, not available for all LLMs/APIs. For example, 
+
+3. LLM-as-a-Judge scorers
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+  * Categorical LLM-as-a-Judge (`Manakul et al., 2023 <https://arxiv.org/abs/2303.08896>`_; `Chen & Mueller, 2023 <https://arxiv.org/abs/2308.16175>`_; `Luo et al., 2023 <https://arxiv.org/pdf/2303.15621>`_)
+
+  * Continuous LLM-as-a-Judge (`Xiong et al., 2024 <https://arxiv.org/pdf/2306.13063>`_)
+
+  * Panel of LLM Judges (`Verga et al., 2024 <https://arxiv.org/abs/2404.18796>`_)
+
+**Pros:**
+
+*   ✅  **Highly Customizable:**  Use any LLM as a judge and tailor instruction prompts for specific use cases.
+*   ✅  **Intuitive:** Leverages the reasoning capabilities of LLMs for evaluation.
+
+**Cons:**
+
+*   ⚠️  **Added Cost:** Requires additional LLM calls for the judge LLM(s).
+
+
+4. Ensemble scorers
+^^^^^^^^^^^^^^^^^^^
+
+  * BS Detector (`Chen & Mueller, 2023 <https://arxiv.org/abs/2308.16175>`_)
+
+  * Generalized Ensemble (uses any combination of the above)
+
+**Pros:**
+
+*   ✅  **Highly Flexible:** Versatile and adaptable to various tasks and question types.
+*   ✅  **Highly Customizable:** Ensemble weights can be tuned for optimal performance on a specific use case.
+
+**Cons:**
+
+*   ⚠️  **Requires More Setup:** Not quite "off-the-shelf"; requires some effort to configure and tune the ensemble.
+*   ⚠️  **Best for Advanced Users:**  Optimizing the ensemble requires a deeper understanding of the individual scorers.
+
+
+Contents
+--------
+
+.. toctree::
+   :maxdepth: 1
+
+   Get Started <getstarted>
+   API <api>
+   /_notebooks/index
+   Contributor Guide <contribute>

@@ -1,0 +1,1158 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" sizes="16x16" href="../../_static/images/favicon/favicon-16x16.png" type="image/png">
+    <link rel="icon" sizes="32x32" href="../../_static/images/favicon/favicon-32x32.png" type="image/png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../_static/images/favicon/apple-touch-icon.png" type="image/png">
+    <title>BS Detector (Chen &amp; Mueller, 2023) Demo &#8212; uqlm 0.0.0.1 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/nbsphinx-code-cells.css?v=2aa19091" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=f3d5c14a" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=9e850157"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_notebooks/examples/bs_detector_demo';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://github.aetna.com/pages/analytics-org/uqlm/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.0.0.1';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Uncertainty Quantification Ensemble Demo (Advanced)" href="ensemble_demo.html" />
+    <link rel="prev" title="Example Notebooks" href="../index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/horizontal_logo.png" class="logo__image only-light" alt="uqlm 0.0.0.1 documentation - Home"/>
+    <img src="../../_static/horizontal_logo_no_bg.png" class="logo__image only-dark pst-js-only" alt="uqlm 0.0.0.1 documentation - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../getstarted.html">
+    Get Started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../api.html">
+    API
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Example Notebooks
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../contribute.html">
+    Contributor Guide
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.aetna.com/analytics-org/uqlm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../getstarted.html">
+    Get Started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../api.html">
+    API
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Example Notebooks
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../contribute.html">
+    Contributor Guide
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.aetna.com/analytics-org/uqlm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">BS Detector (Chen &amp; Mueller, 2023) Demo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ensemble_demo.html">Uncertainty Quantification Ensemble Demo (Advanced)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="judges_demo.html">LLM-as-a-Judge Demo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="semantic_entropy_demo.html">Semantic Entropy (Farquhar et al., 2024) Demo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="white_box_demo.html">White-Box Uncertainty Quantification Demo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="black_box_demo.html">Black-Box Uncertainty Quantification Demo</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Example Notebooks</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">BS Detector (Chen &amp; Mueller, 2023) Demo</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="BS-Detector-(Chen-&amp;-Mueller,-2023)-Demo">
+<h1>BS Detector (<a class="reference external" href="https://arxiv.org/abs/2308.16175">Chen &amp; Mueller, 2023</a>) Demo<a class="headerlink" href="#BS-Detector-(Chen-&-Mueller,-2023)-Demo" title="Link to this heading">#</a></h1>
+<p>Content</p>
+<ol class="arabic simple">
+<li><p>Introduction</p></li>
+<li><p>Set up LLM and Prompts</p></li>
+<li><p>Generate Responses and Confidence Scores</p></li>
+<li><p>Performance Evaluation</p></li>
+</ol>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import warnings
+
+import numpy as np
+from sklearn.metrics import precision_score, recall_score, f1_score
+
+from uqlm.utils import load_example_dataset, math_postprocessor, plot_model_accuracies, Tuner
+from uqlm.quantifiers import BSDetector
+
+warnings.filterwarnings(&quot;ignore&quot;)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+2025-03-05 18:16:01.259913: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:477] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1741198561.920933    3568 cuda_dnn.cc:8310] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1741198562.237109    3568 cuda_blas.cc:1418] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2025-03-05 18:16:04.468313: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+</pre></div></div>
+</div>
+<p>## 1. Introduction</p>
+<p>Ensemble UQ methods combine multiple individual scorers to provide a more robust and accurate uncertainty estimate. This demo provides an illustration of an off-the-shelf ensemble method called BS Detector proposed in <a class="reference external" href="https://arxiv.org/abs/2308.16175">Chen &amp; Mueller, 2023</a>. It uses two black-box components: exact match rate and noncontradiction probability, and one LLM-as-a-Judge (self-reflection).</p>
+<p><strong>Pros:</strong></p>
+<ul class="simple">
+<li><p>✅ <strong>Universal Compatibility:</strong> Works with any LLM.</p></li>
+<li><p>✅ <strong>Intuitive:</strong> Easy to understand and implement.</p></li>
+<li><p>✅ <strong>No Internal Access Required:</strong> Doesn’t need token probabilities or model internals.</p></li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul class="simple">
+<li><p>⚠️ <strong>Higher Cost:</strong> Requires multiple generations per prompt.</p></li>
+<li><p>⚠️ <strong>Slower:</strong> Multiple generations and comparison calculations increase latency.</p></li>
+</ul>
+<p>## 2. Set up LLM and Prompts</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Load example dataset (SVAMP)
+svamp = (
+    load_example_dataset(&quot;svamp&quot;)
+    .rename(columns={&quot;question_concat&quot;: &quot;question&quot;, &quot;Answer&quot;: &quot;answer&quot;})[
+        [&quot;question&quot;, &quot;answer&quot;]
+    ]
+    .head(75)
+)
+svamp.head()
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Loading dataset - svamp...
+Processing dataset...
+Dataset ready!
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>question</th>
+      <th>answer</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>There are 87 oranges and 290 bananas in Philip...</td>
+      <td>145</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Marco and his dad went strawberry picking. Mar...</td>
+      <td>19</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Edward spent $ 6 to buy 2 books each book cost...</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Frank was reading through his favorite book. T...</td>
+      <td>198</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>There were 78 dollars in Olivia's wallet. She ...</td>
+      <td>63</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Define prompts
+MATH_INSTRUCTION = (
+    &quot;When you solve this math problem only return the answer with no additional text.\n&quot;
+)
+prompts = [MATH_INSTRUCTION + prompt for prompt in svamp.question]
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Instantiate BaseChatModel
+from langchain_google_vertexai import ChatVertexAI
+
+llm = ChatVertexAI(model=&quot;gemini-pro&quot;)
+</pre></div>
+</div>
+</div>
+<p>Note that although we use <code class="docutils literal notranslate"><span class="pre">ChatVertexAI</span></code> in this example, any <a class="reference external" href="https://js.langchain.com/docs/integrations/chat/">LangChain Chat Model</a> may be used.</p>
+<p>## 3. Generate responses and confidence scores</p>
+<section id="BSDetector()---Class-for-detecting-bad-and-speculative-answer-from-a-Large-Language-Model-(LLM-Hallucination).">
+<h2><code class="docutils literal notranslate"><span class="pre">BSDetector()</span></code> - Class for detecting bad and speculative answer from a Large Language Model (LLM Hallucination).<a class="headerlink" href="#BSDetector()---Class-for-detecting-bad-and-speculative-answer-from-a-Large-Language-Model-(LLM-Hallucination)." title="Link to this heading">#</a></h2>
+<p><strong>Class Attributes:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">llm</span></code> (<strong>BaseChatModel, default=None</strong>) A langchain llm (<code class="docutils literal notranslate"><span class="pre">BaseChatModel</span></code>). User is responsible for specifying temperature and other relevant parameters to the constructor of their <code class="docutils literal notranslate"><span class="pre">BaseChatModel</span></code> object.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nli_scorer</span></code> - (<strong>class_object, default=None</strong>) A class object to compute the semantic similarity score using a natural language inference model. This object must have a <code class="docutils literal notranslate"><span class="pre">predict</span></code> method, which returns probability of contradiction for provided input. Default case, uses DeBERTA model trained on MNLI dataset.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">alpha</span></code> (<strong>float, default=0.8</strong>) Trade-off parameter to define weightage of similarity score and indicator function score, while computing observed consistency score.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">beta</span></code> - (<strong>float, default=0.7</strong>) Trade-off parameter to define weightage of observed consistency score and self-reflection certainty score.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">template_ques_ans</span></code> - (<strong>str, default=None</strong>) Template to define input prompts for llm model, which includes prompt, response, and question to compute self-reflection certainty score.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">explanation</span></code> - (<strong>boolean, default=False</strong>) It indicates that llm will return an explanation for self refelction question.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">device</span></code> - (<strong>str or torch.device input or torch.device object, default=”cpu”</strong>) Specifies the device that classifiers use for prediction. Set to “cuda” for classifiers to be able to leverage the GPU.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">system_prompt</span></code> - (<strong>str or None, default=”You are a helpful assistant.”</strong>) Optional argument for user to provide custom system prompt</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">max_calls_per_min</span></code> - (<strong>int, default=None</strong>) Specifies how many api calls to make per minute to avoid a rate limit error. By default, no limit is specified.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">use_n_param</span></code> (<strong>bool, default=False</strong>) Specifies whether to use <code class="docutils literal notranslate"><span class="pre">n</span></code> parameter for <code class="docutils literal notranslate"><span class="pre">BaseChatModel</span></code>. Not compatible with all <code class="docutils literal notranslate"><span class="pre">BaseChatModel</span></code> classes. If used, it speeds up the generation process substantially when <code class="docutils literal notranslate"><span class="pre">num_responses</span></code> is large.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">postprocessor</span></code> - (<strong>f(str) -&gt; str, default=None</strong>) A user-defined function to postprocess responses.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">self_reflection_generator</span></code> - (<strong>ResponseGenerator, default=None</strong>) A class object to compute the self-reflection certainty score. If not provided, this method will use defined ‘langchain_llm’ with 0 temperature.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">thresh</span></code> - (<strong>float, default=0.5</strong>) Threshold for binarizing confidence scores. Not directly used except for tuning.</p></li>
+</ul>
+<p><strong>Class Methods:</strong></p>
+<ol class="arabic">
+<li><p><code class="docutils literal notranslate"><span class="pre">evaluate</span></code> - Generate responses and evaluate confidence scores on LLM responses for the provided prompts..</p>
+<p><strong>Method Attributes:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">prompts</span></code> - (<strong>list of str</strong>) A list of input prompts for the model.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">responses</span></code> - (<strong>list of str, default=None</strong>) A list of model responses for the prompts. If not provided, this method will generate responses for <code class="docutils literal notranslate"><span class="pre">self.llm</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">multiple_responses</span></code> - (<strong>list of list of str, default=None</strong>) A list of multiple model responses, each element (multiple_responses[i]) is a list of str, containing multiple model responses for prompts[i]. If not provided, this method will generate responses for <code class="docutils literal notranslate"><span class="pre">self.llm</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">oc_temperature</span></code> - (<strong>float, default=1</strong>) The <code class="docutils literal notranslate"><span class="pre">temperature</span></code> parameter for llm model to generate multiple responses for observed consistency.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">num_responses</span></code> - (<strong>int, default=5</strong>) The number of multiple responses used to compute observed consistency.</p></li>
+</ul>
+<p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">UQResult</span></code> containing data (prompts, responses, and confidence scores) and metadata (parameters, observed consistency data, and self-reflection data)</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tune_params</span></code> - Tunes alpha, beta, and thresh parameters on a set of user-provided graded responses.</p>
+<p><strong>Method Attributes:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">correct_indicators</span></code> - (<strong>list of bool</strong>) A list of boolean indicators of whether self.original_responses are correct.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bounds</span></code> - (<strong>list of 2-tuples of floats, default = [(0,1), (0,1), (0,1)]</strong>) Bounds of parameters for alpha, beta, thresh for scipy minimize function.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">alpha_beta_objective</span></code> - (<strong>{‘fbeta_score’, ‘accuracy_score’, ‘balanced_accuracy_score’, ‘roc_auc’, ‘log_loss’}, default=’fbeta_score’</strong>)Objective function for optimization of alpha and beta. Must match thresh_objective if one of ‘fbeta_score’, ‘accuracy_score’, ‘balanced_accuracy_score’. If same as thresh_objective, joint optimization will be done.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">thresh_objective</span></code> - (<strong>{‘fbeta_score’, ‘accuracy_score’, ‘balanced_accuracy_score’, ‘roc_auc’, ‘log_loss’}, default=’fbeta_score’</strong>) A list of boolean indicators of whether self.original_responses are correct.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">n_trials</span></code> - (<strong>int, default=100</strong>) Indicates how many candidates to search over with optuna optimizer</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">grid_search_alpha_beta</span></code> - (<strong>bool, default=False</strong>) Indicates whether to conduct grid search as optimization routine for alpha and beta</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">step_size</span></code> - (<strong>float, default=0.01</strong>) Indicates step size in grid search, if used</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fscore_beta</span></code> - (<strong>float, default=1</strong>) Value of beta in fbeta_score</p></li>
+</ul>
+<p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">UQResult</span></code> containing data (prompts, responses, and confidence scores) and metadata (parameters, observed consistency data, and self-reflection data)</p>
+</li>
+</ol>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import torch
+
+device = torch.device(&quot;cuda&quot;)  # use if GPU available
+# device = None
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>bsd = BSDetector(
+    llm=llm,
+    device=device,
+    max_calls_per_min=125,
+    # postprocessor=math_postprocessor,
+    use_n_param=False,  # Set True if using AzureChatOpenAI for faster generation
+)
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&#39;self_reflection_generator&#39; is None, creating new object for this attribute...
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+Some weights of the model checkpoint at microsoft/deberta-large-mnli were not used when initializing DebertaForSequenceClassification: [&#39;config&#39;]
+- This IS expected if you are initializing DebertaForSequenceClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing DebertaForSequenceClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Generate responses and scores
+result = await bsd.evaluate(
+    prompts=prompts,
+    num_responses=5,
+    # responses=responses # provide if responses already generated
+    # multiple_responses=multiple_responses # provide if candidate responses already generated
+)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Generating responses...
+Generating candidate responses...
+Computing observed consistency scores...
+Generating LLMJudge scores...
+Confidence scores successfully computed!
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># preview results
+result_df = result.to_df()
+result_df.head(5)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>prompt</th>
+      <th>response</th>
+      <th>confidence_score</th>
+      <th>multiple_responses</th>
+      <th>self_reflection_score</th>
+      <th>observed_consistency_score</th>
+      <th>nli_score</th>
+      <th>indicator_score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>When you solve this math problem only return t...</td>
+      <td>145</td>
+      <td>0.671730</td>
+      <td>[145, 145\n, 145, 145, 145]</td>
+      <td>0.0</td>
+      <td>0.959614</td>
+      <td>0.999518</td>
+      <td>0.8</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>When you solve this math problem only return t...</td>
+      <td>19</td>
+      <td>0.658692</td>
+      <td>[19, 19, 19, 19, 19 pounds]</td>
+      <td>0.0</td>
+      <td>0.940989</td>
+      <td>0.976236</td>
+      <td>0.8</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>When you solve this math problem only return t...</td>
+      <td>$3</td>
+      <td>0.574740</td>
+      <td>[$3.00, 3, $3, $ 3.00, $3.00]</td>
+      <td>0.0</td>
+      <td>0.821057</td>
+      <td>0.976321</td>
+      <td>0.2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>When you solve this math problem only return t...</td>
+      <td>198</td>
+      <td>0.971762</td>
+      <td>[198, 198\n, 198, 198, 198]</td>
+      <td>1.0</td>
+      <td>0.959660</td>
+      <td>0.999575</td>
+      <td>0.8</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>When you solve this math problem only return t...</td>
+      <td>63</td>
+      <td>0.895855</td>
+      <td>[63 dollars., 63 dollars, 63, 63, $63]</td>
+      <td>1.0</td>
+      <td>0.851221</td>
+      <td>0.964027</td>
+      <td>0.4</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>## 4. Evaluate performance</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Populate correct answers and grade responses
+result_df[&quot;answer&quot;] = svamp.answer
+result_df[&quot;response_correct&quot;] = [
+    math_postprocessor(r) == a for r, a in zip(result_df[&quot;response&quot;], svamp[&quot;answer&quot;])
+]
+result_df.head(5)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>prompt</th>
+      <th>response</th>
+      <th>confidence_score</th>
+      <th>multiple_responses</th>
+      <th>self_reflection_score</th>
+      <th>observed_consistency_score</th>
+      <th>nli_score</th>
+      <th>indicator_score</th>
+      <th>answer</th>
+      <th>response_correct</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>When you solve this math problem only return t...</td>
+      <td>145</td>
+      <td>0.671730</td>
+      <td>[145, 145\n, 145, 145, 145]</td>
+      <td>0.0</td>
+      <td>0.959614</td>
+      <td>0.999518</td>
+      <td>0.8</td>
+      <td>145</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>When you solve this math problem only return t...</td>
+      <td>19</td>
+      <td>0.658692</td>
+      <td>[19, 19, 19, 19, 19 pounds]</td>
+      <td>0.0</td>
+      <td>0.940989</td>
+      <td>0.976236</td>
+      <td>0.8</td>
+      <td>19</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>When you solve this math problem only return t...</td>
+      <td>$3</td>
+      <td>0.574740</td>
+      <td>[$3.00, 3, $3, $ 3.00, $3.00]</td>
+      <td>0.0</td>
+      <td>0.821057</td>
+      <td>0.976321</td>
+      <td>0.2</td>
+      <td>3</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>When you solve this math problem only return t...</td>
+      <td>198</td>
+      <td>0.971762</td>
+      <td>[198, 198\n, 198, 198, 198]</td>
+      <td>1.0</td>
+      <td>0.959660</td>
+      <td>0.999575</td>
+      <td>0.8</td>
+      <td>198</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>When you solve this math problem only return t...</td>
+      <td>63</td>
+      <td>0.895855</td>
+      <td>[63 dollars., 63 dollars, 63, 63, $63]</td>
+      <td>1.0</td>
+      <td>0.851221</td>
+      <td>0.964027</td>
+      <td>0.4</td>
+      <td>63</td>
+      <td>True</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(f&quot;&quot;&quot;Baseline LLM accuracy: {np.mean(result_df[&quot;response_correct&quot;])}&quot;&quot;&quot;)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Baseline LLM accuracy: 0.6933333333333334
+</pre></div></div>
+</div>
+<p>Next we will plot filtered LLM accuracy at various confidence score thresholds. The idea is to measure the LLM’s performance when we consider responses with confidence scores above a given threshold.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plot_model_accuracies(
+    scores=result_df.confidence_score, correct_indicators=result_df.response_correct
+)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/_notebooks_examples_bs_detector_demo_20_0.png" src="../../_images/_notebooks_examples_bs_detector_demo_20_0.png" />
+</div>
+</div>
+<p>Lastly, we will compute the optimal threshold for binarizing confidence scores, using F1-score as the objective. Using this threshold, we can compute precision, recall, and F1-score for BS Detector predictions of whether responses are correct.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># instantiate UQLM tuner object for threshold selection
+t = Tuner()
+
+# Define score vector and corresponding correct indicators (i.e. ground truth)
+y_scores = result_df[&quot;confidence_score&quot;]  # confidence score
+correct_indicators = (
+    result_df.response_correct
+) * 1  # Whether responses is actually correct
+
+# Solve for threshold that maximizes F1-score
+best_threshold = t.tune_threshold(
+    y_scores=y_scores,
+    correct_indicators=correct_indicators,
+    thresh_objective=&quot;fbeta_score&quot;,
+)
+y_pred = [
+    (s &gt; best_threshold) * 1 for s in y_scores
+]  # predicts whether response is correct based on confidence score
+print(f&quot;BS Detector F1-optimal threshold: {best_threshold}&quot;)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+BS Detector F1-optimal threshold: 0.5
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># evaluate precision, recall, and f1-score of BS Detector predictions of correctness
+print(
+    f&quot;BS Detector precision: {precision_score(y_true=correct_indicators, y_pred=y_pred)}&quot;
+)
+print(f&quot;BS Detector recall: {recall_score(y_true=correct_indicators, y_pred=y_pred)}&quot;)
+print(f&quot;BS Detector f1-score: {f1_score(y_true=correct_indicators, y_pred=y_pred)}&quot;)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+BS Detector precision: 0.7903225806451613
+BS Detector recall: 0.9423076923076923
+BS Detector f1-score: 0.8596491228070176
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Example Notebooks</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="ensemble_demo.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Uncertainty Quantification Ensemble Demo (Advanced)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#BSDetector()---Class-for-detecting-bad-and-speculative-answer-from-a-Large-Language-Model-(LLM-Hallucination)."><code class="docutils literal notranslate"><span class="pre">BSDetector()</span></code> - Class for detecting bad and speculative answer from a Large Language Model (LLM Hallucination).</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/_notebooks/examples/bs_detector_demo.ipynb.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, CVS Health.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+uqlm.benchmark.benchmark.HallucinationBenchmark
+===============================================
+
+.. currentmodule:: uqlm.benchmark.benchmark
+
+.. autoclass:: HallucinationBenchmark
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~HallucinationBenchmark.__init__
+      ~HallucinationBenchmark.evaluate_accuracy
+   
+   
+
+   
+   
+   

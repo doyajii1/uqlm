@@ -150,3 +150,4 @@ Contents
    API <api>
    /_notebooks/index
    Contributor Guide <contribute>
+   FAQs <faqs>

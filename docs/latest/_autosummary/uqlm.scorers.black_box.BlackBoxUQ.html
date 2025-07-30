@@ -10,7 +10,7 @@
     <link rel="icon" sizes="16x16" href="../_static/images/favicon/favicon-16x16.png" type="image/png">
     <link rel="icon" sizes="32x32" href="../_static/images/favicon/favicon-32x32.png" type="image/png">
     <link rel="apple-touch-icon" sizes="180x180" href="../_static/images/favicon/apple-touch-icon.png" type="image/png">
-    <title>uqlm.scorers.black_box.BlackBoxUQ &#8212; uqlm 0.1 documentation</title>
+    <title>uqlm.scorers.black_box.BlackBoxUQ &#8212; uqlm 0.2 documentation</title>
   
   
   
@@ -41,15 +41,15 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=2709fde1"></script>
-    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/documentation_options.js?v=10f1778b"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_autosummary/uqlm.scorers.black_box.BlackBoxUQ';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://github.com/pages/cvs-health/uqlm/versions.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.2';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
@@ -126,8 +126,8 @@
       
     
     
-    <img src="../_static/horizontal_logo.png" class="logo__image only-light" alt="uqlm 0.1 documentation - Home"/>
-    <img src="../_static/horizontal_logo_no_bg.png" class="logo__image only-dark pst-js-only" alt="uqlm 0.1 documentation - Home"/>
+    <img src="../_static/horizontal_logo.png" class="logo__image only-light" alt="uqlm 0.2 documentation - Home"/>
+    <img src="../_static/horizontal_logo_no_bg.png" class="logo__image only-dark pst-js-only" alt="uqlm 0.2 documentation - Home"/>
   
   
 </a></div>
@@ -166,6 +166,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../contribute.html">
     Contributor Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../faqs.html">
+    FAQs
   </a>
 </li>
 
@@ -305,6 +312,13 @@
   </a>
 </li>
 
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../faqs.html">
+    FAQs
+  </a>
+</li>
+
   </ul>
 </nav></div>
           
@@ -438,6 +452,18 @@
 <li class="toctree-l3"><a class="reference internal" href="uqlm.utils.dataloader.load_example_dataset.html">uqlm.utils.dataloader.load_example_dataset</a></li>
 </ul>
 </details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="uqlm.utils.display.html">uqlm.utils.display</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="uqlm.utils.display.ConditionalBarColumn.html">uqlm.utils.display.ConditionalBarColumn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="uqlm.utils.display.ConditionalSpinnerColumn.html">uqlm.utils.display.ConditionalSpinnerColumn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="uqlm.utils.display.ConditionalTextColumn.html">uqlm.utils.display.ConditionalTextColumn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="uqlm.utils.display.ConditionalTimeElapsedColumn.html">uqlm.utils.display.ConditionalTimeElapsedColumn</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="uqlm.utils.llm_config.html">uqlm.utils.llm_config</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="uqlm.utils.llm_config.load_llm_config.html">uqlm.utils.llm_config.load_llm_config</a></li>
+<li class="toctree-l3"><a class="reference internal" href="uqlm.utils.llm_config.save_llm_config.html">uqlm.utils.llm_config.save_llm_config</a></li>
+</ul>
+</details></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="uqlm.utils.plots.html">uqlm.utils.plots</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="uqlm.utils.plots.plot_model_accuracies.html">uqlm.utils.plots.plot_model_accuracies</a></li>
 <li class="toctree-l3"><a class="reference internal" href="uqlm.utils.plots.scale.html">uqlm.utils.plots.scale</a></li>
@@ -527,11 +553,11 @@
 <h1>uqlm.scorers.black_box.BlackBoxUQ<a class="headerlink" href="#uqlm-scorers-black-box-blackboxuq" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="uqlm.scorers.black_box.BlackBoxUQ">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">uqlm.scorers.black_box.</span></span><span class="sig-name descname"><span class="pre">BlackBoxUQ</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">llm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scorers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_best</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nli_model_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'microsoft/deberta-large-mnli'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">postprocessor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">system_prompt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'You</span> <span class="pre">are</span> <span class="pre">a</span> <span class="pre">helpful</span> <span class="pre">assistant.'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_calls_per_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampling_temperature</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_n_param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqlm.scorers.black_box.BlackBoxUQ" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">uqlm.scorers.black_box.</span></span><span class="sig-name descname"><span class="pre">BlackBoxUQ</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">llm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scorers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_best</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nli_model_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'microsoft/deberta-large-mnli'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sentence_transformer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'all-MiniLM-L6-v2'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">postprocessor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">system_prompt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'You</span> <span class="pre">are</span> <span class="pre">a</span> <span class="pre">helpful</span> <span class="pre">assistant.'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_calls_per_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampling_temperature</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_n_param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqlm.scorers.black_box.BlackBoxUQ" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="uqlm.scorers.baseclass.uncertainty.UncertaintyQuantifier.html#uqlm.scorers.baseclass.uncertainty.UncertaintyQuantifier" title="uqlm.scorers.baseclass.uncertainty.UncertaintyQuantifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">UncertaintyQuantifier</span></code></a></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="uqlm.scorers.black_box.BlackBoxUQ.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">llm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scorers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_best</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nli_model_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'microsoft/deberta-large-mnli'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">postprocessor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">system_prompt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'You</span> <span class="pre">are</span> <span class="pre">a</span> <span class="pre">helpful</span> <span class="pre">assistant.'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_calls_per_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampling_temperature</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_n_param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqlm.scorers.black_box.BlackBoxUQ.__init__" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">llm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scorers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_best</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nli_model_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'microsoft/deberta-large-mnli'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sentence_transformer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'all-MiniLM-L6-v2'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">postprocessor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">system_prompt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'You</span> <span class="pre">are</span> <span class="pre">a</span> <span class="pre">helpful</span> <span class="pre">assistant.'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_calls_per_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampling_temperature</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_n_param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqlm.scorers.black_box.BlackBoxUQ.__init__" title="Link to this definition">#</a></dt>
 <dd><p>Class for black box uncertainty quantification. Leverages multiple responses to the same prompt to evaluate
 consistency as an indicator of hallucination likelihood.</p>
 <dl class="field-list simple">
@@ -539,17 +565,22 @@ consistency as an indicator of hallucination likelihood.</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>llm</strong> (langchain <cite>BaseChatModel</cite>, default=None) – A langchain llm <cite>BaseChatModel</cite>. User is responsible for specifying temperature and other
 relevant parameters to the constructor of their <cite>llm</cite> object.</p></li>
-<li><p><strong>scorers</strong> (<em>subset</em><em> of </em><em>{</em>) – ‘semantic_negentropy’, ‘noncontradiction’, ‘exact_match’, ‘bert_score’, ‘bleurt’, ‘cosine_sim’</p></li>
+<li><p><strong>scorers</strong> (<em>subset</em><em> of </em><em>{</em>) – ‘semantic_negentropy’, ‘noncontradiction’, ‘exact_match’, ‘bert_score’, ‘cosine_sim’</p></li>
 <li><p><strong>}</strong> – Specifies which black box (consistency) scorers to include. If None, defaults to
-[“semantic_negentropy”, “noncontradiction”, “exact_match”, “cosine_sim”].</p></li>
+[“semantic_negentropy”, “noncontradiction”, “exact_match”, “cosine_sim”]. The bleurt
+scorer is deprecated as of v0.2.0.</p></li>
 <li><p><strong>default=None</strong> – Specifies which black box (consistency) scorers to include. If None, defaults to
-[“semantic_negentropy”, “noncontradiction”, “exact_match”, “cosine_sim”].</p></li>
+[“semantic_negentropy”, “noncontradiction”, “exact_match”, “cosine_sim”]. The bleurt
+scorer is deprecated as of v0.2.0.</p></li>
 <li><p><strong>device</strong> (<em>str</em><em> or </em><em>torch.device input</em><em> or </em><em>torch.device object</em><em>, </em><em>default=&quot;cpu&quot;</em>) – Specifies the device that NLI model use for prediction. Only applies to ‘semantic_negentropy’, ‘noncontradiction’
 scorers. Pass a torch.device to leverage GPU.</p></li>
 <li><p><strong>use_best</strong> (<em>bool</em><em>, </em><em>default=True</em>) – Specifies whether to swap the original response for the uncertainty-minimized response
 based on semantic entropy clusters. Only used if <cite>scorers</cite> includes ‘semantic_negentropy’ or ‘noncontradiction’.</p></li>
 <li><p><strong>nli_model_name</strong> (<em>str</em><em>, </em><em>default=&quot;microsoft/deberta-large-mnli&quot;</em>) – Specifies which NLI model to use. Must be acceptable input to AutoTokenizer.from_pretrained() and
 AutoModelForSequenceClassification.from_pretrained()</p></li>
+<li><p><strong>sentence_transformer</strong> (<em>str</em><em>, </em><em>default=&quot;all-MiniLM-L6-v2&quot;</em>) – Specifies which huggingface sentence transformer to use when computing cosine similarity. See
+<a class="reference external" href="https://huggingface.co/sentence-transformers?sort_models=likes#models">https://huggingface.co/sentence-transformers?sort_models=likes#models</a>
+for more information. The recommended sentence transformer is ‘all-MiniLM-L6-v2’.</p></li>
 <li><p><strong>postprocessor</strong> (<em>callable</em><em>, </em><em>default=None</em>) – A user-defined function that takes a string input and returns a string. Used for postprocessing
 outputs.</p></li>
 <li><p><strong>system_prompt</strong> (<em>str</em><em> or </em><em>None</em><em>, </em><em>default=&quot;You are a helpful assistant.&quot;</em>) – Optional argument for user to provide custom system prompt</p></li>
@@ -572,16 +603,16 @@ avoid OutOfMemoryError</p></li>
 <tr class="row-odd"><td><p><a class="reference internal" href="#uqlm.scorers.black_box.BlackBoxUQ.__init__" title="uqlm.scorers.black_box.BlackBoxUQ.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>([llm, scorers, device, use_best, ...])</p></td>
 <td><p>Class for black box uncertainty quantification.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#uqlm.scorers.black_box.BlackBoxUQ.generate_and_score" title="uqlm.scorers.black_box.BlackBoxUQ.generate_and_score"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_and_score</span></code></a>(prompts[, num_responses])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#uqlm.scorers.black_box.BlackBoxUQ.generate_and_score" title="uqlm.scorers.black_box.BlackBoxUQ.generate_and_score"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_and_score</span></code></a>(prompts[, num_responses, ...])</p></td>
 <td><p>Generate LLM responses, sampled LLM (candidate) responses, and compute confidence scores with specified scorers for the provided prompts.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#uqlm.scorers.black_box.BlackBoxUQ.generate_candidate_responses" title="uqlm.scorers.black_box.BlackBoxUQ.generate_candidate_responses"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_candidate_responses</span></code></a>(prompts)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#uqlm.scorers.black_box.BlackBoxUQ.generate_candidate_responses" title="uqlm.scorers.black_box.BlackBoxUQ.generate_candidate_responses"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_candidate_responses</span></code></a>(prompts[, ...])</p></td>
 <td><p>This method generates multiple responses for uncertainty estimation.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#uqlm.scorers.black_box.BlackBoxUQ.generate_original_responses" title="uqlm.scorers.black_box.BlackBoxUQ.generate_original_responses"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_original_responses</span></code></a>(prompts)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#uqlm.scorers.black_box.BlackBoxUQ.generate_original_responses" title="uqlm.scorers.black_box.BlackBoxUQ.generate_original_responses"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_original_responses</span></code></a>(prompts[, ...])</p></td>
 <td><p>This method generates original responses for uncertainty estimation.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#uqlm.scorers.black_box.BlackBoxUQ.score" title="uqlm.scorers.black_box.BlackBoxUQ.score"><code class="xref py py-obj docutils literal notranslate"><span class="pre">score</span></code></a>(responses, sampled_responses)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#uqlm.scorers.black_box.BlackBoxUQ.score" title="uqlm.scorers.black_box.BlackBoxUQ.score"><code class="xref py py-obj docutils literal notranslate"><span class="pre">score</span></code></a>(responses, sampled_responses[, ...])</p></td>
 <td><p>Compute confidence scores with specified scorers on provided LLM responses.</p></td>
 </tr>
 </tbody>
@@ -589,7 +620,7 @@ avoid OutOfMemoryError</p></li>
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="uqlm.scorers.black_box.BlackBoxUQ.generate_and_score">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">generate_and_score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prompts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_responses</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqlm.scorers.black_box.BlackBoxUQ.generate_and_score" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">generate_and_score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prompts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_responses</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_progress_bars</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqlm.scorers.black_box.BlackBoxUQ.generate_and_score" title="Link to this definition">#</a></dt>
 <dd><p>Generate LLM responses, sampled LLM (candidate) responses, and compute confidence scores with specified scorers for the provided prompts.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -599,6 +630,7 @@ avoid OutOfMemoryError</p></li>
 <dd class="field-even"><ul class="simple">
 <li><p><strong>prompts</strong> (<em>list</em><em> of </em><em>str</em>) – A list of input prompts for the model.</p></li>
 <li><p><strong>num_responses</strong> (<em>int</em><em>, </em><em>default=5</em>) – The number of sampled responses used to compute consistency.</p></li>
+<li><p><strong>show_progress_bars</strong> (<em>bool</em><em>, </em><em>default=True</em>) – If True, displays progress bars while generating and scoring responses</p></li>
 </ul>
 </dd>
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -612,7 +644,7 @@ avoid OutOfMemoryError</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="uqlm.scorers.black_box.BlackBoxUQ.generate_candidate_responses">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">generate_candidate_responses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prompts</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqlm.scorers.black_box.BlackBoxUQ.generate_candidate_responses" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">generate_candidate_responses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prompts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">progress_bar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqlm.scorers.black_box.BlackBoxUQ.generate_candidate_responses" title="Link to this definition">#</a></dt>
 <dd><p>This method generates multiple responses for uncertainty
 estimation. If specified in the child class, all responses are postprocessed
 using the callable function defined by the user.</p>
@@ -625,7 +657,7 @@ using the callable function defined by the user.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="uqlm.scorers.black_box.BlackBoxUQ.generate_original_responses">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">generate_original_responses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prompts</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqlm.scorers.black_box.BlackBoxUQ.generate_original_responses" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">generate_original_responses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prompts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">progress_bar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqlm.scorers.black_box.BlackBoxUQ.generate_original_responses" title="Link to this definition">#</a></dt>
 <dd><p>This method generates original responses for uncertainty
 estimation. If specified in the child class, all responses are postprocessed
 using the callable function defined by the user.</p>
@@ -638,7 +670,7 @@ using the callable function defined by the user.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="uqlm.scorers.black_box.BlackBoxUQ.score">
-<span class="sig-name descname"><span class="pre">score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">responses</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampled_responses</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqlm.scorers.black_box.BlackBoxUQ.score" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">responses</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampled_responses</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_progress_bars</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_display_header</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqlm.scorers.black_box.BlackBoxUQ.score" title="Link to this definition">#</a></dt>
 <dd><p>Compute confidence scores with specified scorers on provided LLM responses. Should only be used if responses and sampled responses
 are already generated. Otherwise, use <cite>generate_and_score</cite>.</p>
 <dl class="field-list simple">
@@ -650,10 +682,11 @@ are already generated. Otherwise, use <cite>generate_and_score</cite>.</p>
 <li><p><strong>responses</strong> (<em>list</em><em> of </em><em>str</em><em>, </em><em>default=None</em>) – A list of model responses for the prompts.</p></li>
 <li><p><strong>sampled_responses</strong> (<em>list</em><em> of </em><em>list</em><em> of </em><em>str</em><em>, </em><em>default=None</em>) – A list of lists of sampled LLM responses for each prompt. These will be used to compute consistency scores by comparing to
 the corresponding response from <cite>responses</cite>.</p></li>
+<li><p><strong>show_progress_bars</strong> (<em>bool</em><em>, </em><em>default=True</em>) – If True, displays a progress bar while scoring responses</p></li>
 </ul>
 </dd>
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>UQResult containing data (prompts, responses, and scores) and metadata</p>
+<dd class="field-odd"><p>UQResult containing data (responses and scores) and metadata</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p><a class="reference internal" href="uqlm.scorers.baseclass.uncertainty.UQResult.html#uqlm.scorers.baseclass.uncertainty.UQResult" title="uqlm.scorers.baseclass.uncertainty.UQResult">UQResult</a></p>
@@ -767,7 +800,7 @@ the corresponding response from <cite>responses</cite>.</p></li>
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
     <br/>
   </p>
 </div>

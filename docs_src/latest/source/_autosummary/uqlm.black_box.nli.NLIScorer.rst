@@ -17,6 +17,7 @@ uqlm.black\_box.nli.NLIScorer
    .. autosummary::
    
       ~NLIScorer.__init__
+      ~NLIScorer.avg_logprob
       ~NLIScorer.evaluate
       ~NLIScorer.predict
    

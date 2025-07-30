@@ -10,7 +10,7 @@
     <link rel="icon" sizes="16x16" href="../../_static/images/favicon/favicon-16x16.png" type="image/png">
     <link rel="icon" sizes="32x32" href="../../_static/images/favicon/favicon-32x32.png" type="image/png">
     <link rel="apple-touch-icon" sizes="180x180" href="../../_static/images/favicon/apple-touch-icon.png" type="image/png">
-    <title>🎯 Semantic Entropy &#8212; uqlm 0.1 documentation</title>
+    <title>🎯 Semantic Entropy &#8212; uqlm 0.2 documentation</title>
   
   
   
@@ -42,8 +42,8 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=2709fde1"></script>
-    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/documentation_options.js?v=10f1778b"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
@@ -52,7 +52,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://github.com/pages/cvs-health/uqlm/versions.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.2';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
@@ -129,8 +129,8 @@
       
     
     
-    <img src="../../_static/horizontal_logo.png" class="logo__image only-light" alt="uqlm 0.1 documentation - Home"/>
-    <img src="../../_static/horizontal_logo_no_bg.png" class="logo__image only-dark pst-js-only" alt="uqlm 0.1 documentation - Home"/>
+    <img src="../../_static/horizontal_logo.png" class="logo__image only-light" alt="uqlm 0.2 documentation - Home"/>
+    <img src="../../_static/horizontal_logo_no_bg.png" class="logo__image only-dark pst-js-only" alt="uqlm 0.2 documentation - Home"/>
   
   
 </a></div>
@@ -169,6 +169,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../contribute.html">
     Contributor Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../faqs.html">
+    FAQs
   </a>
 </li>
 
@@ -308,6 +315,13 @@
   </a>
 </li>
 
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../faqs.html">
+    FAQs
+  </a>
+</li>
+
   </ul>
 </nav></div>
           
@@ -440,7 +454,8 @@
                   
   <section id="🎯-Semantic-Entropy">
 <h1>🎯 Semantic Entropy<a class="headerlink" href="#🎯-Semantic-Entropy" title="Link to this heading">#</a></h1>
-<div style="background-color: rgba(200, 200, 200, 0.1); padding: 20px; border-radius: 8px; margin-bottom: 20px; border: 1px solid rgba(127, 127, 127, 0.2); max-width: 97.5%; overflow-wrap: break-word;"><p style="font-size: 16px; line-height: 1.6"><p>Black-box Uncertainty Quantification (UQ) methods treat the LLM as a black box and evaluate consistency of multiple responses generated from the same prompt to estimate response-level confidence. This demo provides an illustration of a state-of-the-art black-box UQ method known as Semantic Entropy.</p>
+<div style="background-color: rgba(200, 200, 200, 0.1); padding: 20px; border-radius: 8px; margin-bottom: 20px; border: 1px solid rgba(127, 127, 127, 0.2); max-width: 97.5%; overflow-wrap: break-word;"><p style="font-size: 16px; line-height: 1.6"><p>This demo illustrates a state-of-the-art uncertainty quantification (UQ) approach known as semantic entropy. The token-probability-based semantic entropy method combines elements of black-box UQ (which generates multiple responses from the same prompt) and white-box UQ (which uses token probabilities of those generated responses) to compute entropy values and associated confidence scores. The discrete semantic entropy method is similar but functions solely as a black-box UQ method, as it does
+not require token probabilities. Both methods were proposed by Farquhar et al. (2024) and are demonstrated in this notebook.</p>
 </p></div><section id="📊-What-You'll-Do-in-This-Demo">
 <h2>📊 What You’ll Do in This Demo<a class="headerlink" href="#📊-What-You'll-Do-in-This-Demo" title="Link to this heading">#</a></h2>
 <div style="display: flex; margin-bottom: 15px; align-items: center"><div style="background-color: #34a853; color: white; border-radius: 50%; width: 30px; height: 30px; display: flex; justify-content: center; align-items: center; margin-right: 15px; flex-shrink: 0"><p>1</p>
@@ -451,7 +466,7 @@
 </p><p style="margin: 0; color: rgba(95, 99, 104, 0.8)"><p>Generate and score LLM responses to the example questions using the SemanticEntropy() class.</p>
 </p></div></div><div style="display: flex; margin-bottom: 25px; align-items: center"><div style="background-color: #34a853; color: white; border-radius: 50%; width: 30px; height: 30px; display: flex; justify-content: center; align-items: center; margin-right: 15px; flex-shrink: 0"><p>3</p>
 </div><div><p style="margin: 0; font-weight: bold"><p>Evaluate Hallucination Detection Performance</p>
-</p><p style="margin: 0; color: rgba(95, 99, 104, 0.8)"><p>Visualize model accuracy at different thresholds of the various black-box UQ confidence scores. Compute precision, recall, and F1-score of hallucination detection.</p>
+</p><p style="margin: 0; color: rgba(95, 99, 104, 0.8)"><p>Visualize model accuracy at different thresholds of the semantic entropy-based confidence scores. Compute precision, recall, and F1-score of hallucination detection.</p>
 </p></div></div></section>
 <section id="⚖️-Advantages-&amp;-Limitations">
 <h2>⚖️ Advantages &amp; Limitations<a class="headerlink" href="#⚖️-Advantages-&-Limitations" title="Link to this heading">#</a></h2>
@@ -463,7 +478,7 @@
 </h3><ul style="margin-bottom: 0"><li><p>Higher Cost: Requires multiple generations per prompt</p>
 </li><li><p>Slower: Multiple generations and comparison calculations increase latency</p>
 </li></ul></div></div><div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -475,14 +490,14 @@
 </div>
 </div>
 <p>## 1. Set up LLM and Prompts</p>
-<p>In this demo, we will illustrate this approach using a set of math questions from the <a class="reference external" href="https://arxiv.org/abs/2103.07191">SVAMP benchmark</a>. To implement with your use case, simply <strong>replace the example prompts with your data</strong>.</p>
+<p>In this demo, we will illustrate this approach using a set of math questions from the <a class="reference external" href="https://github.com/openai/grade-school-math">gsm8k benchmark</a>). To implement with your use case, simply <strong>replace the example prompts with your data</strong>.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load example dataset (SVAMP)</span>
-<span class="n">svamp</span> <span class="o">=</span> <span class="n">load_example_dataset</span><span class="p">(</span><span class="s2">&quot;svamp&quot;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
-<span class="n">svamp</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load example dataset (gsm8k)</span>
+<span class="n">gsm8k</span> <span class="o">=</span> <span class="n">load_example_dataset</span><span class="p">(</span><span class="s2">&quot;gsm8k&quot;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">gsm8k</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -491,13 +506,13 @@
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Loading dataset - svamp...
+Loading dataset - gsm8k...
 Processing dataset...
 Dataset ready!
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -526,55 +541,53 @@ Dataset ready!
   <tbody>
     <tr>
       <th>0</th>
-      <td>There are 87 oranges and 290 bananas in Philip...</td>
-      <td>145</td>
+      <td>Natalia sold clips to 48 of her friends in Apr...</td>
+      <td>72</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>Marco and his dad went strawberry picking. Mar...</td>
-      <td>19</td>
+      <td>Weng earns $12 an hour for babysitting. Yester...</td>
+      <td>10</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>Edward spent $ 6 to buy 2 books each book cost...</td>
-      <td>3</td>
+      <td>Betty is saving money for a new wallet which c...</td>
+      <td>5</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>Frank was reading through his favorite book. T...</td>
-      <td>198</td>
+      <td>Julie is reading a 120-page book. Yesterday, s...</td>
+      <td>42</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>There were 78 dollars in Olivia's wallet. She ...</td>
-      <td>63</td>
+      <td>James writes a 3-page letter to 2 different fr...</td>
+      <td>624</td>
     </tr>
   </tbody>
 </table>
 </div></div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define prompts</span>
-<span class="n">MATH_INSTRUCTION</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="s2">&quot;When you solve this math problem only return the answer with no additional text.</span><span class="se">\n</span><span class="s2">&quot;</span>
-<span class="p">)</span>
-<span class="n">prompts</span> <span class="o">=</span> <span class="p">[</span><span class="n">MATH_INSTRUCTION</span> <span class="o">+</span> <span class="n">prompt</span> <span class="k">for</span> <span class="n">prompt</span> <span class="ow">in</span> <span class="n">svamp</span><span class="o">.</span><span class="n">question</span><span class="p">]</span>
+<span class="n">MATH_INSTRUCTION</span> <span class="o">=</span> <span class="s2">&quot;When you solve this math problem only return the answer with no additional text.</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="n">prompts</span> <span class="o">=</span> <span class="p">[</span><span class="n">MATH_INSTRUCTION</span> <span class="o">+</span> <span class="n">prompt</span> <span class="k">for</span> <span class="n">prompt</span> <span class="ow">in</span> <span class="n">gsm8k</span><span class="o">.</span><span class="n">question</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
-<p>In this example, we use <code class="docutils literal notranslate"><span class="pre">ChatVertexAI</span></code> to instantiate our LLM, but any <a class="reference external" href="https://js.langchain.com/docs/integrations/chat/">LangChain Chat Model</a> may be used. Be sure to <strong>replace with your LLM of choice.</strong></p>
+<p>In this example, we use <code class="docutils literal notranslate"><span class="pre">AzureChatOpenAI</span></code> to instantiate our LLM, but any <a class="reference external" href="https://js.langchain.com/docs/integrations/chat/">LangChain Chat Model</a> may be used. Be sure to <strong>replace with your LLM of choice.</strong></p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import sys</span>
 <span class="c1"># !{sys.executable} -m pip install langchain-google-vertexai</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">langchain_google_vertexai</span><span class="w"> </span><span class="kn">import</span> <span class="n">ChatVertexAI</span>
 
-<span class="n">llm</span> <span class="o">=</span> <span class="n">ChatVertexAI</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;gemini-pro&quot;</span><span class="p">)</span>
+<span class="n">llm</span> <span class="o">=</span> <span class="n">ChatVertexAI</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;gemini-1.5-flash&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -646,7 +659,7 @@ Dataset ready!
 </pre></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
@@ -671,12 +684,12 @@ Using cuda device
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">se</span> <span class="o">=</span> <span class="n">SemanticEntropy</span><span class="p">(</span>
     <span class="n">llm</span><span class="o">=</span><span class="n">llm</span><span class="p">,</span>
-    <span class="n">max_calls_per_min</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span>  <span class="c1"># set value to avoid rate limit error</span>
+    <span class="n">max_calls_per_min</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>  <span class="c1"># set value to avoid rate limit error</span>
     <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span>  <span class="c1"># use if GPU available</span>
 <span class="p">)</span>
 </pre></div>
@@ -703,6 +716,7 @@ Some weights of the model checkpoint at microsoft/deberta-large-mnli were not us
 </p><p><p>Parameters:</p>
 </p><ul><li><p>prompts - (list of str) A list of input prompts for the model.</p>
 </li><li><p>num_responses - (int, default=5) The number of sampled responses used to compute consistency.</p>
+</li><li><p>show_progress_bars - (bool, default=True) If True, displays a progress bar while generating and scoring responses.</p>
 </li></ul><p><p>Returns: UQResult containing data (prompts, responses, sampled responses, and confidence scores) and metadata</p>
 </p><div style="background-color: rgba(0, 200, 0, 0.1); padding: 8px; border-radius: 3px; margin-top: 10px; border: 1px solid rgba(0, 200, 0, 0.2); margin-right: 5px; box-sizing: border-box; width: 100%;"><p>💡 Best For: Complete end-to-end uncertainty quantification when starting with prompts.</p>
 </div></td></tr><tr><td style="font-weight: bold; vertical-align: top; padding: 8px; border: 1px solid rgba(127, 127, 127, 0.2);"><p>SemanticEntropy.score</p>
@@ -710,33 +724,35 @@ Some weights of the model checkpoint at microsoft/deberta-large-mnli were not us
 </p><p><p>Parameters:</p>
 </p><ul><li><p>responses - (list of str) A list of LLM responses for the prompts.</p>
 </li><li><p>sampled_responses - (list of list of str) A list of lists of sampled LLM responses for each prompt. These will be used to compute consistency scores by comparing to the corresponding response from responses.</p>
+</li><li><p>show_progress_bars - (bool, default=True) If True, displays a progress bar while scoring responses.</p>
 </li></ul><p><p>Returns: UQResult containing data (responses, sampled responses, and confidence scores) and metadata</p>
 </p><div style="background-color: rgba(0, 200, 0, 0.1); padding: 8px; border-radius: 3px; margin-top: 10px; border: 1px solid rgba(0, 200, 0, 0.2); margin-right: 5px; box-sizing: border-box; width: 100%;"><p>💡 Best For: Computing uncertainty scores when responses are already generated elsewhere.</p>
 </div></td></tr></table><div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="k">await</span> <span class="n">se</span><span class="o">.</span><span class="n">generate_and_score</span><span class="p">(</span>
-    <span class="n">prompts</span><span class="o">=</span><span class="n">prompts</span><span class="p">,</span> <span class="n">num_responses</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-<span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="k">await</span> <span class="n">se</span><span class="o">.</span><span class="n">generate_and_score</span><span class="p">(</span><span class="n">prompts</span><span class="o">=</span><span class="n">prompts</span><span class="p">,</span> <span class="n">num_responses</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 
 <span class="c1"># # alternative approach: directly score if responses already generated</span>
 <span class="c1"># results = se.score(responses=responses, sampled_responses=sampled_responses)</span>
 </pre></div>
 </div>
 </div>
-<div class="nboutput nblast docutils container">
+<div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<div class="highlight"><pre>
-Generating responses...
-Generating candidate responses...
-Computing confidence scores...
-</pre></div></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "afae0e46ea29429f86d62a18c02f50b9", "version_major": 2, "version_minor": 0}</script></div>
 </div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"></pre></div>
+</div>
+<p>The LLM instance used here returns token probabilities during the response generation. In such scenario, <code class="docutils literal notranslate"><span class="pre">SemanticEntropy</span></code> class computes response probabilty in two ways: 1) Discrete semantic entropy: Equal probability to each response cluster and 2) Token-probability-based semantic entropy: Uses token probability to compute probability of each response cluster.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result_df</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">to_df</span><span class="p">()</span>
@@ -745,7 +761,7 @@ Computing confidence scores...
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -768,52 +784,64 @@ Computing confidence scores...
     <tr style="text-align: right;">
       <th></th>
       <th>response</th>
-      <th>entropy_value</th>
-      <th>confidence_score</th>
+      <th>discrete_entropy_value</th>
+      <th>discrete_confidence_score</th>
       <th>sampled_responses</th>
       <th>prompt</th>
+      <th>tokenprob_entropy_value</th>
+      <th>tokenprob_confidence_score</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>145</td>
+      <td>72\n</td>
       <td>0.000000</td>
       <td>1.000000</td>
-      <td>[145, 145, 145, 145, 145, 145, 145, 145, 145, ...</td>
+      <td>[72\n, 72\n, 72\n, 72\n, 72\n, 72\n, 72\n, 72\...</td>
       <td>When you solve this math problem only return t...</td>
+      <td>0.000000</td>
+      <td>1.000000</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>19 pounds</td>
+      <td>$10\n</td>
       <td>0.000000</td>
       <td>1.000000</td>
-      <td>[Nineteen pounds. , 19, 19, 19 pounds, 19, 19 ...</td>
+      <td>[$10\n, $10\n, $10\n, $10\n, $10\n, $10\n, $10...</td>
       <td>When you solve this math problem only return t...</td>
+      <td>0.000000</td>
+      <td>1.000000</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>$3</td>
-      <td>0.600166</td>
-      <td>0.749711</td>
-      <td>[$ 9, $3, $3.00, $3, $3.00, $3, $ 3.00 \n \n \...</td>
+      <td>25\n</td>
+      <td>0.474139</td>
+      <td>0.802269</td>
+      <td>[25\n, 25\n, 25\n, 25\n, 25\n, 25\n, 25\n, 35\...</td>
       <td>When you solve this math problem only return t...</td>
+      <td>0.080509</td>
+      <td>0.966425</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>198</td>
-      <td>0.000000</td>
-      <td>1.000000</td>
-      <td>[198, 198, 198, 198, 198, 198, 198, 198, 198, ...</td>
+      <td>30\n</td>
+      <td>0.474139</td>
+      <td>0.802269</td>
+      <td>[30\n, 36\n, 30\n, 36\n, 30\n, 30\n, 30\n, 30\...</td>
       <td>When you solve this math problem only return t...</td>
+      <td>0.092084</td>
+      <td>0.961598</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>63</td>
-      <td>0.000000</td>
-      <td>1.000000</td>
-      <td>[63, 63, 63, 63, 63.0, 63 dollars, 63, 63 doll...</td>
+      <td>156\n</td>
+      <td>0.994924</td>
+      <td>0.585085</td>
+      <td>[156\n, 780\n, 312\n, 312\n, 156\n, 156\n, 156...</td>
       <td>When you solve this math problem only return t...</td>
+      <td>0.646899</td>
+      <td>0.730222</td>
     </tr>
   </tbody>
 </table>
@@ -822,20 +850,18 @@ Computing confidence scores...
 <p>## 3. Evaluate Hallucination Detection Performance</p>
 <p>To evaluate hallucination detection performance, we ‘grade’ the responses against an answer key. Note the <code class="docutils literal notranslate"><span class="pre">math_postprocessor</span></code> is specific to our use case (math questions). <strong>If you are using your own prompts/questions, update the grading method accordingly</strong>.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Populate correct answers and grade responses</span>
-<span class="n">result_df</span><span class="p">[</span><span class="s2">&quot;answer&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">svamp</span><span class="o">.</span><span class="n">answer</span>
-<span class="n">result_df</span><span class="p">[</span><span class="s2">&quot;response_correct&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="n">math_postprocessor</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="o">==</span> <span class="n">a</span> <span class="k">for</span> <span class="n">r</span><span class="p">,</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">result_df</span><span class="p">[</span><span class="s2">&quot;response&quot;</span><span class="p">],</span> <span class="n">svamp</span><span class="p">[</span><span class="s2">&quot;answer&quot;</span><span class="p">])</span>
-<span class="p">]</span>
+<span class="n">result_df</span><span class="p">[</span><span class="s2">&quot;answer&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gsm8k</span><span class="o">.</span><span class="n">answer</span>
+<span class="n">result_df</span><span class="p">[</span><span class="s2">&quot;response_correct&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">math_postprocessor</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="o">==</span> <span class="n">a</span> <span class="k">for</span> <span class="n">r</span><span class="p">,</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">result_df</span><span class="p">[</span><span class="s2">&quot;response&quot;</span><span class="p">],</span> <span class="n">gsm8k</span><span class="p">[</span><span class="s2">&quot;answer&quot;</span><span class="p">])]</span>
 <span class="n">result_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -858,10 +884,12 @@ Computing confidence scores...
     <tr style="text-align: right;">
       <th></th>
       <th>response</th>
-      <th>entropy_value</th>
-      <th>confidence_score</th>
+      <th>discrete_entropy_value</th>
+      <th>discrete_confidence_score</th>
       <th>sampled_responses</th>
       <th>prompt</th>
+      <th>tokenprob_entropy_value</th>
+      <th>tokenprob_confidence_score</th>
       <th>answer</th>
       <th>response_correct</th>
     </tr>
@@ -869,60 +897,70 @@ Computing confidence scores...
   <tbody>
     <tr>
       <th>0</th>
-      <td>145</td>
+      <td>72\n</td>
       <td>0.000000</td>
       <td>1.000000</td>
-      <td>[145, 145, 145, 145, 145, 145, 145, 145, 145, ...</td>
+      <td>[72\n, 72\n, 72\n, 72\n, 72\n, 72\n, 72\n, 72\...</td>
       <td>When you solve this math problem only return t...</td>
-      <td>145</td>
+      <td>0.000000</td>
+      <td>1.000000</td>
+      <td>72</td>
       <td>True</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>19 pounds</td>
+      <td>$10\n</td>
       <td>0.000000</td>
       <td>1.000000</td>
-      <td>[Nineteen pounds. , 19, 19, 19 pounds, 19, 19 ...</td>
+      <td>[$10\n, $10\n, $10\n, $10\n, $10\n, $10\n, $10...</td>
       <td>When you solve this math problem only return t...</td>
-      <td>19</td>
+      <td>0.000000</td>
+      <td>1.000000</td>
+      <td>10</td>
       <td>True</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>$3</td>
-      <td>0.600166</td>
-      <td>0.749711</td>
-      <td>[$ 9, $3, $3.00, $3, $3.00, $3, $ 3.00 \n \n \...</td>
+      <td>25\n</td>
+      <td>0.474139</td>
+      <td>0.802269</td>
+      <td>[25\n, 25\n, 25\n, 25\n, 25\n, 25\n, 25\n, 35\...</td>
       <td>When you solve this math problem only return t...</td>
-      <td>3</td>
-      <td>True</td>
+      <td>0.080509</td>
+      <td>0.966425</td>
+      <td>5</td>
+      <td>False</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>198</td>
-      <td>0.000000</td>
-      <td>1.000000</td>
-      <td>[198, 198, 198, 198, 198, 198, 198, 198, 198, ...</td>
+      <td>30\n</td>
+      <td>0.474139</td>
+      <td>0.802269</td>
+      <td>[30\n, 36\n, 30\n, 36\n, 30\n, 30\n, 30\n, 30\...</td>
       <td>When you solve this math problem only return t...</td>
-      <td>198</td>
-      <td>True</td>
+      <td>0.092084</td>
+      <td>0.961598</td>
+      <td>42</td>
+      <td>False</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>63</td>
-      <td>0.000000</td>
-      <td>1.000000</td>
-      <td>[63, 63, 63, 63, 63.0, 63 dollars, 63, 63 doll...</td>
+      <td>156\n</td>
+      <td>0.994924</td>
+      <td>0.585085</td>
+      <td>[156\n, 780\n, 312\n, 312\n, 156\n, 156\n, 156...</td>
       <td>When you solve this math problem only return t...</td>
-      <td>63</td>
-      <td>True</td>
+      <td>0.646899</td>
+      <td>0.730222</td>
+      <td>624</td>
+      <td>False</td>
     </tr>
   </tbody>
 </table>
 </div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&quot;&quot;Baseline LLM accuracy: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">result_df</span><span class="p">[</span><span class="s2">&quot;response_correct&quot;</span><span class="p">])</span><span class="si">}</span><span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
@@ -934,20 +972,21 @@ Computing confidence scores...
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Baseline LLM accuracy: 0.68
+Baseline LLM accuracy: 0.37
 </pre></div></div>
 </div>
 <section id="3.1-Filtered-LLM-Accuracy-Evaluation">
 <h4>3.1 Filtered LLM Accuracy Evaluation<a class="headerlink" href="#3.1-Filtered-LLM-Accuracy-Evaluation" title="Link to this heading">#</a></h4>
 <p>Here, we explore ‘filtered accuracy’ as a metric for evaluating the performance of our confidence scores. Filtered accuracy measures the change in LLM performance when responses with confidence scores below a specified threshold are excluded. By adjusting the confidence score threshold, we can observe how the accuracy of the LLM improves as less certain responses are filtered out.</p>
 <p>We will plot the filtered accuracy across various confidence score thresholds to visualize the relationship between confidence and LLM accuracy. This analysis helps in understanding the trade-off between response coverage (measured by sample size below) and LLM accuracy, providing insights into the reliability of the LLM’s outputs.</p>
+<section id="Discrete-Semantic-Entropy">
+<h5>Discrete Semantic Entropy<a class="headerlink" href="#Discrete-Semantic-Entropy" title="Link to this heading">#</a></h5>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_model_accuracies</span><span class="p">(</span>
-    <span class="n">scores</span><span class="o">=</span><span class="n">result_df</span><span class="o">.</span><span class="n">confidence_score</span><span class="p">,</span> <span class="n">correct_indicators</span><span class="o">=</span><span class="n">result_df</span><span class="o">.</span><span class="n">response_correct</span>
-<span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Discrete Semantic Entropy</span>
+<span class="n">plot_model_accuracies</span><span class="p">(</span><span class="n">scores</span><span class="o">=</span><span class="n">result_df</span><span class="o">.</span><span class="n">discrete_confidence_score</span><span class="p">,</span> <span class="n">correct_indicators</span><span class="o">=</span><span class="n">result_df</span><span class="o">.</span><span class="n">response_correct</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -955,76 +994,137 @@ Baseline LLM accuracy: 0.68
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/_notebooks_examples_semantic_entropy_demo_21_0.png" src="../../_images/_notebooks_examples_semantic_entropy_demo_21_0.png" />
+<img alt="../../_images/_notebooks_examples_semantic_entropy_demo_23_0.png" src="../../_images/_notebooks_examples_semantic_entropy_demo_23_0.png" />
 </div>
 </div>
+</section>
+<section id="id1">
+<h5>Discrete Semantic Entropy<a class="headerlink" href="#id1" title="Link to this heading">#</a></h5>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_model_accuracies</span><span class="p">(</span><span class="n">scores</span><span class="o">=</span><span class="n">result_df</span><span class="o">.</span><span class="n">tokenprob_confidence_score</span><span class="p">,</span> <span class="n">correct_indicators</span><span class="o">=</span><span class="n">result_df</span><span class="o">.</span><span class="n">response_correct</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/_notebooks_examples_semantic_entropy_demo_25_0.png" src="../../_images/_notebooks_examples_semantic_entropy_demo_25_0.png" />
+</div>
+</div>
+</section>
 </section>
 <section id="3.2-Precision,-Recall,-F1-Score-of-Hallucination-Detection">
 <h4>3.2 Precision, Recall, F1-Score of Hallucination Detection<a class="headerlink" href="#3.2-Precision,-Recall,-F1-Score-of-Hallucination-Detection" title="Link to this heading">#</a></h4>
-<p>Lastly, we compute the optimal threshold for binarizing confidence scores, using F1-score as the objective. Using this threshold, we compute precision, recall, and F1-score for black box scorer predictions of whether responses are correct.</p>
+<p>Lastly, we compute the optimal threshold for binarizing confidence scores, using F1-score as the objective. Using these thresholds, we compute precision, recall, and F1-score for our two semantic entropy-based scorer predictions of whether responses are correct.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># instantiate UQLM tuner object for threshold selection</span>
+<span class="n">split</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">result_df</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
 <span class="n">t</span> <span class="o">=</span> <span class="n">Tuner</span><span class="p">()</span>
 
-<span class="c1"># Define score vector and corresponding correct indicators (i.e. ground truth)</span>
-<span class="n">y_scores</span> <span class="o">=</span> <span class="n">result_df</span><span class="p">[</span><span class="s2">&quot;confidence_score&quot;</span><span class="p">]</span>  <span class="c1"># confidence score</span>
-<span class="n">correct_indicators</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">result_df</span><span class="o">.</span><span class="n">response_correct</span>
-<span class="p">)</span> <span class="o">*</span> <span class="mi">1</span>  <span class="c1"># Whether responses is actually correct</span>
+<span class="n">correct_indicators</span> <span class="o">=</span> <span class="p">(</span><span class="n">result_df</span><span class="o">.</span><span class="n">response_correct</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1</span>  <span class="c1"># Whether responses is actually correct</span>
+<span class="n">metric_values</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Precision&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;Recall&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;F1-score&quot;</span><span class="p">:</span> <span class="p">[]}</span>
+<span class="n">optimal_thresholds</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">confidence_score</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;discrete_confidence_score&quot;</span><span class="p">,</span> <span class="s2">&quot;tokenprob_confidence_score&quot;</span><span class="p">]:</span>
+    <span class="c1"># tune threshold on first half</span>
+    <span class="n">y_scores</span> <span class="o">=</span> <span class="n">result_df</span><span class="p">[</span><span class="n">confidence_score</span><span class="p">]</span>
+    <span class="n">y_scores_tune</span> <span class="o">=</span> <span class="n">y_scores</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">split</span><span class="p">]</span>
+    <span class="n">y_true_tune</span> <span class="o">=</span> <span class="n">correct_indicators</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">split</span><span class="p">]</span>
+    <span class="n">best_threshold</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">tune_threshold</span><span class="p">(</span><span class="n">y_scores</span><span class="o">=</span><span class="n">y_scores_tune</span><span class="p">,</span> <span class="n">correct_indicators</span><span class="o">=</span><span class="n">y_true_tune</span><span class="p">,</span> <span class="n">thresh_objective</span><span class="o">=</span><span class="s2">&quot;fbeta_score&quot;</span><span class="p">)</span>
 
-<span class="c1"># Solve for threshold that maximizes F1-score</span>
-<span class="n">best_threshold</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">tune_threshold</span><span class="p">(</span>
-    <span class="n">y_scores</span><span class="o">=</span><span class="n">y_scores</span><span class="p">,</span>
-    <span class="n">correct_indicators</span><span class="o">=</span><span class="n">correct_indicators</span><span class="p">,</span>
-    <span class="n">thresh_objective</span><span class="o">=</span><span class="s2">&quot;fbeta_score&quot;</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="n">y_pred</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="p">(</span><span class="n">s</span> <span class="o">&gt;</span> <span class="n">best_threshold</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">y_scores</span>
-<span class="p">]</span>  <span class="c1"># predicts whether response is correct based on confidence score</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Semantic entropy F1-optimal threshold: </span><span class="si">{</span><span class="n">best_threshold</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">y_pred</span> <span class="o">=</span> <span class="p">[(</span><span class="n">s</span> <span class="o">&gt;</span> <span class="n">best_threshold</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">y_scores</span><span class="p">]</span>  <span class="c1"># predicts whether response is correct based on confidence score</span>
+    <span class="n">optimal_thresholds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">best_threshold</span><span class="p">)</span>
+
+    <span class="c1"># evaluate on last half</span>
+    <span class="n">y_true_eval</span> <span class="o">=</span> <span class="n">correct_indicators</span><span class="p">[</span><span class="n">split</span><span class="p">:]</span>
+    <span class="n">y_pred_eval</span> <span class="o">=</span> <span class="n">y_pred</span><span class="p">[</span><span class="n">split</span><span class="p">:]</span>
+    <span class="n">metric_values</span><span class="p">[</span><span class="s2">&quot;Precision&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">precision_score</span><span class="p">(</span><span class="n">y_true</span><span class="o">=</span><span class="n">y_true_eval</span><span class="p">,</span> <span class="n">y_pred</span><span class="o">=</span><span class="n">y_pred_eval</span><span class="p">))</span>
+    <span class="n">metric_values</span><span class="p">[</span><span class="s2">&quot;Recall&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">recall_score</span><span class="p">(</span><span class="n">y_true</span><span class="o">=</span><span class="n">y_true_eval</span><span class="p">,</span> <span class="n">y_pred</span><span class="o">=</span><span class="n">y_pred_eval</span><span class="p">))</span>
+    <span class="n">metric_values</span><span class="p">[</span><span class="s2">&quot;F1-score&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f1_score</span><span class="p">(</span><span class="n">y_true</span><span class="o">=</span><span class="n">y_true_eval</span><span class="p">,</span> <span class="n">y_pred</span><span class="o">=</span><span class="n">y_pred_eval</span><span class="p">))</span>
+
+<span class="c1"># print results</span>
+<span class="n">header</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;Metrics&#39;</span><span class="si">:</span><span class="s2">&lt;25</span><span class="si">}</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">scorer_name</span><span class="si">:</span><span class="s2">&lt;35</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">scorer_name</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;discrete_confidence_score&quot;</span><span class="p">,</span> <span class="s2">&quot;tokenprob_confidence_score&quot;</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">header</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="n">header</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">header</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">metric</span> <span class="ow">in</span> <span class="n">metric_values</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">metric</span><span class="si">:</span><span class="s2">&lt;25</span><span class="si">}</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">x_</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">:</span><span class="s2">&lt;35</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">x_</span> <span class="ow">in</span> <span class="n">metric_values</span><span class="p">[</span><span class="n">metric</span><span class="p">]]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">header</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;F-1 optimal threshold&#39;</span><span class="si">:</span><span class="s2">&lt;25</span><span class="si">}</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">x_</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">:</span><span class="s2">&lt;35</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">x_</span> <span class="ow">in</span> <span class="n">optimal_thresholds</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">header</span><span class="p">))</span>
 </pre></div>
 </div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "a74001b626464c3894c35f71610e3104", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"></pre></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "297743366c034c51ae857b2058e11886", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"></pre></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Semantic entropy F1-optimal threshold: 0.54
+===============================================================================================
+Metrics                  discrete_confidence_score          tokenprob_confidence_score
+-----------------------------------------------------------------------------------------------
+Precision                0.621                              0.6
+Recall                   0.9                                0.9
+F1-score                 0.735                              0.72
+-----------------------------------------------------------------------------------------------
+F-1 optimal threshold    0.88                               0.99
+===============================================================================================
 </pre></div></div>
 </div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># evaluate precision, recall, and f1-score of semantic entropy predictions of correctness</span>
-<span class="nb">print</span><span class="p">(</span>
-    <span class="sa">f</span><span class="s2">&quot;Semantic entropy precision: </span><span class="si">{</span><span class="n">precision_score</span><span class="p">(</span><span class="n">y_true</span><span class="o">=</span><span class="n">correct_indicators</span><span class="p">,</span><span class="w"> </span><span class="n">y_pred</span><span class="o">=</span><span class="n">y_pred</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
-<span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span>
-    <span class="sa">f</span><span class="s2">&quot;Semantic entropy recall: </span><span class="si">{</span><span class="n">recall_score</span><span class="p">(</span><span class="n">y_true</span><span class="o">=</span><span class="n">correct_indicators</span><span class="p">,</span><span class="w"> </span><span class="n">y_pred</span><span class="o">=</span><span class="n">y_pred</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
-<span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span>
-    <span class="sa">f</span><span class="s2">&quot;Semantic entropy f1-score: </span><span class="si">{</span><span class="n">f1_score</span><span class="p">(</span><span class="n">y_true</span><span class="o">=</span><span class="n">correct_indicators</span><span class="p">,</span><span class="w"> </span><span class="n">y_pred</span><span class="o">=</span><span class="n">y_pred</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-Semantic entropy precision: 0.7951807228915663
-Semantic entropy recall: 0.9705882352941176
-Semantic entropy f1-score: 0.8741721854304636
-</pre></div></div>
-</div>
-<p>© 2025 CVS Health and/or one of its affiliates. All rights reserved.</p>
 </section>
+</section>
+</section>
+<section id="4.-Scorer-Definitions">
+<h2>4. Scorer Definitions<a class="headerlink" href="#4.-Scorer-Definitions" title="Link to this heading">#</a></h2>
+<p>Below are the definitions of the two confidence scores used in this demo.</p>
+<section id="Normalized-Semantic-Negentropy-(Discrete)">
+<h3>Normalized Semantic Negentropy (Discrete)<a class="headerlink" href="#Normalized-Semantic-Negentropy-(Discrete)" title="Link to this heading">#</a></h3>
+<p>Normalized Semantic Negentropy (NSN) normalizes the standard computation of discrete semantic entropy to be increasing with higher confidence and have [0,1] support. In contrast to the EMR and NCP, semantic entropy does not distinguish between an original response and candidate responses. Instead, this approach computes a single metric value on a list of responses generated from the same prompt. Under this approach, responses are clustered using an NLI model based on mutual entailment. We
+consider the discrete version of SE, where the final set of clusters is defined as follows:</p>
+<dl class="simple">
+<dt>:nbsphinx-math:<a href="#id2"><span class="problematic" id="id3">`</span></a>begin{equation}</dt><dd><p>SE(y_i; tilde{mathbf{y}}_i) = - sum_{C in mathcal{C}} P(C|y_i, tilde{mathbf{y}}_i)log P(C|y_i, tilde{mathbf{y}}_i),</p>
+</dd>
+</dl>
+<p>end{equation}` where <span class="math notranslate nohighlight">\(P(C|y_i, \tilde{\mathbf{y}}_i)\)</span> denotes the probability a randomly selected response $y <span class="math">\in `{y_i} :nbsphinx-math:</span>cup <cite>:nbsphinx-math:</cite>tilde{mathbf{y}}`_i $ belongs to cluster <span class="math notranslate nohighlight">\(C\)</span>, and <span class="math notranslate nohighlight">\(\mathcal{C}\)</span> denotes the full set of clusters of <span class="math notranslate nohighlight">\(\{y_i\} \cup \tilde{\mathbf{y}}_i\)</span>.</p>
+<dl class="simple">
+<dt>To ensure that we have a normalized confidence score with <span class="math notranslate nohighlight">\([0,1]\)</span> support and with higher values corresponding to higher confidence, we implement the following normalization to arrive at <em>ormalized Semantic Negentropy</em> (NSN): :nbsphinx-math:<a href="#id4"><span class="problematic" id="id5">`</span></a>begin{equation}</dt><dd><p>NSN(y_i; tilde{mathbf{y}}_i) = 1 - frac{SE(y_i; tilde{mathbf{y}}_i)}{log m},</p>
+</dd>
+</dl>
+<p>end{equation}` where <span class="math notranslate nohighlight">\(\log m\)</span> is included to normalize the support.</p>
+</section>
+<section id="Normalized-Semantic-Negentropy-(Token-Probability-Based)">
+<h3>Normalized Semantic Negentropy (Token-Probability-Based)<a class="headerlink" href="#Normalized-Semantic-Negentropy-(Token-Probability-Based)" title="Link to this heading">#</a></h3>
+<p>For this version, the formula is the same as above except <span class="math notranslate nohighlight">\(P(C|y_i, \tilde{\mathbf{y}}_i)\)</span> is computed using joint token probability.</p>
+<p>© 2025 CVS Health and/or one of its affiliates. All rights reserved.</p>
+<p>© 2025 CVS Health and/or one of its affiliates. All rights reserved.</p>
 </section>
 </section>
 </section>
@@ -1085,10 +1185,19 @@ Semantic entropy f1-score: 0.8741721854304636
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#🔄-Class-Methods">🔄 Class Methods</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#3.1-Filtered-LLM-Accuracy-Evaluation">3.1 Filtered LLM Accuracy Evaluation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#3.1-Filtered-LLM-Accuracy-Evaluation">3.1 Filtered LLM Accuracy Evaluation</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#Discrete-Semantic-Entropy">Discrete Semantic Entropy</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Discrete Semantic Entropy</a></li>
+</ul>
+</li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#3.2-Precision,-Recall,-F1-Score-of-Hallucination-Detection">3.2 Precision, Recall, F1-Score of Hallucination Detection</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#4.-Scorer-Definitions">4. Scorer Definitions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Normalized-Semantic-Negentropy-(Discrete)">Normalized Semantic Negentropy (Discrete)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Normalized-Semantic-Negentropy-(Token-Probability-Based)">Normalized Semantic Negentropy (Token-Probability-Based)</a></li>
 </ul>
 </li>
 </ul>
@@ -1137,7 +1246,7 @@ Semantic entropy f1-score: 0.8741721854304636
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
     <br/>
   </p>
 </div>

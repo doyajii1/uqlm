@@ -1,0 +1,33 @@
+uqlm.white\_box.white\_box.WhiteBoxScorer
+=========================================
+
+.. currentmodule:: uqlm.white_box.white_box
+
+.. autoclass:: WhiteBoxScorer
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~WhiteBoxScorer.__init__
+      ~WhiteBoxScorer.avg_logprob
+      ~WhiteBoxScorer.evaluate
+      ~WhiteBoxScorer.get_logprobs
+      ~WhiteBoxScorer.get_probs
+      ~WhiteBoxScorer.imperplexity
+      ~WhiteBoxScorer.max_prob
+      ~WhiteBoxScorer.min_prob
+      ~WhiteBoxScorer.naive_entropy
+   
+   
+
+   
+   
+   
