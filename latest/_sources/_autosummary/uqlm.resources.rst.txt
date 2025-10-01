@@ -1,4 +1,4 @@
-﻿uqlm.resources
+uqlm.resources
 ==============
 
 .. automodule:: uqlm.resources

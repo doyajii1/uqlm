@@ -9,13 +9,6 @@ uqlm.judges.judge
 
    
    
-   .. rubric:: Functions
-
-   .. autosummary::
-      :toctree:
-   
-      cat_instruction
-   
    
 
    

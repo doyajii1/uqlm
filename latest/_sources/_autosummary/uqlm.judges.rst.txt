@@ -1,4 +1,4 @@
-﻿uqlm.judges
+uqlm.judges
 ===========
 
 .. automodule:: uqlm.judges
@@ -28,5 +28,5 @@
    :template: module.rst
    :recursive:
 
-   uqlm.judges.judge
+   judge
 

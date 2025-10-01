@@ -1,4 +1,4 @@
-﻿uqlm.scorers
+uqlm.scorers
 ============
 
 .. automodule:: uqlm.scorers
@@ -28,10 +28,10 @@
    :template: module.rst
    :recursive:
 
-   uqlm.scorers.baseclass
-   uqlm.scorers.black_box
-   uqlm.scorers.ensemble
-   uqlm.scorers.entropy
-   uqlm.scorers.panel
-   uqlm.scorers.white_box
+   baseclass
+   black_box
+   ensemble
+   entropy
+   panel
+   white_box
 

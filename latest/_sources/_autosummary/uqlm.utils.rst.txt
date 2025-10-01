@@ -1,4 +1,4 @@
-﻿uqlm.utils
+uqlm.utils
 ==========
 
 .. automodule:: uqlm.utils
@@ -28,12 +28,15 @@
    :template: module.rst
    :recursive:
 
-   uqlm.utils.dataloader
-   uqlm.utils.display
-   uqlm.utils.llm_config
-   uqlm.utils.plots
-   uqlm.utils.postprocessors
-   uqlm.utils.response_generator
-   uqlm.utils.results
-   uqlm.utils.tuner
+   calibration
+   dataloader
+   display
+   llm_config
+   plots
+   postprocessors
+   prompts
+   response_generator
+   results
+   tuner
+   warn
 
