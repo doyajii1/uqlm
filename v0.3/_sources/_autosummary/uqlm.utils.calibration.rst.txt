@@ -1,0 +1,38 @@
+uqlm.utils.calibration
+======================
+
+.. automodule:: uqlm.utils.calibration
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+      :toctree:
+   
+      evaluate_calibration
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+      :toctree:
+      :template: class.rst
+   
+      ScoreCalibrator
+   
+   
+
+   
+   
+   
+
+
+

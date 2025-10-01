@@ -1,0 +1,6 @@
+uqlm.utils.calibration.evaluate\_calibration
+============================================
+
+.. currentmodule:: uqlm.utils.calibration
+
+.. autofunction:: evaluate_calibration
