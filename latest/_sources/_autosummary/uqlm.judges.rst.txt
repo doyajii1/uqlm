@@ -1,4 +1,4 @@
-uqlm.judges
+﻿uqlm.judges
 ===========
 
 .. automodule:: uqlm.judges

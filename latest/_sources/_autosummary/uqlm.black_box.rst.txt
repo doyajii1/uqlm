@@ -1,4 +1,4 @@
-uqlm.black\_box
+﻿uqlm.black\_box
 ===============
 
 .. automodule:: uqlm.black_box

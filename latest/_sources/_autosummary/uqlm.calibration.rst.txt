@@ -1,4 +1,4 @@
-uqlm.calibration
+﻿uqlm.calibration
 ================
 
 .. automodule:: uqlm.calibration
