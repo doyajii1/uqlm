@@ -1,4 +1,4 @@
-uqlm.scorers
+﻿uqlm.scorers
 ============
 
 .. automodule:: uqlm.scorers

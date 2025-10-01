@@ -1,4 +1,4 @@
-uqlm.utils
+﻿uqlm.utils
 ==========
 
 .. automodule:: uqlm.utils
